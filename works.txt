@@ -1,0 +1,122 @@
+Tanmoy Roychowdhury
+Ashoka University
+Verified email at ashoka.edu.in
+Computational GenomicsHuman Genetics
+Title	
+Cited by
+Year
+Transcriptome-wide isoform-level dysregulation in ASD, schizophrenia, and bipolar disorder
+MJ Gandal, P Zhang, E Hadjimichael, RL Walker, C Chen, S Liu, H Won, ...
+Science 362 (6420), eaat8127
+1376	2018
+Comprehensive functional genomic resource and integrative model for the human brain
+D Wang, S Liu, J Warrell, H Won, X Shi, FCP Navarro, D Clarke, M Gu, ...
+Science 362 (6420), eaat8464
+1112	2018
+Integrative functional genomic analysis of human brain development and neuropsychiatric risks
+M Li, G Santpere, Y Imamura Kawasawa, OV Evgrafov, FO Gulden, ...
+Science 362 (6420), eaat7615
+866	2018
+Transcriptome and epigenome landscape of human cortical development modeled in organoids
+A Amiri*, G Coppola*, S Scuderi*, F Wu*, T Roychowdhury*, F Liu, ...
+Science 362 (6420), eaat6720
+335	2018
+Different mutational rates and mechanisms in human cells at pregastrulation and neurogenesis
+T Bae, L Tomasini, J Mariani, B Zhou, T Roychowdhury, D Franjic, ...
+Science 359 (6375), 550-555
+317	2018
+GWAS of thyroid stimulating hormone highlights pleiotropic effects and inverse association with thyroid cancer
+W Zhou, B Brumpton, O Kabil, J Gudmundsson, G Thorleifsson, ...
+Nature communications 11 (1), 3981
+147	2020
+Genome-wide association meta-analysis identifies risk loci for abdominal aortic aneurysm and highlights PCSK9 as a therapeutic target
+T Roychowdhury, D Klarin, MG Levin, JM Spin, YH Rhee, A Deng, ...
+Nature genetics 55 (11), 1831-1842
+110	2023
+Analysis of IS6110 insertion sites provide a glimpse into genome evolution of Mycobacterium tuberculosis
+T Roychowdhury, S Mandal, A Bhattacharya
+Scientific reports 5 (1), 12567
+87	2015
+De novo transcriptome sequencing and analysis of the cereal cyst nematode, Heterodera avenae
+M Kumar, NP Gantasala, T Roychowdhury, PK Thakur, P Banakar, ...
+PloS one 9 (5), e96311
+80	2014
+Revealing the brain's molecular architecture
+PsychENCODE Consortium*
+Science 362 (6420), 1262-1263
+60	2018
+Loss-of-function genomic variants highlight potential therapeutic targets for cardiovascular disease
+JB Nielsen, O Rom, I Surakka, SE Graham, W Zhou, T Roychowdhury, ...
+Nature communications 11 (1), 6417
+59	2020
+Genome-wide association study of thoracic aortic aneurysm and dissection in the Million Veteran Program
+D Klarin, P Devineni, AK Sendamarai, AR Angueira, SE Graham, ...
+Nature Genetics 55 (7), 1106-1115
+56	2023
+Regulatory variants in TCF7L2 are associated with thoracic aortic aneurysm
+T Roychowdhury, H Lu, WE Hornsby, B Crone, GT Wang, D Guo, ...
+The American Journal of Human Genetics 108 (9), 1578-1589
+48	2021
+Pattern of genomic variation in SARS-CoV-2 (COVID-19) suggests restricted nonrandom changes: Analysis using Shewhart control charts: S Mandal, T Roychowdhury and A Bhattacharya
+S Mandal, T Roychowdhury, A Bhattacharya
+Journal of Biosciences 46 (1), 11
+21	2021
+Genetic heterogeneity revealed by sequence analysis of Mycobacterium tuberculosis isolates from extra-pulmonary tuberculosis patients
+S Das*, T Roychowdhury*, P Kumar, A Kumar, P Kalra, J Singh, S Singh, ...
+BMC genomics 14 (1), 404
+20	2013
+Chromatin organization modulates the origin of heritable structural variations in human genome
+T Roychowdhury, A Abyzov
+Nucleic acids research 47 (6), 2766-2777
+19	2019
+Next-Generation Anchor Based Phylogeny (NexABP): constructing phylogeny from next-generation sequencing data
+T Roychowdhury, A Vishnoi, A Bhattacharya
+Scientific reports 3 (1), 2634
+14	2013
+Evaluating the cost-effectiveness of polygenic risk score-stratified screening for abdominal aortic aneurysm
+M Kelemen, J Danesh, E Di Angelantonio, M Inouye, J O’Sullivan, ...
+Nature Communications 15 (1), 8063
+13	2024
+Complex multifractal nature in Mycobacterium tuberculosis genome
+S Mandal, T Roychowdhury, K Chirom, A Bhattacharya, RK Brojen Singh
+Scientific reports 7 (1), 46395
+12	2017
+De novo genome and transcriptome analyses provide insights into the biology of the trematode human parasite Fasciolopsis buski
+DK Biswal*, T Roychowdhury*, P Pandey, V Tandon
+PloS one 13 (10), e0205570
+11	2018
+Resolving the 22q11. 2 deletion using CTLR-Seq reveals chromosomal rearrangement mechanisms and individual variance in breakpoints
+B Zhou, C Purmann, H Guo, G Shin, Y Huang, R Pattni, Q Meng, SU Greer, ...
+Proceedings of the National Academy of Sciences 121 (31), e2322834121
+5	2024
+Classification of pathogenic microbes using a minimal set of single nucleotide polymorphisms derived from whole genome sequences
+T Roychowdhury, VK Singh, A Bhattacharya
+Genomics 111 (2), 205-211
+4	2019
+Dissecting the genetic architecture of intracranial aneurysms
+SS Adkar, J Lynch, RB Choi, T Roychowdhury, RL Judy, K Paruchuri, ...
+Circulation: Genomic and Precision Medicine 18 (3), e004626
+3	2025
+Genome and Transcriptome-Wide Analyses Identify Multiple Candidate Genes and a Significant Polygenic Contribution in Bicuspid Aortic Valve
+S Thériault, JA Holdcraft, D Sharipova, A Faucherre, RM Debiec, ...
+Circulation
+2026
+Can Metformin reduce AAA risk? A Mendelian randomisation study
+K Saxby, F Dudbridge, T Roychowdhury, D Klarin, G Jones, P Tsao, ...
+EUROPEAN JOURNAL OF HUMAN GENETICS 32, 416-416
+2024
+Evaluation of Inflammatory Biomarkers and Causal Association With Abdominal Aortic Aneurysm Development
+P Sharma, J Yarmolinsky, V Karhunen, D Gill, T Roychowdhury, ...
+Circulation 148 (Suppl_1), A12098-A12098
+2023
+Genomic Structural Equation Modeling To Identify Shared And Distinct Genetic Drivers Of Cardiovascular Disease
+A Angueira, M Levin, VA Million Veteran Program, M Bown, G Jones, ...
+Arteriosclerosis, Thrombosis, and Vascular Biology 43 (Suppl_1), A426-A426
+2023
+RESOLVING THE EXACT BREAKPOINTS AND SEQUENCE REARRANGEMENTS OF LARGE NEUROPSYCHIATRIC COPY NUMBER VARIATIONS (CNVS) AT SINGLE BASE-PAIR RESOLUTION USING CRISPR-TARGETED …
+B Zhou, GW Shin, L Vervoort, S Greer, Y Huang, T Roychowdhury, ...
+European Neuropsychopharmacology 63, E88-E89
+2022
+Genome-wide association study of thoracic aortic aneurysm and dissection in the Million Veteran Program
+AR Angueira, SE Graham, YH Shen, MG Levin, JP Pirruccello, I Surakka, ...
+Articles 1–29
