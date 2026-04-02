@@ -3,19 +3,19 @@ const { motion, useScroll, useTransform, AnimatePresence } = window.Motion;
 
 // --- DUMMY ICONS (SVG) ---
 const ChevronDown = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
 );
 const Molecule = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><circle cx="5" cy="19" r="2"/><path d="M14.5 10.5 17.5 6.5"/><path d="M9.5 10.5 6.5 6.5"/><path d="M14.5 13.5 17.5 17.5"/><path d="M9.5 13.5 6.5 17.5"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3" /><circle cx="19" cy="5" r="2" /><circle cx="5" cy="5" r="2" /><circle cx="19" cy="19" r="2" /><circle cx="5" cy="19" r="2" /><path d="M14.5 10.5 17.5 6.5" /><path d="M9.5 10.5 6.5 6.5" /><path d="M14.5 13.5 17.5 17.5" /><path d="M9.5 13.5 6.5 17.5" /></svg>
 );
 const Brain = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/><path d="M17.599 6.5a3 3 0 0 0 .399-1.375"/><path d="M6.002 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M19.938 10.5a4 4 0 0 1 .585.396"/><path d="M6 18a4 4 0 0 1-1.967-.516"/><path d="M19.967 17.484A4 4 0 0 1 18 18"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" /><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z" /><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4" /><path d="M17.599 6.5a3 3 0 0 0 .399-1.375" /><path d="M6.002 5.125A3 3 0 0 0 6.401 6.5" /><path d="M3.477 10.896a4 4 0 0 1 .585-.396" /><path d="M19.938 10.5a4 4 0 0 1 .585.396" /><path d="M6 18a4 4 0 0 1-1.967-.516" /><path d="M19.967 17.484A4 4 0 0 1 18 18" /></svg>
 );
 const Dna = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><path d="m8 3 8 18"/><path d="m16 3-8 18"/><path d="M10 7.5h4"/><path d="M9 12h6"/><path d="M10 16.5h4"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><path d="m8 3 8 18" /><path d="m16 3-8 18" /><path d="M10 7.5h4" /><path d="M9 12h6" /><path d="M10 16.5h4" /></svg>
 );
 const Search = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
 );
 
 // --- COMPONENTS ---
@@ -30,7 +30,7 @@ const Quotes = () => {
   return (
     <section className="py-24 bg-sage-50 px-6 lg:px-12 relative overflow-hidden">
       <div className="max-w-4xl mx-auto relative z-10 text-center">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -45,7 +45,7 @@ const Quotes = () => {
 
         <SectionDivider />
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -58,7 +58,7 @@ const Quotes = () => {
           <span className="text-sm font-semibold uppercase tracking-widest text-sage-800">— Precision Health Initiative</span>
         </motion.div>
       </div>
-      
+
       {/* Background soft blobs text */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-sage-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob pointer-events-none"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-sand rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000 pointer-events-none"></div>
@@ -76,37 +76,38 @@ const Navbar = () => {
   }, []);
 
   return (
-    <motion.nav 
+    <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-bone/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}
     >
-      <div className="max-w-[90rem] mx-auto px-6 lg:px-12 flex justify-between items-center">
-        <a href="#" className="flex items-center gap-4 lg:gap-6 group">
+      <div className="max-w-[90rem] mx-auto px-6 lg:px-12 flex justify-between items-center gap-8">
+        <a href="#" className="flex items-center gap-4 lg:gap-6 group flex-shrink-0">
           {/* Logo with sophisticated hover glow */}
           <div className="relative">
             <div className="absolute inset-0 bg-gold-300 rounded-full blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-700"></div>
-            <img src="Ashoka_University_logo_with_wordmark.png" alt="Ashoka University" className="relative h-14 lg:h-[4.5rem] object-contain transform group-hover:scale-105 transition-transform duration-500" />
+            <img src="Ashoka_University_logo_with_wordmark.png" alt="Ashoka University" className="relative h-14 lg:h-[4.2rem] object-contain transform group-hover:scale-105 transition-transform duration-500" />
           </div>
-          
+
           <div className="hidden lg:block h-12 w-[2px] bg-olive-200 group-hover:bg-gold-400 transition-colors duration-500"></div>
-          
+
           {/* Stacked Academic Typography */}
-          <div className="hidden lg:flex flex-col justify-center">
-            <span className="font-sans font-bold text-[0.65rem] tracking-[0.25em] text-olive-600 uppercase mb-1">Ashoka University</span>
-            <span className="font-serif text-xl lg:text-[1.45rem] tracking-wide text-ink leading-[1.1] group-hover:text-olive-800 transition-colors duration-500">
-              Computational <br/>
+          <div className="hidden lg:flex flex-col justify-center min-w-max">
+            <span className="font-sans font-bold text-[0.6rem] tracking-[0.25em] text-olive-600 uppercase mb-1">Ashoka University</span>
+            <span className="font-serif text-lg lg:text-[1.3rem] tracking-wide text-ink leading-[1.1] group-hover:text-olive-800 transition-colors duration-500">
+              Computational <br />
               <span className="text-gold-600 italic font-medium">Genomics Group</span>
             </span>
           </div>
         </a>
-        <div className="hidden lg:flex items-center space-x-10 text-[0.85rem] font-bold tracking-[0.15em] uppercase text-ink">
+        <div className="hidden xl:flex items-center space-x-6 text-[0.75rem] font-bold tracking-[0.1em] uppercase text-ink flex-shrink-0">
           <a href="#about" className="hover:text-gold-600 hover:-translate-y-1 transform transition-all duration-300">About</a>
           <a href="#research" className="hover:text-gold-600 hover:-translate-y-1 transform transition-all duration-300">Research</a>
           <a href="#team" className="hover:text-gold-600 hover:-translate-y-1 transform transition-all duration-300">People</a>
+          <a href="#glimpse" className="hover:text-gold-600 hover:-translate-y-1 transform transition-all duration-300">Glimpse</a>
           <a href="#publications" className="hover:text-gold-600 hover:-translate-y-1 transform transition-all duration-300">Publications</a>
-          <a href="#join" className="bg-ink text-bone px-7 py-3 rounded-full hover:bg-gold-500 hover:text-white shadow-soft hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-gold-300">Join Us</a>
+          <a href="mailto:tanmoy.roychowdhury@ashoka.edu.in" className="bg-ink text-bone px-7 py-3 rounded-full hover:bg-gold-500 hover:text-white shadow-soft hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-gold-300">Join Us / Contact Us</a>
         </div>
       </div>
     </motion.nav>
@@ -125,46 +126,52 @@ const Hero = () => {
         <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-sage-200/40 mix-blend-multiply blur-[120px] animate-blob"></div>
         <div className="absolute top-[20%] -right-[10%] w-[60%] h-[60%] rounded-full bg-gold-200/30 mix-blend-multiply blur-[120px] animate-blob" style={{ animationDelay: '2s' }}></div>
         <div className="absolute -bottom-[20%] left-[20%] w-[50%] h-[50%] rounded-full bg-olive-200/30 mix-blend-multiply blur-[120px] animate-blob" style={{ animationDelay: '4s' }}></div>
-        
+
         {/* Subtle grid pattern */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;utf8,<svg width=\\'40\\' height=\\'40\\' xmlns=\\'http://www.w3.org/2000/svg\\'><path d=\\'M0 0h40v40H0V0zm1 1h38v38H1V1z\\' fill=\\'%236B705C\\' fill-opacity=\\'0.03\\' fill-rule=\\'evenodd\\'/></svg>')] opacity-50"></div>
+
+        {/* Small Decorative Dark Elements - Top Right */}
+        <div className="absolute top-24 right-10 lg:right-20 z-0 hidden sm:flex gap-4 opacity-70">
+          <div className="w-1 h-1 rounded-full bg-olive-800"></div>
+          <div className="w-1.5 h-1.5 rounded-full bg-ink"></div>
+          <div className="w-1 h-1 rounded-full bg-gold-700"></div>
+        </div>
+        <div className="absolute top-32 right-12 lg:right-32 z-0 hidden sm:block opacity-40 text-olive-800">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><path d="M12 2v20M2 12h20" /></svg>
+        </div>
+        <div className="absolute top-16 right-40 z-0 hidden sm:block w-2 h-2 rotate-45 border border-ink opacity-40"></div>
+        <div className="absolute top-48 right-12 lg:right-20 z-0 hidden sm:grid grid-cols-5 gap-2 opacity-20">
+          {[...Array(15)].map((_, i) => (
+            <div key={i} className="w-[3px] h-[3px] rounded-full bg-ink"></div>
+          ))}
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto w-full px-6 lg:px-12 pt-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+
           {/* Hero Text */}
-          <motion.div 
+          <motion.div
             style={{ y: y1, opacity: opacity1 }}
             className="lg:col-span-7 z-20 pt-16"
           >
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: 'easeOut' }}
-            >
-              <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-olive-200 bg-bone/80 backdrop-blur-md mb-10 shadow-sm">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)_infinite]"></span>
-                <span className="text-[0.65rem] font-bold tracking-[0.2em] uppercase text-olive-800">Ashoka University</span>
-              </div>
-            </motion.div>
-            
-            <motion.h1 
+            {/* Pill Removed as requested */}
+            <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
               className="text-6xl md:text-8xl lg:text-[6.5rem] font-serif text-ink leading-[1.05] tracking-tight mb-8"
             >
-              Decoding<br/>
+              Decoding<br />
               <span className="text-olive-600 italic font-light relative mr-4">
                 genomes
                 {/* Decorative underline */}
                 <svg className="absolute w-full h-8 -bottom-3 left-0 text-gold-400 opacity-60 pointer-events-none" viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M0,10 Q50,22 100,5" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" /></svg>
               </span>
-              for <br/> health
+              for <br /> health
             </motion.h1>
 
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
@@ -172,8 +179,8 @@ const Hero = () => {
             >
               The Computational Genomics Group pioneers AI and multi-omics to unearth structural variations driving complex human diseases.
             </motion.p>
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.7 }}
@@ -187,59 +194,116 @@ const Hero = () => {
               </a>
             </motion.div>
           </motion.div>
-          
-          {/* Hero Visuals: Abstract Genomics Diagram */}
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
+
+          {/* Hero Visuals: Enhanced Computational Bioinformatics Doodle */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.5, delay: 0.4, ease: "easeOut" }}
-            className="lg:col-span-5 relative hidden lg:flex items-center justify-center w-full min-h-[500px]"
+            className="lg:col-span-5 relative hidden lg:flex items-center justify-center w-full min-h-[400px] h-full"
           >
-            <div className="relative w-full max-w-[480px] aspect-[4/5] group flex items-center justify-center">
-              
-              {/* Minimalist Abstract Genomics Architecture */}
-              <svg className="absolute inset-0 w-full h-full p-8 opacity-80" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                {/* Static concentric dotted rings representing vast genomic data */}
-                <circle cx="100" cy="100" r="85" fill="none" stroke="#C2C5AA" strokeWidth="0.5" strokeDasharray="2 4" />
-                <circle cx="100" cy="100" r="65" fill="none" stroke="#D4A853" strokeWidth="0.5" strokeDasharray="3 6" />
-                
-                {/* Abstract Node Network representing genetic associations (GWAS) */}
-                <g className="origin-center transition-transform duration-700 ease-out group-hover:scale-105" strokeOpacity="0.5">
-                  {/* Connections */}
-                  <line x1="100" y1="40" x2="145" y2="70" stroke="#6B705C" strokeWidth="0.75" />
-                  <line x1="145" y1="70" x2="145" y2="130" stroke="#6B705C" strokeWidth="0.75" />
-                  <line x1="145" y1="130" x2="100" y2="160" stroke="#6B705C" strokeWidth="0.75" />
-                  <line x1="100" y1="160" x2="55" y2="130" stroke="#6B705C" strokeWidth="0.75" />
-                  <line x1="55" y1="130" x2="55" y2="70" stroke="#6B705C" strokeWidth="0.75" />
-                  <line x1="55" y1="70" x2="100" y2="40" stroke="#6B705C" strokeWidth="0.75" />
-                  
-                  {/* Cross connections */}
-                  <line x1="100" y1="40" x2="100" y2="160" stroke="#A4A881" strokeWidth="0.5" />
-                  <line x1="55" y1="70" x2="145" y2="130" stroke="#A4A881" strokeWidth="0.5" />
-                  <line x1="55" y1="130" x2="145" y2="70" stroke="#A4A881" strokeWidth="0.5" />
-
-                  {/* Nodes */}
-                  <circle cx="100" cy="40" r="5" fill="#D4A853" />
-                  <circle cx="145" cy="70" r="4" fill="#6B705C" />
-                  <circle cx="145" cy="130" r="6" fill="#111412" />
-                  <circle cx="100" cy="160" r="4" fill="#A4A881" />
-                  <circle cx="55" cy="130" r="5" fill="#6B705C" />
-                  <circle cx="55" cy="70" r="4" fill="#111412" />
-                  <circle cx="100" cy="100" r="8" fill="#D4A853" className="opacity-90" />
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+              className="relative z-10 w-full max-w-[550px]"
+            >
+              <svg width="100%" height="100%" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg" className="transform -rotate-2 filter drop-shadow-2xl">
+                {/* Fine Grid background for 'computational' matrix feel */}
+                <g stroke="#C2C5AA" strokeWidth="1" strokeOpacity="0.4" strokeDasharray="4 4">
+                  <line x1="100" y1="0" x2="100" y2="600" />
+                  <line x1="200" y1="0" x2="200" y2="600" />
+                  <line x1="300" y1="0" x2="300" y2="600" />
+                  <line x1="400" y1="0" x2="400" y2="600" />
+                  <line x1="500" y1="0" x2="500" y2="600" />
+                  <line x1="0" y1="100" x2="600" y2="100" />
+                  <line x1="0" y1="200" x2="600" y2="200" />
+                  <line x1="0" y1="300" x2="600" y2="300" />
+                  <line x1="0" y1="400" x2="600" y2="400" />
+                  <line x1="0" y1="500" x2="600" y2="500" />
                 </g>
-                
-                {/* Abstract structural variant wave */}
-                <path d="M 50 100 Q 75 70 100 100 T 150 100" fill="none" stroke="#2B422D" strokeWidth="1.5" strokeOpacity="0.2" />
-                <path d="M 50 100 Q 75 130 100 100 T 150 100" fill="none" stroke="#D4A853" strokeWidth="1.5" strokeOpacity="0.3" />
+
+                {/* Abstract organic background blobs */}
+                <path d="M 150 250 C 70 120, 200 80, 320 180 C 450 300, 550 180, 480 380 C 420 550, 280 480, 180 420 Z" fill="#D4A853" fillOpacity="0.15" />
+                <path d="M 280 150 C 450 90, 550 280, 420 450 C 290 620, 50 480, 120 300 Z" fill="#7E9980" fillOpacity="0.15" />
+
+                {/* Deep data-flow arcs */}
+                <path d="M 50 300 A 250 250 0 0 1 550 300" stroke="#E6D8B8" strokeWidth="3" strokeDasharray="15 10" />
+                <path d="M 50 300 A 300 350 0 0 0 550 450" stroke="#C2C5AA" strokeWidth="2" strokeDasharray="5 15" />
+
+                {/* Sweeping dynamic DNA helix structure (improved depth) */}
+                <path d="M 60 500 C 180 380, 300 600, 520 420" stroke="#6B705C" strokeWidth="5" strokeLinecap="round" />
+                <path d="M 60 500 C 180 600, 300 380, 520 420" stroke="#A67D2D" strokeWidth="5" strokeLinecap="round" />
+                {/* Connecting rungs */}
+                <line x1="105" y1="488" x2="105" y2="488" stroke="#111412" strokeWidth="15" strokeLinecap="round" />
+                <line x1="185" y1="440" x2="195" y2="540" stroke="#111412" strokeWidth="4" strokeLinecap="round" />
+                <line x1="305" y1="450" x2="295" y2="545" stroke="#111412" strokeWidth="4" strokeLinecap="round" />
+                <line x1="410" y1="465" x2="410" y2="465" stroke="#111412" strokeWidth="15" strokeLinecap="round" />
+                <line x1="480" y1="432" x2="495" y2="455" stroke="#111412" strokeWidth="3" strokeLinecap="round" />
+
+                {/* High-detail concentric nodes (Protein visualization clusters) */}
+                <g transform="translate(180, 180)">
+                  <circle r="45" stroke="#6B705C" strokeWidth="4" strokeDasharray="6 8" />
+                  <circle r="30" stroke="#A67D2D" strokeWidth="2.5" />
+                  <circle r="15" stroke="#111412" strokeWidth="1.5" strokeDasharray="3 3" />
+                  <circle r="6" fill="#111412" />
+                  <line x1="-30" y1="0" x2="30" y2="0" stroke="#A67D2D" strokeWidth="1" />
+                  <line x1="0" y1="-30" x2="0" y2="30" stroke="#A67D2D" strokeWidth="1" />
+                </g>
+
+                <g transform="translate(420, 260)">
+                  <circle r="60" stroke="#A67D2D" strokeWidth="3" strokeDasharray="10 8" />
+                  <circle r="45" stroke="#6B705C" strokeWidth="2.5" />
+                  <circle r="25" stroke="#111412" strokeWidth="6" strokeDasharray="2 10" />
+                  <circle r="12" fill="#111412" />
+                </g>
+
+                <g transform="translate(320, 100)">
+                  <circle r="20" stroke="#111412" strokeWidth="3" />
+                  <circle r="8" fill="#6B705C" />
+                </g>
+
+                {/* Connecting neural/network dashed pathways showing interactions */}
+                <path d="M 225 180 C 300 180, 350 220, 375 240" stroke="#4B4F4C" strokeWidth="2.5" strokeDasharray="6 6" />
+                <path d="M 180 225 C 160 300, 120 400, 130 450" stroke="#4B4F4C" strokeWidth="2.5" strokeDasharray="8 8" />
+                <path d="M 420 320 C 430 380, 450 400, 480 430" stroke="#4B4F4C" strokeWidth="2.5" strokeDasharray="6 6" />
+                <path d="M 310 120 C 270 180, 230 160, 210 160" stroke="#4B4F4C" strokeWidth="2.5" strokeDasharray="5 5" />
+                <path d="M 340 100 C 400 100, 420 180, 420 200" stroke="#4B4F4C" strokeWidth="2.5" strokeDasharray="4 4" />
+
+                {/* Data analysis / wave squiggles (Bioinformatics motifs) */}
+                <path d="M 60 140 L 90 90 L 120 160 L 150 100" stroke="#A67D2D" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M 360 80 L 390 40 L 420 110 L 450 60 L 480 100" stroke="#6B705C" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M 440 160 Q 480 120, 520 160 T 580 140" stroke="#A67D2D" strokeWidth="3" strokeLinecap="round" />
+
+                {/* Sequence Text floating around */}
+                <text x="80" y="240" fill="#6B705C" fontSize="18" fontFamily="monospace" fontWeight="bold" letterSpacing="4">A-C-G-T</text>
+                <text x="490" y="320" fill="#A67D2D" fontSize="16" fontFamily="monospace" fontWeight="bold" letterSpacing="4">G-C-A-T</text>
+
+                {/* Miniature visual charts (Bar graph motif) */}
+                <rect x="250" y="320" width="8" height="30" rx="4" fill="#6B705C" />
+                <rect x="270" y="290" width="8" height="60" rx="4" fill="#A67D2D" />
+                <rect x="290" y="310" width="8" height="40" rx="4" fill="#111412" opacity="0.8" />
+                <rect x="310" y="330" width="8" height="20" rx="4" fill="#6B705C" />
+
+                {/* Tiny decorative scientific crosses/markers */}
+                <path d="M 90 350 L 120 350 M 105 335 L 105 365" stroke="#111412" strokeWidth="2.5" strokeLinecap="round" />
+                <path d="M 500 520 L 530 520 M 515 505 L 515 535" stroke="#111412" strokeWidth="2.5" strokeLinecap="round" />
+                <path d="M 280 60 L 300 60 M 290 50 L 290 70" stroke="#6B705C" strokeWidth="2.5" strokeLinecap="round" />
+
+                {/* Nodes and scattering details */}
+                <circle cx="100" cy="270" r="4" fill="#A67D2D" />
+                <circle cx="530" cy="280" r="6" fill="#6B705C" />
+                <circle cx="340" cy="380" r="4" fill="#A67D2D" />
+                <circle cx="200" cy="80" r="3" fill="#111412" />
+                <circle cx="480" cy="50" r="5" fill="#6B705C" />
               </svg>
-            </div>
+            </motion.div>
           </motion.div>
-          
+
         </div>
       </div>
 
-      <motion.div 
-        animate={{ y: [0, 8, 0] }} 
+      <motion.div
+        animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-olive-400 z-20"
       >
@@ -265,30 +329,30 @@ const About = () => (
   <section id="about" className="py-24 px-6 lg:px-12 bg-cream">
     <SectionDivider />
     <div className="max-w-4xl mx-auto text-center">
-       <motion.h2 
+      <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         className="text-sm tracking-widest text-gold-600 font-bold uppercase mb-4"
-       >
+      >
         Our Science
-       </motion.h2>
-       <motion.h3
+      </motion.h2>
+      <motion.h3
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, delay: 0.1 }}
         className="text-4xl md:text-5xl font-serif text-ink mb-10 leading-tight"
-       >
+      >
         Precision in the code of life
-       </motion.h3>
-       <motion.p 
+      </motion.h3>
+      <motion.p
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, delay: 0.2 }}
         className="text-xl text-olive-800 leading-relaxed font-light"
-       >
+      >
         Based at Ashoka University, our computational genomics group seeks to uncover the genetic architecture of complex diseases. From genome-wide associations to structural variations, we combine multi-omics data, statistical genetics, and machine learning to map the traits of cardiovascular and neuropsychiatric conditions—cultivating a future built on precision medicine.
-       </motion.p>
+      </motion.p>
     </div>
   </section>
 );
@@ -312,7 +376,7 @@ const Research = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {cards.map((card, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -335,9 +399,9 @@ const Research = () => {
 // --- Live 3D Team Card Component ---
 const TeamCard = ({ member, delay }) => {
   const [isHovered, setIsHovered] = useState(false);
-  
+
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -346,22 +410,22 @@ const TeamCard = ({ member, delay }) => {
       onMouseLeave={() => setIsHovered(false)}
       className="perspective-1000 w-full group cursor-pointer"
     >
-      <motion.div 
+      <motion.div
         animate={{ rotateY: isHovered ? 12 : 0, rotateX: isHovered ? -12 : 0, scale: isHovered ? 1.04 : 1 }}
-         transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
         style={{ transformOrigin: "center center" }}
         className="bg-bone rounded-3xl p-8 border border-cream shadow-soft hover:shadow-2xl h-full transform-style-3d relative overflow-hidden"
       >
         <div className="absolute top-0 right-0 w-32 h-32 bg-gold-300 rounded-full mix-blend-multiply filter blur-3xl opacity-0 group-hover:opacity-30 transition-opacity duration-700 pointer-events-none"></div>
-        
-        <motion.div 
+
+        <motion.div
           animate={{ z: isHovered ? 40 : 0 }}
           className="w-32 h-32 mx-auto rounded-full border border-olive-200 overflow-hidden mb-8 relative z-10 shadow-lg"
         >
-           <img src={member.img} alt={member.name} className="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-110 pointer-events-none" />
+          <img src={member.img} alt={member.name} className="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-110 pointer-events-none" />
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           animate={{ z: isHovered ? 30 : 0 }}
           className="relative z-10 text-center"
         >
@@ -405,11 +469,54 @@ const Team = () => {
           <h2 className="text-sm tracking-widest text-olive-600 font-bold uppercase mb-4">The People</h2>
           <h3 className="text-5xl font-serif text-ink italic">Meet the Lab</h3>
         </div>
-        
+
         {/* Exactly 3 members as requested */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {teamMembers.map((member, idx) => (
             <TeamCard key={idx} member={member} delay={idx * 0.2} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// --- Glimpse / Photo Gallery Component ---
+const Glimpse = () => {
+  const photos = [
+    { img: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800&h=600", title: "Lab Setup", desc: "Setting up our new computational infrastructure." },
+    { img: "https://images.unsplash.com/photo-1579165466741-7f35e4755660?auto=format&fit=crop&q=80&w=800&h=600", title: "Team Retreat", desc: "Discussing structural variants and future goals." },
+    { img: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80&w=800&h=600", title: "Server Room", desc: "Where the genomic sequencing data is processed." }
+  ];
+
+  return (
+    <section id="glimpse" className="py-32 px-6 lg:px-12 bg-bone">
+      <SectionDivider />
+      <div className="max-w-7xl mx-auto mt-16">
+        <div className="text-center mb-20">
+          <h2 className="text-sm tracking-widest text-olive-600 font-bold uppercase mb-4">Gallery</h2>
+          <h3 className="text-5xl font-serif text-ink italic">A Glimpse</h3>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {photos.map((photo, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.2 }}
+              className="group overflow-hidden rounded-3xl bg-white shadow-soft hover:shadow-2xl transition-all duration-500 border border-olive-200"
+            >
+              <div className="h-64 overflow-hidden relative">
+                <img src={photo.img} alt={photo.title} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
+                <div className="absolute inset-0 bg-ink opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none"></div>
+              </div>
+              <div className="p-8">
+                <h4 className="font-serif text-2xl text-ink mb-3 group-hover:text-olive-800 transition-colors">{photo.title}</h4>
+                <div className="w-8 h-px bg-gold-400 mb-4 group-hover:w-16 transition-all duration-500"></div>
+                <p className="text-muted text-sm font-light leading-relaxed">{photo.desc}</p>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -424,7 +531,7 @@ const JoinUs = () => {
       <SectionDivider />
       <div className="max-w-7xl mx-auto relative z-10 pt-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
-          
+
           {/* Text Left */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -433,7 +540,7 @@ const JoinUs = () => {
             className="lg:col-span-5 sticky top-32"
           >
             <h2 className="text-xs tracking-widest text-gold-600 font-bold uppercase mb-4">Opportunities</h2>
-            <h3 className="text-5xl lg:text-6xl font-serif text-ink mb-8 leading-tight">Join Our <br/><span className="italic text-olive-800">Team</span></h3>
+            <h3 className="text-5xl lg:text-6xl font-serif text-ink mb-8 leading-tight">Join Our <br /><span className="italic text-olive-800">Team</span></h3>
             <div className="w-16 h-px bg-gold-400 mb-8"></div>
             <p className="text-lg text-olive-800 font-light leading-relaxed mb-6">
               We are continually looking for curious, driven researchers—from undergraduates to postdocs—to assist in charting the genetic architecture of complex diseases.
@@ -443,7 +550,7 @@ const JoinUs = () => {
             </p>
             <a href="mailto:tanmoy.roychowdhury@ashoka.edu.in" className="inline-flex items-center gap-3 bg-olive-800 hover:bg-gold-600 text-bone transition-all duration-300 px-8 py-5 rounded-full text-xs font-semibold uppercase tracking-widest shadow-xl transform hover:-translate-y-1">
               General Inquiry
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
             </a>
           </motion.div>
 
@@ -469,24 +576,24 @@ const JoinUs = () => {
                 >
                   <div className="relative z-10 flex-grow">
                     <div className="w-14 h-14 rounded-full bg-sage-50 flex items-center justify-center mb-8 group-hover:bg-gold-50 group-hover:scale-110 transition-all duration-500 shadow-sm">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-olive-600 group-hover:text-gold-600 transition-colors"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-olive-600 group-hover:text-gold-600 transition-colors"><path d="M12 2v20" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
                     </div>
                     <h4 className="font-serif text-2xl md:text-3xl text-ink group-hover:text-olive-800 transition-colors mb-3 pr-2">{pos.title}</h4>
                     <p className="text-sm text-muted font-light leading-relaxed mb-8">{pos.desc}</p>
                   </div>
-                  
+
                   <a href={`mailto:${pos.email}`} className="relative z-10 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-olive-600 group-hover:text-gold-600 transition-colors mt-auto w-fit">
                     Apply Now
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transform group-hover:translate-x-1.5 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transform group-hover:translate-x-1.5 transition-transform"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
                   </a>
-                  
+
                   {/* Subtle hover gradient within card */}
                   <div className="absolute inset-0 bg-gradient-to-br from-transparent to-gold-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 </motion.div>
               ))}
             </div>
           </div>
-          
+
         </div>
       </div>
     </section>
@@ -517,25 +624,28 @@ const Publications = () => {
           <h2 className="text-sm tracking-widest text-olive-600 font-bold uppercase mb-4">Selected Works</h2>
           <h3 className="text-5xl font-serif text-ink">Publications</h3>
         </div>
-        
+
         <div className="space-y-12 shrink-0">
           {pubs.map((pub, idx) => (
-            <motion.div 
+            <motion.a
               key={idx}
+              href={`https://scholar.google.com/scholar?q=${encodeURIComponent(pub.title)}`}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               whileHover={{ x: 10 }}
               transition={{ duration: 0.4 }}
-              className="flex flex-col md:flex-row gap-6 border-b border-olive-200 pb-10 group cursor-default"
+              className="flex flex-col md:flex-row gap-6 border-b border-olive-200 pb-10 group cursor-pointer"
             >
               <div className="font-serif text-3xl text-gold-500 font-light shrink-0 md:w-32 group-hover:text-olive-600 transition-colors">{pub.year}</div>
               <div>
-                <h4 className="font-serif text-[1.35rem] text-ink mb-3 leading-snug group-hover:text-olive-800 transition-colors">{pub.title}</h4>
+                <h4 className="font-serif text-[1.35rem] text-ink mb-3 leading-snug group-hover:text-olive-800 transition-colors group-hover:underline decoration-gold-400 underline-offset-4">{pub.title}</h4>
                 <p className="text-sage-800 text-sm font-semibold tracking-wide uppercase mb-2">{pub.journal}</p>
                 <p className="text-muted text-sm font-light leading-relaxed">{pub.authors}</p>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>
@@ -547,28 +657,30 @@ const Footer = () => (
   <footer className="bg-sage-100/50 text-ink py-20 px-6 lg:px-12 text-center md:text-left border-t border-sage-200">
     <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
       <div>
-        <h3 className="font-serif text-2xl text-olive-800 mb-6">Contact us</h3>
-        <p className="text-muted font-light text-sm leading-relaxed max-w-xs mx-auto md:mx-0">
-          Computational Genomics Group<br/>
-          Ashoka University<br/>
-          Rajiv Gandhi Education City<br/>
-          Sonipat, Haryana 131029<br/>
+        <h3 className="font-serif text-3xl text-olive-800 mb-6 italic">Contact us</h3>
+        <p className="font-serif text-olive-800 text-lg leading-relaxed max-w-xs mx-auto md:mx-0">
+          <a href="mailto:tanmoy.roychowdhury@ashoka.edu.in" className="font-bold underline hover:text-gold-600 transition inline-block mb-3">tanmoy.roychowdhury@ashoka.edu.in</a><br />
+          Computational Genomics Group<br />
+          Ashoka University<br />
+          Rajiv Gandhi Education City<br />
+          Sonipat, Haryana 131029<br />
           India
         </p>
       </div>
       <div>
-        <h3 className="font-serif text-2xl text-olive-800 mb-6">Explore</h3>
-        <div className="flex flex-col space-y-3 text-sm text-muted font-medium uppercase tracking-widest">
-          <a href="#" className="hover:text-gold-600 transition">Overview</a>
-          <a href="#research" className="hover:text-gold-600 transition">Research</a>
-          <a href="#publications" className="hover:text-gold-600 transition">Publications</a>
-          <a href="#team" className="hover:text-gold-600 transition">People</a>
-          <a href="#join" className="hover:text-gold-600 transition">Join Us</a>
+        <h3 className="font-serif text-3xl text-olive-800 mb-6 italic">Explore</h3>
+        <div className="flex flex-col space-y-3 text-lg font-serif text-olive-800">
+          <a href="#" className="hover:text-gold-600 transition text-ink hover:no-underline">Overview</a>
+          <a href="#research" className="hover:text-gold-600 transition text-ink">Research</a>
+          <a href="#publications" className="hover:text-gold-600 transition text-ink">Publications</a>
+          <a href="#team" className="hover:text-gold-600 transition text-ink">People</a>
+          <a href="#glimpse" className="hover:text-gold-600 transition text-ink">Glimpse</a>
+          <a href="mailto:tanmoy.roychowdhury@ashoka.edu.in" className="hover:text-gold-600 transition text-ink">Join Us</a>
         </div>
       </div>
       <div className="flex flex-col items-center md:items-end justify-between">
         <img src="Ashoka_University_logo_with_wordmark.png" alt="Ashoka University Logo" className="h-16 md:h-20 object-contain mb-8 md:mb-0" />
-        <p className="text-olive-400 text-xs mt-auto uppercase tracking-widest">© 2026 Computational Genomics Group</p>
+        <p className="font-serif text-olive-600 text-sm mt-auto italic">© 2026 Computational Genomics Group</p>
       </div>
     </div>
   </footer>
@@ -576,16 +688,26 @@ const Footer = () => (
 
 const App = () => {
   return (
-    <div className="overflow-hidden bg-bone">
-      <Navbar />
-      <Hero />
-      <Quotes />
-      <About />
-      <Research />
-      <Team />
-      <JoinUs />
-      <Publications />
-      <Footer />
+    <div className="overflow-hidden bg-bone relative min-h-screen">
+      {/* Global Background Fading Circles (Goos) for testing */}
+      <div className="fixed top-0 left-0 w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] bg-sage-300 rounded-full mix-blend-multiply filter blur-[120px] opacity-40 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0"></div>
+      <div className="fixed bottom-0 right-0 w-[70vw] h-[70vw] max-w-[900px] max-h-[900px] bg-gold-200 rounded-full mix-blend-multiply filter blur-[150px] opacity-30 translate-x-1/4 translate-y-1/4 pointer-events-none z-0"></div>
+      <div className="fixed top-1/2 right-0 w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] bg-olive-200 rounded-full mix-blend-multiply filter blur-[100px] opacity-30 translate-x-1/3 -translate-y-1/2 pointer-events-none z-0"></div>
+      <div className="fixed bottom-0 left-0 w-[50vw] h-[50vw] max-w-[700px] max-h-[700px] bg-emerald-100 rounded-full mix-blend-multiply filter blur-[130px] opacity-20 -translate-x-1/3 translate-y-1/3 pointer-events-none z-0"></div>
+
+
+      <div className="relative z-10 w-full h-full">
+        <Navbar />
+        <Hero />
+        <Quotes />
+        <About />
+        <Research />
+        <Team />
+        <Glimpse />
+        <JoinUs />
+        <Publications />
+        <Footer />
+      </div>
     </div>
   );
 };
