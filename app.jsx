@@ -226,21 +226,20 @@ const Hero = () => {
                 <path d="M 150 250 C 70 120, 200 80, 320 180 C 450 300, 550 180, 480 380 C 420 550, 280 480, 180 420 Z" fill="#D4A853" fillOpacity="0.15" />
                 <path d="M 280 150 C 450 90, 550 280, 420 450 C 290 620, 50 480, 120 300 Z" fill="#7E9980" fillOpacity="0.15" />
 
-                {/* Deep data-flow arcs */}
+                {/* Data-flow arcs */}
                 <path d="M 50 300 A 250 250 0 0 1 550 300" stroke="#E6D8B8" strokeWidth="3" strokeDasharray="15 10" />
                 <path d="M 50 300 A 300 350 0 0 0 550 450" stroke="#C2C5AA" strokeWidth="2" strokeDasharray="5 15" />
 
-                {/* Sweeping dynamic DNA helix structure (improved depth) */}
+                {/* DNA helix structure */}
                 <path d="M 60 500 C 180 380, 300 600, 520 420" stroke="#6B705C" strokeWidth="5" strokeLinecap="round" />
                 <path d="M 60 500 C 180 600, 300 380, 520 420" stroke="#A67D2D" strokeWidth="5" strokeLinecap="round" />
-                {/* Connecting rungs */}
                 <line x1="105" y1="488" x2="105" y2="488" stroke="#111412" strokeWidth="15" strokeLinecap="round" />
                 <line x1="185" y1="440" x2="195" y2="540" stroke="#111412" strokeWidth="4" strokeLinecap="round" />
                 <line x1="305" y1="450" x2="295" y2="545" stroke="#111412" strokeWidth="4" strokeLinecap="round" />
                 <line x1="410" y1="465" x2="410" y2="465" stroke="#111412" strokeWidth="15" strokeLinecap="round" />
                 <line x1="480" y1="432" x2="495" y2="455" stroke="#111412" strokeWidth="3" strokeLinecap="round" />
 
-                {/* High-detail concentric nodes (Protein visualization clusters) */}
+                {/* Concentric nodes */}
                 <g transform="translate(180, 180)">
                   <circle r="45" stroke="#6B705C" strokeWidth="4" strokeDasharray="6 8" />
                   <circle r="30" stroke="#A67D2D" strokeWidth="2.5" />
@@ -249,47 +248,45 @@ const Hero = () => {
                   <line x1="-30" y1="0" x2="30" y2="0" stroke="#A67D2D" strokeWidth="1" />
                   <line x1="0" y1="-30" x2="0" y2="30" stroke="#A67D2D" strokeWidth="1" />
                 </g>
-
                 <g transform="translate(420, 260)">
                   <circle r="60" stroke="#A67D2D" strokeWidth="3" strokeDasharray="10 8" />
                   <circle r="45" stroke="#6B705C" strokeWidth="2.5" />
                   <circle r="25" stroke="#111412" strokeWidth="6" strokeDasharray="2 10" />
                   <circle r="12" fill="#111412" />
                 </g>
-
                 <g transform="translate(320, 100)">
                   <circle r="20" stroke="#111412" strokeWidth="3" />
                   <circle r="8" fill="#6B705C" />
                 </g>
 
-                {/* Connecting neural/network dashed pathways showing interactions */}
+                {/* Network pathways */}
                 <path d="M 225 180 C 300 180, 350 220, 375 240" stroke="#4B4F4C" strokeWidth="2.5" strokeDasharray="6 6" />
                 <path d="M 180 225 C 160 300, 120 400, 130 450" stroke="#4B4F4C" strokeWidth="2.5" strokeDasharray="8 8" />
                 <path d="M 420 320 C 430 380, 450 400, 480 430" stroke="#4B4F4C" strokeWidth="2.5" strokeDasharray="6 6" />
                 <path d="M 310 120 C 270 180, 230 160, 210 160" stroke="#4B4F4C" strokeWidth="2.5" strokeDasharray="5 5" />
                 <path d="M 340 100 C 400 100, 420 180, 420 200" stroke="#4B4F4C" strokeWidth="2.5" strokeDasharray="4 4" />
 
-                {/* Data analysis / wave squiggles (Bioinformatics motifs) */}
+                {/* Wave squiggles */}
                 <path d="M 60 140 L 90 90 L 120 160 L 150 100" stroke="#A67D2D" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
                 <path d="M 360 80 L 390 40 L 420 110 L 450 60 L 480 100" stroke="#6B705C" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
                 <path d="M 440 160 Q 480 120, 520 160 T 580 140" stroke="#A67D2D" strokeWidth="3" strokeLinecap="round" />
 
-                {/* Sequence Text floating around */}
+                {/* Sequence Text */}
                 <text x="80" y="240" fill="#6B705C" fontSize="18" fontFamily="monospace" fontWeight="bold" letterSpacing="4">A-C-G-T</text>
                 <text x="490" y="320" fill="#A67D2D" fontSize="16" fontFamily="monospace" fontWeight="bold" letterSpacing="4">G-C-A-T</text>
 
-                {/* Miniature visual charts (Bar graph motif) */}
+                {/* Bar charts */}
                 <rect x="250" y="320" width="8" height="30" rx="4" fill="#6B705C" />
                 <rect x="270" y="290" width="8" height="60" rx="4" fill="#A67D2D" />
                 <rect x="290" y="310" width="8" height="40" rx="4" fill="#111412" opacity="0.8" />
                 <rect x="310" y="330" width="8" height="20" rx="4" fill="#6B705C" />
 
-                {/* Tiny decorative scientific crosses/markers */}
+                {/* Scientific crosses */}
                 <path d="M 90 350 L 120 350 M 105 335 L 105 365" stroke="#111412" strokeWidth="2.5" strokeLinecap="round" />
                 <path d="M 500 520 L 530 520 M 515 505 L 515 535" stroke="#111412" strokeWidth="2.5" strokeLinecap="round" />
                 <path d="M 280 60 L 300 60 M 290 50 L 290 70" stroke="#6B705C" strokeWidth="2.5" strokeLinecap="round" />
 
-                {/* Nodes and scattering details */}
+                {/* Scatter nodes */}
                 <circle cx="100" cy="270" r="4" fill="#A67D2D" />
                 <circle cx="530" cy="280" r="6" fill="#6B705C" />
                 <circle cx="340" cy="380" r="4" fill="#A67D2D" />
@@ -319,6 +316,13 @@ const Hero = () => {
         }
         .animate-blob {
           animation: blob 12s infinite cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none; /* IE and Edge */
+          scrollbar-width: none; /* Firefox */
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
         }
       `}</style>
     </section>
@@ -357,38 +361,121 @@ const About = () => (
   </section>
 );
 
+// --- Live Dynamic 3D Tracking Research Card ---
+const ResearchCard = ({ card, idx }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const cardRef = useRef(null);
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    
+    const xPct = (mouseX / width - 0.5) * 2;
+    const yPct = (mouseY / height - 0.5) * 2;
+
+    setRotateX(yPct * 20);
+    setRotateY(-xPct * 20);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setRotateX(0);
+    setRotateY(0);
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95, y: 20 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: idx * 0.15, duration: 0.6 }}
+      className="w-full h-full group cursor-pointer"
+      style={{ perspective: 1200 }}
+    >
+      <motion.div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={handleMouseLeave}
+        animate={{ 
+          rotateX: isHovered ? rotateX * 1.2 : 0, 
+          rotateY: isHovered ? rotateY * 1.2 : 0, 
+          scale: isHovered ? 1.12 : 1,
+          z: isHovered ? 80 : 0
+        }}
+        transition={{ type: "spring", stiffness: 450, damping: 30 }}
+        style={{ transformStyle: "preserve-3d" }}
+        className="bg-olive-800 text-bone rounded-3xl p-10 h-full relative overflow-visible border border-olive-700 shadow-2xl hover:shadow-[0_50px_100px_-20px_rgba(180,140,40,0.6)] transition-all duration-500 hover:z-50"
+      >
+        {/* Deep glowing backdrop projected far behind */}
+        <div 
+          className="absolute inset-0 bg-gold-400 rounded-3xl opacity-0 group-hover:opacity-25 transition-opacity duration-700 pointer-events-none" 
+          style={{ filter: 'blur(30px)', transform: 'translateZ(-40px)' }}
+        ></div>
+
+        {/* Massive numeric background deeply recessed in 3D */}
+        <motion.div
+          animate={{ z: isHovered ? -60 : 0, opacity: isHovered ? 1 : 0.2 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          className="absolute right-4 top-2 text-9xl font-serif text-olive-900 pointer-events-none select-none drop-shadow-2xl"
+        >
+          0{idx + 1}
+        </motion.div>
+
+        {/* Card Content popping forward insanely far */}
+        <motion.div
+          animate={{ z: isHovered ? 100 : 0 }}
+          transition={{ type: "spring", stiffness: 350, damping: 20 }}
+          className="relative z-10 flex flex-col h-full"
+        >
+          <div className="w-12 h-1 bg-gold-500 mb-8 rounded-full transform origin-left transition-transform duration-500 group-hover:scale-x-150"></div>
+          
+          <h4 className="font-serif text-3xl text-gold-400 mb-6 group-hover:text-gold-300 transition-colors drop-shadow-md leading-tight">{card.title}</h4>
+          
+          <p className="text-olive-100/90 font-light leading-relaxed drop-shadow-sm flex-grow relative z-20">
+            {card.desc}
+          </p>
+          
+          <div className="mt-10 pt-6 border-t border-olive-700 flex items-center justify-between opacity-50 group-hover:opacity-100 transition-opacity">
+            <span className="text-xs uppercase tracking-widest text-gold-500 font-bold">Discover</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400 transform group-hover:translate-x-2 transition-transform duration-300"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
 const Research = () => {
   const cards = [
-    { title: "GWAS", icon: <Search />, desc: "Identifying risk loci and pleiotropic effects for complex traits such as abdominal and thoracic aortic aneurysms." },
-    { title: "Polygenic Risk Scores", icon: <Molecule />, desc: "Evaluating cost-effectiveness and predictive power of PRS-stratified screening for cardiovascular diseases." },
-    { title: "Precision Medicine", icon: <Dna />, desc: "Leveraging loss-of-function variants to highlight potential therapeutic targets in human populations." },
-    { title: "AI in Genomics", icon: <Brain />, desc: "Building integrative functional genomic models for brain development and neuropsychiatric risks." }
+    { title: "GWAS", desc: "Identifying risk loci and pleiotropic effects for complex traits such as abdominal and thoracic aortic aneurysms." },
+    { title: "Polygenic Risk Scores", desc: "Evaluating cost-effectiveness and predictive power of PRS-stratified screening for cardiovascular diseases." },
+    { title: "Precision Medicine", desc: "Leveraging loss-of-function variants to highlight potential therapeutic targets in human populations." },
+    { title: "AI in Genomics", desc: "Building integrative functional genomic models for brain development and neuropsychiatric risks." }
   ];
 
   return (
     <section id="research" className="py-32 bg-sage-50 text-ink px-6 lg:px-12 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-20">
+        <div className="text-center mb-24">
           <h2 className="text-sm tracking-widest text-olive-600 font-bold uppercase mb-4">Focus Areas</h2>
-          <h3 className="text-5xl lg:text-6xl font-serif text-ink">Our Research</h3>
+          <h3 className="text-5xl lg:text-7xl font-serif text-ink">Our Research</h3>
           <div className="mt-8 flex justify-center opacity-50"><SectionDivider /></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Massive padding prevents crazy 3D scaling & shadows from getting clipped by the scroll container */}
+        <div className="flex overflow-x-auto gap-10 py-[100px] snap-x snap-mandatory scroll-smooth hide-scrollbar px-16 -mx-16 lg:px-24 lg:-mx-24 items-stretch">
           {cards.map((card, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="bg-bone border border-olive-200 rounded-2xl p-10 text-center hover:border-gold-400 transition-all duration-300 shadow-soft cursor-pointer group"
-            >
-              <div className="text-olive-400 flex justify-center mb-8 group-hover:text-gold-500 transition-colors transform group-hover:scale-110 duration-500">{card.icon}</div>
-              <h4 className="font-serif text-2xl text-ink mb-4">{card.title}</h4>
-              <p className="text-base font-light text-muted leading-relaxed">{card.desc}</p>
-            </motion.div>
+            <div key={idx} className="flex-none w-[85vw] md:w-[350px] lg:w-[320px] snap-center">
+              <ResearchCard card={card} idx={idx} />
+            </div>
           ))}
         </div>
       </div>
@@ -396,43 +483,93 @@ const Research = () => {
   );
 };
 
-// --- Live 3D Team Card Component ---
+// --- Live Dynamic 3D Tracking Team Card Component ---
 const TeamCard = ({ member, delay }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const cardRef = useRef(null);
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    
+    const xPct = (mouseX / width - 0.5) * 2;
+    const yPct = (mouseY / height - 0.5) * 2;
+
+    // Tilt into the mouse (so corner being hovered leans backwards deeply)
+    setRotateX(yPct * 25);
+    setRotateY(-xPct * 25);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setRotateX(0);
+    setRotateY(0);
+  };
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay, duration: 0.8 }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="perspective-1000 w-full group cursor-pointer"
+      className="w-full h-full group cursor-pointer"
+      style={{ perspective: 1200 }}
     >
       <motion.div
-        animate={{ rotateY: isHovered ? 12 : 0, rotateX: isHovered ? -12 : 0, scale: isHovered ? 1.04 : 1 }}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        style={{ transformOrigin: "center center" }}
-        className="bg-bone rounded-3xl p-8 border border-cream shadow-soft hover:shadow-2xl h-full transform-style-3d relative overflow-hidden"
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={handleMouseLeave}
+        animate={{ 
+          rotateX: isHovered ? rotateX * 1.2 : 0, 
+          rotateY: isHovered ? rotateY * 1.2 : 0, 
+          scale: isHovered ? 1.12 : 1,
+          z: isHovered ? 80 : 0
+        }}
+        transition={{ type: "spring", stiffness: 450, damping: 30 }}
+        style={{ transformStyle: "preserve-3d" }}
+        className="bg-gradient-to-b from-olive-800 to-olive-900 rounded-[2rem] p-8 md:p-10 border border-olive-700 shadow-xl hover:shadow-[0_50px_100px_-20px_rgba(180,140,40,0.6)] h-full relative flex flex-col transition-all duration-500 hover:z-50"
       >
-        <div className="absolute top-0 right-0 w-32 h-32 bg-gold-300 rounded-full mix-blend-multiply filter blur-3xl opacity-0 group-hover:opacity-30 transition-opacity duration-700 pointer-events-none"></div>
+        {/* Dynamic Glowing backdrop projected behind */}
+        <div 
+          className="absolute inset-0 bg-gradient-to-tr from-gold-500 via-olive-300 to-sage-300 rounded-[2rem] opacity-0 group-hover:opacity-30 transition-opacity duration-700 pointer-events-none" 
+          style={{ filter: 'blur(35px)', transform: 'translateZ(-60px)' }}
+        ></div>
 
+        {/* Expanding glowing floating frame holding the image extremely far towards the user */}
         <motion.div
-          animate={{ z: isHovered ? 40 : 0 }}
-          className="w-32 h-32 mx-auto rounded-full border border-olive-200 overflow-hidden mb-8 relative z-10 shadow-lg"
+          animate={{ z: isHovered ? 160 : 0 }}
+          transition={{ type: "spring", stiffness: 350, damping: 20 }}
+          className="w-32 h-32 mx-auto rounded-full p-[3px] bg-gradient-to-tr from-gold-600 to-olive-500 mb-8 shadow-xl group-hover:shadow-[0_20px_50px_-10px_rgba(200,160,50,0.7)] relative transition-all duration-500 pointer-events-none"
         >
-          <img src={member.img} alt={member.name} className="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-110 pointer-events-none" />
+          <div className="w-full h-full rounded-full overflow-hidden border-[4px] border-olive-900 bg-olive-800 relative shadow-inner group-hover:shadow-[inset_0px_0px_20px_5px_rgba(0,0,0,0.4)] transition-all duration-500">
+            {member.img ? (
+              <img src={member.img} alt={member.name} className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-110" />
+            ) : (
+              <div className="absolute inset-0 bg-gradient-to-b from-olive-800/50 to-olive-900/80"></div>
+            )}
+          </div>
         </motion.div>
 
+        {/* 3D popping text layer floating high above */}
         <motion.div
-          animate={{ z: isHovered ? 30 : 0 }}
-          className="relative z-10 text-center"
+          animate={{ z: isHovered ? 110 : 0 }}
+          transition={{ type: "spring", stiffness: 350, damping: 20 }}
+          className="relative z-10 text-center transition-all duration-500 pointer-events-none flex-grow flex flex-col justify-end"
         >
-          <h4 className="font-serif text-3xl text-ink group-hover:text-olive-800 transition-colors">{member.name}</h4>
-          <p className="text-xs font-semibold uppercase tracking-widest text-gold-600 mt-3 mb-4">{member.role}</p>
-          <div className="w-12 h-px bg-olive-200 mx-auto mb-4 group-hover:w-24 group-hover:bg-gold-400 transition-all duration-500"></div>
-          <p className="text-sm text-muted font-light leading-relaxed">{member.desc}</p>
+          <h4 className="font-serif text-[1.8rem] text-bone group-hover:text-gold-200 transition-colors drop-shadow-md leading-tight">{member.name}</h4>
+          <p className="text-xs font-bold uppercase tracking-widest text-gold-500 mt-3 mb-6">{member.role}</p>
+          
+          <div className="w-16 h-[2px] bg-olive-600 mx-auto mb-6 group-hover:w-full group-hover:bg-gradient-to-r group-hover:from-gold-400 group-hover:to-olive-500 transition-all duration-700 rounded-full"></div>
+          
+          <p className="text-base text-olive-100/90 font-light leading-relaxed drop-shadow-sm">{member.desc}</p>
         </motion.div>
       </motion.div>
     </motion.div>
@@ -444,19 +581,16 @@ const Team = () => {
     {
       name: "Dr. Tanmoy Roychowdhury",
       role: "Principal Investigator",
-      img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300&h=300",
       desc: "His work spans biology, physics, and data science, charting structural variants and neuropsychiatric dysregulation. Faculty at Ashoka University."
     },
     {
       name: "Govind",
       role: "Research Assistant",
-      img: "https://images.unsplash.com/photo-1594824436952-47571212dcbb?auto=format&fit=crop&q=80&w=300&h=300",
       desc: "Assisting in lab operations, data processing pipelines, and maintaining genomics computational infrastructure."
     },
     {
       name: "Joydeep",
       role: "Ph.D. Candidate",
-      img: "https://images.unsplash.com/photo-1537511446984-935f663eb1f4?auto=format&fit=crop&q=80&w=300&h=300",
       desc: "Investigating the genetic basis of complex traits using integrative multi-omics and advanced statistical models."
     }
   ];
@@ -470,10 +604,13 @@ const Team = () => {
           <h3 className="text-5xl font-serif text-ink italic">Meet the Lab</h3>
         </div>
 
-        {/* Exactly 3 members as requested */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        {/* Horizontally scrolling row for unlimited team members */}
+        {/* Massive padding prevents crazy 3D scaling & shadows from getting clipped by the scroll container */}
+        <div className="flex overflow-x-auto gap-12 py-[100px] snap-x snap-mandatory scroll-smooth hide-scrollbar px-16 -mx-16 lg:px-24 lg:-mx-24 items-stretch">
           {teamMembers.map((member, idx) => (
-            <TeamCard key={idx} member={member} delay={idx * 0.2} />
+            <div key={idx} className="flex-none w-[85vw] md:w-[400px] lg:w-[350px] snap-center">
+              <TeamCard member={member} delay={idx * 0.2} />
+            </div>
           ))}
         </div>
       </div>
@@ -524,6 +661,93 @@ const Glimpse = () => {
   );
 };
 
+// --- Live Dynamic 3D Tracking Join Us Card Component ---
+const JoinUsCard = ({ pos, idx }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const cardRef = useRef(null);
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    
+    const xPct = (mouseX / width - 0.5) * 2;
+    const yPct = (mouseY / height - 0.5) * 2;
+
+    setRotateX(yPct * 20);
+    setRotateY(-xPct * 20);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setRotateX(0);
+    setRotateY(0);
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95, y: 20 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: idx * 0.15 + 0.1, duration: 0.6 }}
+      className="w-full h-full group cursor-pointer"
+      style={{ perspective: 1200 }}
+    >
+      <motion.div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={handleMouseLeave}
+        animate={{ 
+          rotateX: isHovered ? rotateX * 1.2 : 0, 
+          rotateY: isHovered ? rotateY * 1.2 : 0, 
+          scale: isHovered ? 1.08 : 1,
+          z: isHovered ? 60 : 0
+        }}
+        transition={{ type: "spring", stiffness: 450, damping: 30 }}
+        style={{ transformStyle: "preserve-3d" }}
+        className="bg-gradient-to-br from-ink to-slate-800 rounded-3xl p-8 md:p-10 border border-slate-700 hover:shadow-[0_40px_80px_-15px_rgba(200,160,50,0.5)] shadow-xl h-full min-h-[300px] relative overflow-visible flex flex-col transition-all duration-500 hover:z-50"
+      >
+        {/* Glow backdrop projected behind */}
+        <div 
+          className="absolute inset-0 bg-gold-400 rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none" 
+          style={{ filter: 'blur(30px)', transform: 'translateZ(-40px)' }}
+        ></div>
+
+        {/* 3D Elements popping out */}
+        <motion.div
+          animate={{ z: isHovered ? 90 : 0 }}
+          transition={{ type: "spring", stiffness: 350, damping: 20 }}
+          className="relative z-10 flex-grow flex flex-col pointer-events-none"
+        >
+          <div className="w-12 h-12 rounded-full bg-slate-700 flex items-center justify-center mb-6 group-hover:bg-gold-500 group-hover:scale-110 transition-all duration-500 shadow-inner overflow-hidden border border-slate-600">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-bone group-hover:text-ink transition-colors"><path d="M12 2v20" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
+          </div>
+          <h4 className="font-serif text-2xl md:text-3xl text-bone group-hover:text-gold-300 transition-colors mb-3 pr-2 leading-tight drop-shadow-md">{pos.title}</h4>
+          <p className="text-sm text-slate-300 font-light leading-relaxed mb-4 flex-grow">{pos.desc}</p>
+        </motion.div>
+
+        {/* Call to action floating over everything */}
+        <motion.a 
+          href={`mailto:${pos.email}`}
+          animate={{ z: isHovered ? 120 : 0 }}
+          transition={{ type: "spring", stiffness: 350, damping: 20 }}
+          className="relative z-20 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gold-400 group-hover:text-gold-300 transition-colors mt-auto w-fit"
+        >
+          Apply Now
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transform group-hover:translate-x-1.5 transition-transform"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+        </motion.a>
+      </motion.div>
+    </motion.div>
+  );
+};
+
 // --- New Join Us Component ---
 const JoinUs = () => {
   return (
@@ -540,7 +764,7 @@ const JoinUs = () => {
             className="lg:col-span-5 sticky top-32"
           >
             <h2 className="text-xs tracking-widest text-gold-600 font-bold uppercase mb-4">Opportunities</h2>
-            <h3 className="text-5xl lg:text-6xl font-serif text-ink mb-8 leading-tight">Join Our <br /><span className="italic text-olive-800">Team</span></h3>
+            <h3 className="text-5xl lg:text-7xl font-serif text-ink mb-8 leading-tight">Join Our <br /><span className="italic text-olive-800">Team</span></h3>
             <div className="w-16 h-px bg-gold-400 mb-8"></div>
             <p className="text-lg text-olive-800 font-light leading-relaxed mb-6">
               We are continually looking for curious, driven researchers—from undergraduates to postdocs—to assist in charting the genetic architecture of complex diseases.
@@ -556,9 +780,10 @@ const JoinUs = () => {
 
           {/* Cards Right */}
           <div className="lg:col-span-7 w-full pt-8 lg:pt-0">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 relative w-full">
+            {/* Soft vertical padding directly here in case grid cards try to zoom/clip edges */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 relative w-full py-16 -my-16">
               {/* Decorative light flare behind cards */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-white/40 blur-3xl rounded-full pointer-events-none"></div>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gold-200/20 blur-[100px] rounded-full pointer-events-none"></div>
 
               {[
                 { title: "Postdoctoral Researcher", desc: "Focus on AI-driven GWAS and biobank-scale data.", email: "postdoc.apply@dummy.edu" },
@@ -566,30 +791,7 @@ const JoinUs = () => {
                 { title: "Research Associate", desc: "Data processing & multi-omics pipeline development.", email: "ra.apply@dummy.edu" },
                 { title: "Undergraduate Research", desc: "Summer projects mapping structural variance.", email: "ugrad.apply@dummy.edu" }
               ].map((pos, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.15 }}
-                  className="bg-white/90 backdrop-blur-xl rounded-3xl p-8 md:p-10 border border-white hover:border-gold-300 transition-all duration-300 shadow-soft hover:shadow-2xl group flex flex-col justify-between h-[320px] md:h-full cursor-pointer relative overflow-hidden"
-                >
-                  <div className="relative z-10 flex-grow">
-                    <div className="w-14 h-14 rounded-full bg-sage-50 flex items-center justify-center mb-8 group-hover:bg-gold-50 group-hover:scale-110 transition-all duration-500 shadow-sm">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-olive-600 group-hover:text-gold-600 transition-colors"><path d="M12 2v20" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
-                    </div>
-                    <h4 className="font-serif text-2xl md:text-3xl text-ink group-hover:text-olive-800 transition-colors mb-3 pr-2">{pos.title}</h4>
-                    <p className="text-sm text-muted font-light leading-relaxed mb-8">{pos.desc}</p>
-                  </div>
-
-                  <a href={`mailto:${pos.email}`} className="relative z-10 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-olive-600 group-hover:text-gold-600 transition-colors mt-auto w-fit">
-                    Apply Now
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transform group-hover:translate-x-1.5 transition-transform"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
-                  </a>
-
-                  {/* Subtle hover gradient within card */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-transparent to-gold-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                </motion.div>
+                <JoinUsCard key={idx} pos={pos} idx={idx} />
               ))}
             </div>
           </div>
