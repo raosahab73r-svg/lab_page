@@ -80,22 +80,22 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-bone/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-bone/90 backdrop-blur-md shadow-sm py-3 md:py-4' : 'bg-transparent py-4 md:py-6'}`}
     >
-      <div className="max-w-[90rem] mx-auto px-6 lg:px-12 flex justify-between items-center gap-8">
-        <a href="#" className="flex items-center gap-4 lg:gap-6 group flex-shrink-0">
+      <div className="max-w-[90rem] mx-auto px-4 md:px-6 lg:px-12 flex justify-between items-center gap-4 md:gap-8">
+        <a href="#" className="flex items-center gap-3 md:gap-4 lg:gap-6 group flex-shrink-0">
           {/* Logo with sophisticated hover glow */}
           <div className="relative">
             <div className="absolute inset-0 bg-gold-300 rounded-full blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-700"></div>
-            <img src="Ashoka_University_logo_with_wordmark.png" alt="Ashoka University" className="relative h-14 lg:h-[4.2rem] object-contain transform group-hover:scale-105 transition-transform duration-500" />
+            <img src="Ashoka_University_logo_with_wordmark.png" alt="Ashoka University" className="relative h-10 md:h-14 lg:h-[4.2rem] object-contain transform group-hover:scale-105 transition-transform duration-500" />
           </div>
 
-          <div className="hidden lg:block h-12 w-[2px] bg-olive-200 group-hover:bg-gold-400 transition-colors duration-500"></div>
+          <div className="hidden md:block h-10 lg:h-12 w-[2px] bg-olive-200 group-hover:bg-gold-400 transition-colors duration-500"></div>
 
-          {/* Stacked Academic Typography */}
-          <div className="hidden lg:flex flex-col justify-center min-w-max">
-            <span className="font-sans font-bold text-[0.6rem] tracking-[0.25em] text-olive-600 uppercase mb-1">Ashoka University</span>
-            <span className="font-serif text-lg lg:text-[1.3rem] tracking-wide text-ink leading-[1.1] group-hover:text-olive-800 transition-colors duration-500">
+          {/* Stacked Academic Typography — visible on md+ */}
+          <div className="hidden md:flex flex-col justify-center min-w-max">
+            <span className="font-sans font-bold text-[0.5rem] lg:text-[0.6rem] tracking-[0.25em] text-olive-600 uppercase mb-1">Ashoka University</span>
+            <span className="font-serif text-base lg:text-[1.3rem] tracking-wide text-ink leading-[1.1] group-hover:text-olive-800 transition-colors duration-500">
               Computational <br />
               <span className="text-gold-600 italic font-medium">Genomics Group</span>
             </span>
@@ -147,8 +147,8 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto w-full px-6 lg:px-12 pt-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div className="max-w-7xl mx-auto w-full px-4 md:px-6 lg:px-12 pt-8 md:pt-12 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
 
           {/* Hero Text */}
           <motion.div
@@ -160,7 +160,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
-              className="text-6xl md:text-8xl lg:text-[6.5rem] font-serif text-ink leading-[1.05] tracking-tight mb-8"
+              className="text-[3.2rem] sm:text-6xl md:text-8xl lg:text-[6.5rem] font-serif text-ink leading-[1.05] tracking-tight mb-6 md:mb-8"
             >
               Decoding<br />
               <span className="text-olive-600 italic font-light relative mr-4">
@@ -175,7 +175,7 @@ const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="text-muted text-xl md:text-2xl max-w-xl leading-relaxed font-light mb-12"
+              className="text-muted text-lg md:text-xl lg:text-2xl max-w-xl leading-relaxed font-light mb-8 md:mb-12"
             >
               The Computational Genomics Group pioneers AI and multi-omics to unearth structural variations driving complex human diseases.
             </motion.p>
@@ -186,10 +186,10 @@ const Hero = () => {
               transition={{ duration: 1, delay: 0.7 }}
               className="flex flex-wrap gap-5"
             >
-              <a href="#about" className="inline-flex items-center gap-2 bg-ink text-bone font-medium rounded-full px-10 py-5 tracking-widest text-[0.7rem] uppercase shadow-2xl hover:bg-olive-800 hover:shadow-none transition-all duration-300 transform hover:-translate-y-1">
+              <a href="#about" className="inline-flex items-center gap-2 bg-ink text-bone font-medium rounded-full px-6 py-4 md:px-10 md:py-5 tracking-widest text-[0.65rem] md:text-[0.7rem] uppercase shadow-2xl hover:bg-olive-800 hover:shadow-none transition-all duration-300 transform hover:-translate-y-1">
                 Explore The Lab
               </a>
-              <a href="#join" className="inline-flex items-center gap-2 bg-transparent text-ink font-medium rounded-full px-10 py-5 tracking-widest text-[0.7rem] uppercase border border-olive-200 hover:border-gold-500 hover:bg-bone transition-all duration-300">
+              <a href="#join" className="inline-flex items-center gap-2 bg-transparent text-ink font-medium rounded-full px-6 py-4 md:px-10 md:py-5 tracking-widest text-[0.65rem] md:text-[0.7rem] uppercase border border-olive-200 hover:border-gold-500 hover:bg-bone transition-all duration-300">
                 Opportunities
               </a>
             </motion.div>
@@ -200,12 +200,12 @@ const Hero = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.5, delay: 0.4, ease: "easeOut" }}
-            className="lg:col-span-5 relative hidden lg:flex items-center justify-center w-full min-h-[400px] h-full"
+            className="lg:col-span-5 relative flex items-center justify-center w-full min-h-[250px] md:min-h-[350px] lg:min-h-[400px] h-full mt-4 lg:mt-0"
           >
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-              className="relative z-10 w-full max-w-[550px]"
+              className="relative z-10 w-full max-w-[320px] md:max-w-[450px] lg:max-w-[550px]"
             >
               <svg width="100%" height="100%" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg" className="transform -rotate-2 filter drop-shadow-2xl">
                 {/* Fine Grid background for 'computational' matrix feel */}
@@ -330,7 +330,7 @@ const Hero = () => {
 };
 
 const About = () => (
-  <section id="about" className="py-24 px-6 lg:px-12 bg-cream">
+  <section id="about" className="py-16 md:py-24 px-4 md:px-6 lg:px-12 bg-cream">
     <SectionDivider />
     <div className="max-w-4xl mx-auto text-center">
       <motion.h2
@@ -353,7 +353,7 @@ const About = () => (
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, delay: 0.2 }}
-        className="text-xl text-olive-800 leading-relaxed font-light"
+        className="text-lg md:text-xl text-olive-800 leading-relaxed font-light"
       >
         Based at Ashoka University, our computational genomics group seeks to uncover the genetic architecture of complex diseases. From genome-wide associations to structural variations, we combine multi-omics data, statistical genetics, and machine learning to map the traits of cardiovascular and neuropsychiatric conditions—cultivating a future built on precision medicine.
       </motion.p>
@@ -462,16 +462,16 @@ const Research = () => {
   ];
 
   return (
-    <section id="research" className="py-32 bg-sage-50 text-ink px-6 lg:px-12 relative overflow-hidden">
+    <section id="research" className="py-16 md:py-32 bg-sage-50 text-ink px-4 md:px-6 lg:px-12 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-24">
+        <div className="text-center mb-12 md:mb-24">
           <h2 className="text-sm tracking-widest text-olive-600 font-bold uppercase mb-4">Focus Areas</h2>
-          <h3 className="text-5xl lg:text-7xl font-serif text-ink">Our Research</h3>
+          <h3 className="text-4xl md:text-5xl lg:text-7xl font-serif text-ink">Our Research</h3>
           <div className="mt-8 flex justify-center opacity-50"><SectionDivider /></div>
         </div>
 
         {/* Massive padding prevents crazy 3D scaling & shadows from getting clipped by the scroll container */}
-        <div className="flex overflow-x-auto gap-10 py-[100px] snap-x snap-mandatory scroll-smooth hide-scrollbar px-16 -mx-16 lg:px-24 lg:-mx-24 items-stretch">
+        <div className="flex overflow-x-auto gap-6 md:gap-10 py-[40px] md:py-[100px] snap-x snap-mandatory scroll-smooth hide-scrollbar px-8 -mx-8 md:px-16 md:-mx-16 lg:px-24 lg:-mx-24 items-stretch">
           {cards.map((card, idx) => (
             <div key={idx} className="flex-none w-[85vw] md:w-[350px] lg:w-[320px] snap-center">
               <ResearchCard card={card} idx={idx} />
@@ -596,17 +596,17 @@ const Team = () => {
   ];
 
   return (
-    <section id="team" className="py-32 px-6 lg:px-12 bg-cream">
+    <section id="team" className="py-16 md:py-32 px-4 md:px-6 lg:px-12 bg-cream">
       <SectionDivider />
-      <div className="max-w-6xl mx-auto mt-16">
-        <div className="text-center mb-20">
+      <div className="max-w-6xl mx-auto mt-8 md:mt-16">
+        <div className="text-center mb-10 md:mb-20">
           <h2 className="text-sm tracking-widest text-olive-600 font-bold uppercase mb-4">The People</h2>
-          <h3 className="text-5xl font-serif text-ink italic">Meet the Lab</h3>
+          <h3 className="text-4xl md:text-5xl font-serif text-ink italic">Meet the Lab</h3>
         </div>
 
         {/* Horizontally scrolling row for unlimited team members */}
         {/* Massive padding prevents crazy 3D scaling & shadows from getting clipped by the scroll container */}
-        <div className="flex overflow-x-auto gap-12 py-[100px] snap-x snap-mandatory scroll-smooth hide-scrollbar px-16 -mx-16 lg:px-24 lg:-mx-24 items-stretch">
+        <div className="flex overflow-x-auto gap-6 md:gap-12 py-[40px] md:py-[100px] snap-x snap-mandatory scroll-smooth hide-scrollbar px-8 -mx-8 md:px-16 md:-mx-16 lg:px-24 lg:-mx-24 items-stretch">
           {teamMembers.map((member, idx) => (
             <div key={idx} className="flex-none w-[85vw] md:w-[400px] lg:w-[350px] snap-center">
               <TeamCard member={member} delay={idx * 0.2} />
@@ -618,42 +618,103 @@ const Team = () => {
   );
 };
 
-// --- Glimpse / Photo Gallery Component ---
+// --- GlimpseCard Component (3D Interactive without images) ---
+const GlimpseCard = ({ item, idx }) => {
+  const cardRef = React.useRef(null);
+  const [rotateX, setRotateX] = React.useState(0);
+  const [rotateY, setRotateY] = React.useState(0);
+  const [isHovered, setIsHovered] = React.useState(false);
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    
+    const xPct = (mouseX / width - 0.5) * 2;
+    const yPct = (mouseY / height - 0.5) * 2;
+
+    setRotateX(yPct * 20);
+    setRotateY(-xPct * 20);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setRotateX(0);
+    setRotateY(0);
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95, y: 20 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: idx * 0.15 + 0.1, duration: 0.6 }}
+      className="w-full h-full group cursor-pointer"
+      style={{ perspective: 1200 }}
+    >
+      <motion.div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={handleMouseLeave}
+        animate={{ 
+          rotateX: isHovered ? rotateX * 1.2 : 0, 
+          rotateY: isHovered ? rotateY * 1.2 : 0, 
+          scale: isHovered ? 1.08 : 1,
+          z: isHovered ? 60 : 0
+        }}
+        transition={{ type: "spring", stiffness: 450, damping: 30 }}
+        style={{ transformStyle: "preserve-3d" }}
+        className="bg-white rounded-3xl p-8 md:p-10 border border-olive-200 hover:border-gold-300 hover:shadow-[0_40px_80px_-15px_rgba(200,160,50,0.3)] shadow-xl h-full min-h-[300px] relative overflow-visible flex flex-col transition-all duration-500 hover:z-50"
+      >
+        {/* Glow backdrop projected behind */}
+        <div 
+          className="absolute inset-0 bg-gold-200 rounded-3xl opacity-0 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none" 
+          style={{ filter: 'blur(30px)', transform: 'translateZ(-40px)' }}
+        ></div>
+
+        {/* 3D Elements popping out */}
+        <motion.div
+          animate={{ z: isHovered ? 90 : 0 }}
+          transition={{ type: "spring", stiffness: 350, damping: 20 }}
+          className="relative z-10 flex-grow flex flex-col pointer-events-none"
+        >
+          <div className="w-12 h-12 rounded-full bg-olive-50 flex items-center justify-center mb-6 group-hover:bg-gold-200 group-hover:scale-110 transition-all duration-500 shadow-inner overflow-hidden border border-olive-200">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-olive-600 transition-colors"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
+          </div>
+          <h4 className="font-serif text-2xl md:text-3xl text-ink group-hover:text-olive-800 transition-colors mb-3 pr-2 leading-tight drop-shadow-sm">{item.title}</h4>
+          <p className="text-sm text-muted font-light leading-relaxed mb-4 flex-grow">{item.desc}</p>
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+// --- Glimpse Section Component ---
 const Glimpse = () => {
-  const photos = [
-    { img: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800&h=600", title: "Lab Setup", desc: "Setting up our new computational infrastructure." },
-    { img: "https://images.unsplash.com/photo-1579165466741-7f35e4755660?auto=format&fit=crop&q=80&w=800&h=600", title: "Team Retreat", desc: "Discussing structural variants and future goals." },
-    { img: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80&w=800&h=600", title: "Server Room", desc: "Where the genomic sequencing data is processed." }
+  const items = [
+    { title: "Lab Setup", desc: "Setting up our new computational infrastructure." },
+    { title: "Team Retreat", desc: "Discussing structural variants and future goals." },
+    { title: "Server Room", desc: "Where the genomic sequencing data is processed." }
   ];
 
   return (
-    <section id="glimpse" className="py-32 px-6 lg:px-12 bg-bone">
+    <section id="glimpse" className="py-16 md:py-32 bg-bone text-ink px-4 md:px-6 lg:px-12 relative overflow-hidden">
       <SectionDivider />
-      <div className="max-w-7xl mx-auto mt-16">
-        <div className="text-center mb-20">
+      <div className="max-w-7xl mx-auto relative z-10 mt-8 md:mt-16">
+        <div className="text-center mb-12 md:mb-24">
           <h2 className="text-sm tracking-widest text-olive-600 font-bold uppercase mb-4">Gallery</h2>
-          <h3 className="text-5xl font-serif text-ink italic">A Glimpse</h3>
+          <h3 className="text-4xl md:text-5xl font-serif text-ink italic">A Glimpse</h3>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {photos.map((photo, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.2 }}
-              className="group overflow-hidden rounded-3xl bg-white shadow-soft hover:shadow-2xl transition-all duration-500 border border-olive-200"
-            >
-              <div className="h-64 overflow-hidden relative">
-                <img src={photo.img} alt={photo.title} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
-                <div className="absolute inset-0 bg-ink opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none"></div>
-              </div>
-              <div className="p-8">
-                <h4 className="font-serif text-2xl text-ink mb-3 group-hover:text-olive-800 transition-colors">{photo.title}</h4>
-                <div className="w-8 h-px bg-gold-400 mb-4 group-hover:w-16 transition-all duration-500"></div>
-                <p className="text-muted text-sm font-light leading-relaxed">{photo.desc}</p>
-              </div>
-            </motion.div>
+
+        <div className="flex overflow-x-auto gap-6 md:gap-10 py-[40px] md:py-[100px] snap-x snap-mandatory scroll-smooth hide-scrollbar px-8 -mx-8 md:px-16 md:-mx-16 lg:px-24 lg:-mx-24 items-stretch">
+          {items.map((item, idx) => (
+            <div key={idx} className="flex-none w-[85vw] md:w-[350px] lg:w-[320px] snap-center">
+              <GlimpseCard item={item} idx={idx} />
+            </div>
           ))}
         </div>
       </div>
@@ -735,7 +796,7 @@ const JoinUsCard = ({ pos, idx }) => {
 
         {/* Call to action floating over everything */}
         <motion.a 
-          href={`mailto:${pos.email}`}
+          href="https://forms.gle/REPLACE_WITH_YOUR_FORM_LINK" target="_blank" rel="noopener noreferrer"
           animate={{ z: isHovered ? 120 : 0 }}
           transition={{ type: "spring", stiffness: 350, damping: 20 }}
           className="relative z-20 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gold-400 group-hover:text-gold-300 transition-colors mt-auto w-fit"
@@ -751,7 +812,7 @@ const JoinUsCard = ({ pos, idx }) => {
 // --- New Join Us Component ---
 const JoinUs = () => {
   return (
-    <section id="join" className="py-24 md:py-32 bg-[url('data:image/svg+xml;utf8,<svg width=\\'40\\' height=\\'40\\' xmlns=\\'http://www.w3.org/2000/svg\\'><path d=\\'M0 0h40v40H0V0zm1 1h38v38H1V1z\\' fill=\\'%236B705C\\' fill-opacity=\\'0.02\\' fill-rule=\\'evenodd\\'/></svg>')] bg-olive-50 px-6 lg:px-12 relative overflow-hidden">
+    <section id="join" className="py-16 md:py-32 bg-[url('data:image/svg+xml;utf8,<svg width=\\'40\\' height=\\'40\\' xmlns=\\'http://www.w3.org/2000/svg\\'><path d=\\'M0 0h40v40H0V0zm1 1h38v38H1V1z\\' fill=\\'%236B705C\\' fill-opacity=\\'0.02\\' fill-rule=\\'evenodd\\'/></svg>')] bg-olive-50 px-4 md:px-6 lg:px-12 relative overflow-hidden">
       <SectionDivider />
       <div className="max-w-7xl mx-auto relative z-10 pt-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
@@ -764,7 +825,7 @@ const JoinUs = () => {
             className="lg:col-span-5 sticky top-32"
           >
             <h2 className="text-xs tracking-widest text-gold-600 font-bold uppercase mb-4">Opportunities</h2>
-            <h3 className="text-5xl lg:text-7xl font-serif text-ink mb-8 leading-tight">Join Our <br /><span className="italic text-olive-800">Team</span></h3>
+            <h3 className="text-4xl md:text-5xl lg:text-7xl font-serif text-ink mb-6 md:mb-8 leading-tight">Join Our <br /><span className="italic text-olive-800">Team</span></h3>
             <div className="w-16 h-px bg-gold-400 mb-8"></div>
             <p className="text-lg text-olive-800 font-light leading-relaxed mb-6">
               We are continually looking for curious, driven researchers—from undergraduates to postdocs—to assist in charting the genetic architecture of complex diseases.
@@ -772,8 +833,8 @@ const JoinUs = () => {
             <p className="text-sm text-muted mb-10 font-light leading-relaxed">
               If you are passionate about computational genomics, multi-omics, and uncovering structural variations, we’d love to hear from you. Please include a recent CV and a short statement of your research interests.
             </p>
-            <a href="mailto:tanmoy.roychowdhury@ashoka.edu.in" className="inline-flex items-center gap-3 bg-olive-800 hover:bg-gold-600 text-bone transition-all duration-300 px-8 py-5 rounded-full text-xs font-semibold uppercase tracking-widest shadow-xl transform hover:-translate-y-1">
-              General Inquiry
+            <a href="https://forms.gle/REPLACE_WITH_YOUR_FORM_LINK" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-olive-800 hover:bg-gold-600 text-bone transition-all duration-300 px-8 py-5 rounded-full text-xs font-semibold uppercase tracking-widest shadow-xl transform hover:-translate-y-1">
+              Apply Now
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
             </a>
           </motion.div>
@@ -819,15 +880,15 @@ const Publications = () => {
   ];
 
   return (
-    <section id="publications" className="py-32 px-6 lg:px-12 bg-bone">
+    <section id="publications" className="py-16 md:py-32 px-4 md:px-6 lg:px-12 bg-bone">
       <SectionDivider />
-      <div className="max-w-5xl mx-auto mt-16">
-        <div className="text-center mb-24">
+      <div className="max-w-5xl mx-auto mt-8 md:mt-16">
+        <div className="text-center mb-12 md:mb-24">
           <h2 className="text-sm tracking-widest text-olive-600 font-bold uppercase mb-4">Selected Works</h2>
-          <h3 className="text-5xl font-serif text-ink">Publications</h3>
+          <h3 className="text-4xl md:text-5xl font-serif text-ink">Publications</h3>
         </div>
 
-        <div className="space-y-12 shrink-0">
+        <div className="space-y-8 md:space-y-12 shrink-0">
           {pubs.map((pub, idx) => (
             <motion.a
               key={idx}
@@ -856,33 +917,92 @@ const Publications = () => {
 }
 
 const Footer = () => (
-  <footer className="bg-sage-100/50 text-ink py-20 px-6 lg:px-12 text-center md:text-left border-t border-sage-200">
-    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
-      <div>
-        <h3 className="font-serif text-3xl text-olive-800 mb-6 italic">Contact us</h3>
-        <p className="font-serif text-olive-800 text-lg leading-relaxed max-w-xs mx-auto md:mx-0">
-          <a href="mailto:tanmoy.roychowdhury@ashoka.edu.in" className="font-bold underline hover:text-gold-600 transition inline-block mb-3">tanmoy.roychowdhury@ashoka.edu.in</a><br />
-          Computational Genomics Group<br />
-          Ashoka University<br />
-          Rajiv Gandhi Education City<br />
-          Sonipat, Haryana 131029<br />
-          India
-        </p>
-      </div>
-      <div>
-        <h3 className="font-serif text-3xl text-olive-800 mb-6 italic">Explore</h3>
-        <div className="flex flex-col space-y-3 text-lg font-serif text-olive-800">
-          <a href="#" className="hover:text-gold-600 transition text-ink hover:no-underline">Overview</a>
-          <a href="#research" className="hover:text-gold-600 transition text-ink">Research</a>
-          <a href="#publications" className="hover:text-gold-600 transition text-ink">Publications</a>
-          <a href="#team" className="hover:text-gold-600 transition text-ink">People</a>
-          <a href="#glimpse" className="hover:text-gold-600 transition text-ink">Glimpse</a>
-          <a href="mailto:tanmoy.roychowdhury@ashoka.edu.in" className="hover:text-gold-600 transition text-ink">Join Us</a>
+  <footer className="bg-ink text-bone relative overflow-hidden">
+    {/* Subtle gold glow at top */}
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent"></div>
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[40%] h-24 bg-gold-400/5 blur-[60px] pointer-events-none"></div>
+
+    <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-20 pb-10">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20">
+
+        {/* Contact Column */}
+        <div className="md:col-span-5">
+          <h3 className="text-[0.65rem] font-sans font-bold uppercase tracking-[0.3em] text-gold-500 mb-8">Contact Us</h3>
+          
+          {/* Email */}
+          <a href="mailto:tanmoy.roychowdhury@ashoka.edu.in" className="group flex items-start gap-4 mb-8">
+            <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-gold-500/20 group-hover:border-gold-500/30 transition-all duration-500">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div>
+              <span className="text-sm font-light text-bone/70 block mb-1">Email</span>
+              <span className="text-[0.95rem] font-serif text-bone group-hover:text-gold-400 transition-colors duration-300 break-all">tanmoy.roychowdhury@ashoka.edu.in</span>
+            </div>
+          </a>
+
+          {/* Lab */}
+          <div className="flex items-start gap-4 mb-8">
+            <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
+            </div>
+            <div>
+              <span className="text-sm font-light text-bone/70 block mb-1">Lab</span>
+              <span className="text-[0.95rem] font-serif text-bone leading-relaxed">Computational Genomics Group</span>
+            </div>
+          </div>
+
+          {/* Address */}
+          <div className="flex items-start gap-4">
+            <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <span className="text-sm font-light text-bone/70 block mb-1">Address</span>
+              <span className="text-[0.95rem] font-serif text-bone leading-relaxed">
+                Ashoka University<br />
+                Rajiv Gandhi Education City<br />
+                Sonipat, Haryana 131029<br />
+                India
+              </span>
+            </div>
+          </div>
         </div>
+
+        {/* Explore Column */}
+        <div className="md:col-span-3">
+          <h3 className="text-[0.65rem] font-sans font-bold uppercase tracking-[0.3em] text-gold-500 mb-8">Explore</h3>
+          <nav className="flex flex-col space-y-4">
+            {[
+              { label: "Overview", href: "#" },
+              { label: "Research", href: "#research" },
+              { label: "Publications", href: "#publications" },
+              { label: "People", href: "#team" },
+              { label: "Glimpse", href: "#glimpse" },
+              { label: "Join Us", href: "#join" },
+            ].map((link, i) => (
+              <a key={i} href={link.href} className="group flex items-center gap-3 text-bone/80 hover:text-gold-400 transition-all duration-300">
+                <span className="w-4 h-px bg-white/20 group-hover:w-6 group-hover:bg-gold-400 transition-all duration-300"></span>
+                <span className="text-sm font-light tracking-wide">{link.label}</span>
+              </a>
+            ))}
+          </nav>
+        </div>
+
+        {/* Logo & Branding Column */}
+        <div className="md:col-span-4 flex flex-col items-center md:items-end justify-between">
+          <div className="text-center md:text-right">
+            <img src="Ashoka_University_logo_with_wordmark.png" alt="Ashoka University Logo" className="h-16 md:h-20 object-contain mb-6 brightness-0 invert opacity-80" />
+            <p className="font-serif text-lg text-bone/60 italic leading-relaxed mb-2">Computational<br />Genomics Group</p>
+            <div className="w-12 h-px bg-gold-500/40 ml-auto mr-auto md:mr-0 mt-4"></div>
+          </div>
+        </div>
+
       </div>
-      <div className="flex flex-col items-center md:items-end justify-between">
-        <img src="Ashoka_University_logo_with_wordmark.png" alt="Ashoka University Logo" className="h-16 md:h-20 object-contain mb-8 md:mb-0" />
-        <p className="font-serif text-olive-600 text-sm mt-auto italic">© 2026 Computational Genomics Group</p>
+
+      {/* Bottom bar */}
+      <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p className="text-[0.7rem] text-bone/40 font-light tracking-wider uppercase">© 2026 Computational Genomics Group — Ashoka University</p>
+        <p className="text-[0.7rem] text-bone/30 font-light tracking-wider">Decoding genomes, one variant at a time.</p>
       </div>
     </div>
   </footer>
