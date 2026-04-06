@@ -483,8 +483,8 @@ const Research = () => {
   );
 };
 
-// --- Live Dynamic 3D Tracking Team Card Component ---
-const TeamCard = ({ member, delay }) => {
+// --- Live Dynamic 3D Tracking Team Card Component (Unified with Research Card style) ---
+const TeamCard = ({ member, delay, idx }) => {
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef(null);
   const [rotateX, setRotateX] = useState(0);
@@ -502,9 +502,8 @@ const TeamCard = ({ member, delay }) => {
     const xPct = (mouseX / width - 0.5) * 2;
     const yPct = (mouseY / height - 0.5) * 2;
 
-    // Tilt into the mouse (so corner being hovered leans backwards deeply)
-    setRotateX(yPct * 25);
-    setRotateY(-xPct * 25);
+    setRotateX(yPct * 20);
+    setRotateY(-xPct * 20);
   };
 
   const handleMouseLeave = () => {
@@ -515,10 +514,10 @@ const TeamCard = ({ member, delay }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, scale: 0.95, y: 20 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay, duration: 0.8 }}
+      transition={{ delay: delay || idx * 0.15, duration: 0.6 }}
       className="w-full h-full group cursor-pointer"
       style={{ perspective: 1200 }}
     >
@@ -535,41 +534,42 @@ const TeamCard = ({ member, delay }) => {
         }}
         transition={{ type: "spring", stiffness: 450, damping: 30 }}
         style={{ transformStyle: "preserve-3d" }}
-        className="bg-gradient-to-b from-olive-800 to-olive-900 rounded-[2rem] p-8 md:p-10 border border-olive-700 shadow-xl hover:shadow-[0_50px_100px_-20px_rgba(180,140,40,0.6)] h-full relative flex flex-col transition-all duration-500 hover:z-50"
+        className="bg-olive-800 text-bone rounded-3xl p-10 h-full relative overflow-visible border border-olive-700 shadow-2xl hover:shadow-[0_50px_100px_-20px_rgba(180,140,40,0.6)] transition-all duration-500 hover:z-50"
       >
-        {/* Dynamic Glowing backdrop projected behind */}
+        {/* Deep glowing backdrop projected far behind */}
         <div 
-          className="absolute inset-0 bg-gradient-to-tr from-gold-500 via-olive-300 to-sage-300 rounded-[2rem] opacity-0 group-hover:opacity-30 transition-opacity duration-700 pointer-events-none" 
-          style={{ filter: 'blur(35px)', transform: 'translateZ(-60px)' }}
+          className="absolute inset-0 bg-gold-400 rounded-3xl opacity-0 group-hover:opacity-25 transition-opacity duration-700 pointer-events-none" 
+          style={{ filter: 'blur(30px)', transform: 'translateZ(-40px)' }}
         ></div>
 
-        {/* Expanding glowing floating frame holding the image extremely far towards the user */}
+        {/* Massive numeric background deeply recessed in 3D */}
         <motion.div
-          animate={{ z: isHovered ? 160 : 0 }}
-          transition={{ type: "spring", stiffness: 350, damping: 20 }}
-          className="w-32 h-32 mx-auto rounded-full p-[3px] bg-gradient-to-tr from-gold-600 to-olive-500 mb-8 shadow-xl group-hover:shadow-[0_20px_50px_-10px_rgba(200,160,50,0.7)] relative transition-all duration-500 pointer-events-none"
+          animate={{ z: isHovered ? -60 : 0, opacity: isHovered ? 1 : 0.2 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          className="absolute right-4 top-2 text-9xl font-serif text-olive-900 pointer-events-none select-none drop-shadow-2xl"
         >
-          <div className="w-full h-full rounded-full overflow-hidden border-[4px] border-olive-900 bg-olive-800 relative shadow-inner group-hover:shadow-[inset_0px_0px_20px_5px_rgba(0,0,0,0.4)] transition-all duration-500">
-            {member.img ? (
-              <img src={member.img} alt={member.name} className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-110" />
-            ) : (
-              <div className="absolute inset-0 bg-gradient-to-b from-olive-800/50 to-olive-900/80"></div>
-            )}
-          </div>
+          0{idx + 1}
         </motion.div>
 
-        {/* 3D popping text layer floating high above */}
+        {/* Card Content popping forward */}
         <motion.div
-          animate={{ z: isHovered ? 110 : 0 }}
+          animate={{ z: isHovered ? 100 : 0 }}
           transition={{ type: "spring", stiffness: 350, damping: 20 }}
-          className="relative z-10 text-center transition-all duration-500 pointer-events-none flex-grow flex flex-col justify-end"
+          className="relative z-10 flex flex-col h-full"
         >
-          <h4 className="font-serif text-[1.8rem] text-bone group-hover:text-gold-200 transition-colors drop-shadow-md leading-tight">{member.name}</h4>
-          <p className="text-xs font-bold uppercase tracking-widest text-gold-500 mt-3 mb-6">{member.role}</p>
+          <div className="w-12 h-1 bg-gold-500 mb-8 rounded-full transform origin-left transition-transform duration-500 group-hover:scale-x-150"></div>
           
-          <div className="w-16 h-[2px] bg-olive-600 mx-auto mb-6 group-hover:w-full group-hover:bg-gradient-to-r group-hover:from-gold-400 group-hover:to-olive-500 transition-all duration-700 rounded-full"></div>
+          <h4 className="font-serif text-3xl text-gold-400 mb-2 group-hover:text-gold-300 transition-colors drop-shadow-md leading-tight">{member.name}</h4>
+          <p className="text-xs font-bold uppercase tracking-widest text-gold-500/70 mb-6">{member.role}</p>
           
-          <p className="text-base text-olive-100/90 font-light leading-relaxed drop-shadow-sm">{member.desc}</p>
+          <p className="text-olive-100/90 font-light leading-relaxed drop-shadow-sm flex-grow relative z-20">
+            {member.desc}
+          </p>
+          
+          <div className="mt-10 pt-6 border-t border-olive-700 flex items-center justify-between opacity-50 group-hover:opacity-100 transition-opacity">
+            <span className="text-xs uppercase tracking-widest text-gold-500 font-bold">Profile</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400 transform group-hover:translate-x-2 transition-transform duration-300"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
         </motion.div>
       </motion.div>
     </motion.div>
@@ -608,8 +608,8 @@ const Team = () => {
         {/* Massive padding prevents crazy 3D scaling & shadows from getting clipped by the scroll container */}
         <div className="flex overflow-x-auto gap-6 md:gap-12 py-[40px] md:py-[100px] snap-x snap-mandatory scroll-smooth hide-scrollbar px-8 -mx-8 md:px-16 md:-mx-16 lg:px-24 lg:-mx-24 items-stretch">
           {teamMembers.map((member, idx) => (
-            <div key={idx} className="flex-none w-[85vw] md:w-[400px] lg:w-[350px] snap-center">
-              <TeamCard member={member} delay={idx * 0.2} />
+            <div key={idx} className="flex-none w-[85vw] md:w-[350px] lg:w-[320px] snap-center">
+              <TeamCard member={member} idx={idx} delay={idx * 0.2} />
             </div>
           ))}
         </div>
@@ -618,7 +618,7 @@ const Team = () => {
   );
 };
 
-// --- GlimpseCard Component (3D Interactive without images) ---
+// --- GlimpseCard Component (Unified with Research Card style) ---
 const GlimpseCard = ({ item, idx }) => {
   const cardRef = React.useRef(null);
   const [rotateX, setRotateX] = React.useState(0);
@@ -651,7 +651,7 @@ const GlimpseCard = ({ item, idx }) => {
       initial={{ opacity: 0, scale: 0.95, y: 20 }}
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: idx * 0.15 + 0.1, duration: 0.6 }}
+      transition={{ delay: idx * 0.15, duration: 0.6 }}
       className="w-full h-full group cursor-pointer"
       style={{ perspective: 1200 }}
     >
@@ -663,30 +663,46 @@ const GlimpseCard = ({ item, idx }) => {
         animate={{ 
           rotateX: isHovered ? rotateX * 1.2 : 0, 
           rotateY: isHovered ? rotateY * 1.2 : 0, 
-          scale: isHovered ? 1.08 : 1,
-          z: isHovered ? 60 : 0
+          scale: isHovered ? 1.12 : 1,
+          z: isHovered ? 80 : 0
         }}
         transition={{ type: "spring", stiffness: 450, damping: 30 }}
         style={{ transformStyle: "preserve-3d" }}
-        className="bg-white rounded-3xl p-8 md:p-10 border border-olive-200 hover:border-gold-300 hover:shadow-[0_40px_80px_-15px_rgba(200,160,50,0.3)] shadow-xl h-full min-h-[300px] relative overflow-visible flex flex-col transition-all duration-500 hover:z-50"
+        className="bg-olive-800 text-bone rounded-3xl p-10 h-full relative overflow-visible border border-olive-700 shadow-2xl hover:shadow-[0_50px_100px_-20px_rgba(180,140,40,0.6)] transition-all duration-500 hover:z-50"
       >
-        {/* Glow backdrop projected behind */}
+        {/* Deep glowing backdrop projected far behind */}
         <div 
-          className="absolute inset-0 bg-gold-200 rounded-3xl opacity-0 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none" 
+          className="absolute inset-0 bg-gold-400 rounded-3xl opacity-0 group-hover:opacity-25 transition-opacity duration-700 pointer-events-none" 
           style={{ filter: 'blur(30px)', transform: 'translateZ(-40px)' }}
         ></div>
 
-        {/* 3D Elements popping out */}
+        {/* Massive numeric background deeply recessed in 3D */}
         <motion.div
-          animate={{ z: isHovered ? 90 : 0 }}
-          transition={{ type: "spring", stiffness: 350, damping: 20 }}
-          className="relative z-10 flex-grow flex flex-col pointer-events-none"
+          animate={{ z: isHovered ? -60 : 0, opacity: isHovered ? 1 : 0.2 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          className="absolute right-4 top-2 text-9xl font-serif text-olive-900 pointer-events-none select-none drop-shadow-2xl"
         >
-          <div className="w-12 h-12 rounded-full bg-olive-50 flex items-center justify-center mb-6 group-hover:bg-gold-200 group-hover:scale-110 transition-all duration-500 shadow-inner overflow-hidden border border-olive-200">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-olive-600 transition-colors"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
+          0{idx + 1}
+        </motion.div>
+
+        {/* Card Content popping forward */}
+        <motion.div
+          animate={{ z: isHovered ? 100 : 0 }}
+          transition={{ type: "spring", stiffness: 350, damping: 20 }}
+          className="relative z-10 flex flex-col h-full"
+        >
+          <div className="w-12 h-1 bg-gold-500 mb-8 rounded-full transform origin-left transition-transform duration-500 group-hover:scale-x-150"></div>
+          
+          <h4 className="font-serif text-3xl text-gold-400 mb-6 group-hover:text-gold-300 transition-colors drop-shadow-md leading-tight">{item.title}</h4>
+          
+          <p className="text-olive-100/90 font-light leading-relaxed drop-shadow-sm flex-grow relative z-20">
+            {item.desc}
+          </p>
+          
+          <div className="mt-10 pt-6 border-t border-olive-700 flex items-center justify-between opacity-50 group-hover:opacity-100 transition-opacity">
+            <span className="text-xs uppercase tracking-widest text-gold-500 font-bold">Discover</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400 transform group-hover:translate-x-2 transition-transform duration-300"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
-          <h4 className="font-serif text-2xl md:text-3xl text-ink group-hover:text-olive-800 transition-colors mb-3 pr-2 leading-tight drop-shadow-sm">{item.title}</h4>
-          <p className="text-sm text-muted font-light leading-relaxed mb-4 flex-grow">{item.desc}</p>
         </motion.div>
       </motion.div>
     </motion.div>
@@ -722,7 +738,7 @@ const Glimpse = () => {
   );
 };
 
-// --- Live Dynamic 3D Tracking Join Us Card Component ---
+// --- JoinUs Card Component (Unified with Research Card style) ---
 const JoinUsCard = ({ pos, idx }) => {
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef(null);
@@ -756,7 +772,7 @@ const JoinUsCard = ({ pos, idx }) => {
       initial={{ opacity: 0, scale: 0.95, y: 20 }}
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: idx * 0.15 + 0.1, duration: 0.6 }}
+      transition={{ delay: idx * 0.15, duration: 0.6 }}
       className="w-full h-full group cursor-pointer"
       style={{ perspective: 1200 }}
     >
@@ -768,42 +784,47 @@ const JoinUsCard = ({ pos, idx }) => {
         animate={{ 
           rotateX: isHovered ? rotateX * 1.2 : 0, 
           rotateY: isHovered ? rotateY * 1.2 : 0, 
-          scale: isHovered ? 1.08 : 1,
-          z: isHovered ? 60 : 0
+          scale: isHovered ? 1.12 : 1,
+          z: isHovered ? 80 : 0
         }}
         transition={{ type: "spring", stiffness: 450, damping: 30 }}
         style={{ transformStyle: "preserve-3d" }}
-        className="bg-gradient-to-br from-ink to-slate-800 rounded-3xl p-8 md:p-10 border border-slate-700 hover:shadow-[0_40px_80px_-15px_rgba(200,160,50,0.5)] shadow-xl h-full min-h-[300px] relative overflow-visible flex flex-col transition-all duration-500 hover:z-50"
+        className="bg-olive-800 text-bone rounded-3xl p-10 h-full relative overflow-visible border border-olive-700 shadow-2xl hover:shadow-[0_50px_100px_-20px_rgba(180,140,40,0.6)] transition-all duration-500 hover:z-50"
       >
-        {/* Glow backdrop projected behind */}
+        {/* Deep glowing backdrop projected far behind */}
         <div 
-          className="absolute inset-0 bg-gold-400 rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none" 
+          className="absolute inset-0 bg-gold-400 rounded-3xl opacity-0 group-hover:opacity-25 transition-opacity duration-700 pointer-events-none" 
           style={{ filter: 'blur(30px)', transform: 'translateZ(-40px)' }}
         ></div>
 
-        {/* 3D Elements popping out */}
+        {/* Massive numeric background deeply recessed in 3D */}
         <motion.div
-          animate={{ z: isHovered ? 90 : 0 }}
-          transition={{ type: "spring", stiffness: 350, damping: 20 }}
-          className="relative z-10 flex-grow flex flex-col pointer-events-none"
+          animate={{ z: isHovered ? -60 : 0, opacity: isHovered ? 1 : 0.2 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          className="absolute right-4 top-2 text-9xl font-serif text-olive-900 pointer-events-none select-none drop-shadow-2xl"
         >
-          <div className="w-12 h-12 rounded-full bg-slate-700 flex items-center justify-center mb-6 group-hover:bg-gold-500 group-hover:scale-110 transition-all duration-500 shadow-inner overflow-hidden border border-slate-600">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-bone group-hover:text-ink transition-colors"><path d="M12 2v20" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
-          </div>
-          <h4 className="font-serif text-2xl md:text-3xl text-bone group-hover:text-gold-300 transition-colors mb-3 pr-2 leading-tight drop-shadow-md">{pos.title}</h4>
-          <p className="text-sm text-slate-300 font-light leading-relaxed mb-4 flex-grow">{pos.desc}</p>
+          0{idx + 1}
         </motion.div>
 
-        {/* Call to action floating over everything */}
-        <motion.a 
-          href="https://forms.gle/REPLACE_WITH_YOUR_FORM_LINK" target="_blank" rel="noopener noreferrer"
-          animate={{ z: isHovered ? 120 : 0 }}
+        {/* Card Content popping forward */}
+        <motion.div
+          animate={{ z: isHovered ? 100 : 0 }}
           transition={{ type: "spring", stiffness: 350, damping: 20 }}
-          className="relative z-20 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gold-400 group-hover:text-gold-300 transition-colors mt-auto w-fit"
+          className="relative z-10 flex flex-col h-full"
         >
-          Apply Now
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transform group-hover:translate-x-1.5 transition-transform"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
-        </motion.a>
+          <div className="w-12 h-1 bg-gold-500 mb-8 rounded-full transform origin-left transition-transform duration-500 group-hover:scale-x-150"></div>
+          
+          <h4 className="font-serif text-3xl text-gold-400 mb-6 group-hover:text-gold-300 transition-colors drop-shadow-md leading-tight">{pos.title}</h4>
+          
+          <p className="text-olive-100/90 font-light leading-relaxed drop-shadow-sm flex-grow relative z-20">
+            {pos.desc}
+          </p>
+          
+          <div className="mt-10 pt-6 border-t border-olive-700 flex items-center justify-between opacity-50 group-hover:opacity-100 transition-opacity">
+            <a href="https://forms.gle/REPLACE_WITH_YOUR_FORM_LINK" target="_blank" rel="noopener noreferrer" className="text-xs uppercase tracking-widest text-gold-500 font-bold">Apply Now</a>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400 transform group-hover:translate-x-2 transition-transform duration-300"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </motion.div>
       </motion.div>
     </motion.div>
   );
@@ -879,38 +900,136 @@ const Publications = () => {
     { year: "2015", title: "Analysis of IS6110 insertion sites provide a glimpse into genome evolution of Mycobacterium tuberculosis", authors: "T Roychowdhury, S Mandal, A Bhattacharya", journal: "Scientific reports" },
   ];
 
+  // Group publications by year
+  const groupedPubs = pubs.reduce((acc, pub) => {
+    if (!acc[pub.year]) acc[pub.year] = [];
+    acc[pub.year].push(pub);
+    return acc;
+  }, {});
+  const sortedYears = Object.keys(groupedPubs).sort((a, b) => b - a);
+
   return (
-    <section id="publications" className="py-16 md:py-32 px-4 md:px-6 lg:px-12 bg-bone">
+    <section id="publications" className="py-16 md:py-32 px-4 md:px-6 lg:px-12 bg-cream relative overflow-hidden">
       <SectionDivider />
-      <div className="max-w-5xl mx-auto mt-8 md:mt-16">
-        <div className="text-center mb-12 md:mb-24">
-          <h2 className="text-sm tracking-widest text-olive-600 font-bold uppercase mb-4">Selected Works</h2>
-          <h3 className="text-4xl md:text-5xl font-serif text-ink">Publications</h3>
+
+      {/* Subtle decorative background */}
+      <div className="absolute top-0 right-0 w-[35%] h-[35%] bg-sage-200/30 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[25%] h-[25%] bg-gold-200/20 rounded-full blur-[100px] pointer-events-none"></div>
+
+      <div className="max-w-5xl mx-auto relative z-10 mt-8 md:mt-16">
+        <div className="text-center mb-14 md:mb-24">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-sm tracking-widest text-gold-600 font-bold uppercase mb-4"
+          >Selected Works</motion.h2>
+          <motion.h3
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl lg:text-7xl font-serif text-ink"
+          >Publications</motion.h3>
         </div>
 
-        <div className="space-y-8 md:space-y-12 shrink-0">
-          {pubs.map((pub, idx) => (
-            <motion.a
-              key={idx}
-              href={`https://scholar.google.com/scholar?q=${encodeURIComponent(pub.title)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              whileHover={{ x: 10 }}
-              transition={{ duration: 0.4 }}
-              className="flex flex-col md:flex-row gap-6 border-b border-olive-200 pb-10 group cursor-pointer"
-            >
-              <div className="font-serif text-3xl text-gold-500 font-light shrink-0 md:w-32 group-hover:text-olive-600 transition-colors">{pub.year}</div>
-              <div>
-                <h4 className="font-serif text-[1.35rem] text-ink mb-3 leading-snug group-hover:text-olive-800 transition-colors group-hover:underline decoration-gold-400 underline-offset-4">{pub.title}</h4>
-                <p className="text-sage-800 text-sm font-semibold tracking-wide uppercase mb-2">{pub.journal}</p>
-                <p className="text-muted text-sm font-light leading-relaxed">{pub.authors}</p>
+        {/* Timeline layout */}
+        <div className="relative">
+          {/* Vertical timeline line (desktop) */}
+          <div className="hidden md:block absolute left-[72px] top-0 bottom-0 w-px bg-gradient-to-b from-gold-400/60 via-olive-200/40 to-gold-400/60"></div>
+
+          {sortedYears.map((year, yearIdx) => (
+            <div key={year} className="mb-12 md:mb-16 last:mb-0">
+              {/* Year marker */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="flex items-center gap-4 md:gap-6 mb-6 md:mb-8"
+              >
+                {/* Year circle on timeline */}
+                <div className="hidden md:flex w-[145px] shrink-0 items-center">
+                  <span className="font-serif text-4xl md:text-5xl text-gold-600 font-light tracking-tight">{year}</span>
+                </div>
+                <div className="hidden md:block w-3 h-3 rounded-full bg-gold-500 border-[3px] border-cream shadow-[0_0_0_4px_rgba(212,168,83,0.2)] shrink-0 -ml-[6px]"></div>
+                <span className="md:hidden font-serif text-3xl text-gold-600 font-light">{year}</span>
+                <div className="flex-grow h-px bg-gradient-to-r from-gold-400/40 to-transparent"></div>
+                <span className="text-[0.65rem] font-bold uppercase tracking-widest text-olive-400">{groupedPubs[year].length} {groupedPubs[year].length === 1 ? 'paper' : 'papers'}</span>
+              </motion.div>
+
+              {/* Publications for this year */}
+              <div className="md:pl-[170px] space-y-4">
+                {groupedPubs[year].map((pub, pubIdx) => (
+                  <motion.a
+                    key={pubIdx}
+                    href={`https://scholar.google.com/scholar?q=${encodeURIComponent(pub.title)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-30px" }}
+                    transition={{ duration: 0.4, delay: pubIdx * 0.05 }}
+                    className="group block"
+                  >
+                    <div className="bg-bone hover:bg-white border border-olive-200/60 hover:border-gold-400/50 rounded-xl p-5 md:p-7 transition-all duration-400 hover:shadow-[0_12px_40px_-10px_rgba(107,112,92,0.15)] relative overflow-hidden">
+                      {/* Left gold accent bar */}
+                      <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-olive-200/50 group-hover:bg-gold-500 transition-colors duration-500 rounded-l-xl"></div>
+
+                      <div className="pl-4">
+                        {/* Journal badge */}
+                        <div className="flex flex-wrap items-center gap-2 mb-3">
+                          <span className="inline-flex items-center gap-1.5 bg-olive-800 text-bone text-[0.6rem] font-bold uppercase tracking-widest px-3 py-1 rounded-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                            {pub.journal}
+                          </span>
+                        </div>
+
+                        {/* Title */}
+                        <h4 className="font-serif text-[1.1rem] md:text-[1.25rem] text-ink leading-snug mb-3 group-hover:text-olive-800 transition-colors duration-300">
+                          <span className="bg-gradient-to-r from-gold-400 to-gold-300 bg-[length:0%_2px] bg-left-bottom bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500">
+                            {pub.title}
+                          </span>
+                        </h4>
+
+                        {/* Authors */}
+                        <p className="text-muted text-sm font-light leading-relaxed flex items-start gap-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-olive-400 shrink-0 mt-0.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                          {pub.authors}
+                        </p>
+                      </div>
+
+                      {/* External link icon */}
+                      <div className="absolute top-5 right-5 opacity-0 group-hover:opacity-60 transition-all duration-300">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-olive-600 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300">
+                          <path d="M7 17L17 7"/>
+                          <path d="M7 7h10v10"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </motion.a>
+                ))}
               </div>
-            </motion.a>
+            </div>
           ))}
         </div>
+
+        {/* Bottom Google Scholar link */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mt-16 md:mt-24"
+        >
+          <a
+            href="https://scholar.google.com/citations?user=REPLACE_SCHOLAR_ID"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-olive-800 hover:bg-gold-600 text-bone transition-all duration-300 px-8 py-4 rounded-full text-xs font-semibold uppercase tracking-widest shadow-xl transform hover:-translate-y-1"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            View All on Google Scholar
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </motion.div>
       </div>
     </section>
   )
