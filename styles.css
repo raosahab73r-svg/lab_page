@@ -70,3 +70,32 @@ html {
 .backface-hidden {
   backface-visibility: hidden;
 }
+
+/* DNA Helix Animations */
+@keyframes helixRotate {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}
+@keyframes helixPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+@keyframes floatSequence {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.7; }
+  100% { transform: translateY(-60px) translateX(15px); opacity: 0; }
+}
+@keyframes basePairGlow {
+  0%, 100% { stroke-opacity: 0.3; }
+  50% { stroke-opacity: 0.8; }
+}
+.animate-helix-pulse {
+  animation: helixPulse 3s ease-in-out infinite;
+}
+.animate-float-seq {
+  animation: floatSequence 8s ease-in-out infinite;
+}
+.animate-base-glow {
+  animation: basePairGlow 4s ease-in-out infinite;
+}
