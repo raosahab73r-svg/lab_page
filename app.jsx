@@ -514,7 +514,7 @@ const Team = () => {
       name: "Govind",
       role: "Research Assistant",
       initials: "G",
-      photo: "govind.png",
+      photo: "",
       linkedin: "#",
       github: "#",
       twitter: "#",
