@@ -184,19 +184,19 @@ const Hero = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5, delay: 0.4, ease: "easeOut" }}
             className="lg:col-span-5 relative flex items-center justify-center w-full min-h-[400px] md:min-h-[500px] lg:min-h-[650px] h-full"
-            style={{ transform: 'translateY(-160px) translateX(60px)' }}
+            style={{ transform: 'translateY(-180px) translateX(80px)' }}
           >
             <div 
               className="relative z-10 w-full h-full flex items-center justify-center"
-              style={{ transform: 'scale(2.3)', transformOrigin: 'center center', maxWidth: '1000px' }}
+              style={{ transform: 'scale(2.5)', transformOrigin: 'center center', maxWidth: '1000px' }}
             >
               <img 
                 src="hero_genomics.png" 
                 alt="Genomics and molecular biology illustration" 
                 className="w-full h-auto object-contain mix-blend-multiply opacity-95 transition-all"
                 style={{ 
-                  WebkitMaskImage: 'radial-gradient(ellipse at center, black 50%, transparent 75%)',
-                  maskImage: 'radial-gradient(ellipse at center, black 50%, transparent 75%)'
+                  WebkitMaskImage: 'radial-gradient(ellipse at center, black 45%, transparent 72%)',
+                  maskImage: 'radial-gradient(ellipse at center, black 45%, transparent 72%)'
                 }}
               />
             </div>
