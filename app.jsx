@@ -71,12 +71,11 @@ const Navbar = () => {
 
           <div className="hidden md:block h-10 lg:h-[3.5rem] w-[1px] bg-gray-300 mx-4 lg:mx-6 group-hover:bg-gray-400 transition-colors duration-300"></div>
 
-          {/* Stacked Academic Typography */}
+          {/* Lab Name — Bold Typography */}
           <div className="hidden md:flex flex-col justify-center flex-shrink-0">
-            <span className="font-sans font-bold text-[0.55rem] tracking-[0.3em] text-gold-600/90 uppercase mb-0.5">Ashoka University</span>
-            <h1 className="font-sans text-[1.05rem] lg:text-[1.35rem] text-ink leading-[1.15] tracking-tight font-semibold">
+            <h1 className="font-sans text-[1.1rem] lg:text-[1.4rem] text-ink leading-[1.2] tracking-tight font-extrabold">
               Computational Disease<br />
-              <span className="font-light text-olive-800 tracking-[0.05em] drop-shadow-sm">Genomics Group</span>
+              Genomics Group
             </h1>
           </div>
         </a>
@@ -178,25 +177,28 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Hero Visuals: Genomics Illustration */}
+          {/* Hero Visuals: DNA Overlay */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5, delay: 0.4, ease: "easeOut" }}
             className="lg:col-span-5 relative flex items-center justify-center w-full min-h-[400px] md:min-h-[500px] lg:min-h-[650px] h-full"
-            style={{ transform: 'translateY(-180px) translateX(80px)' }}
+            style={{ transform: 'translateY(-80px)' }}
           >
+            {/* DNA helix */}
             <div 
-              className="relative z-10 w-full h-full flex items-center justify-center"
-              style={{ transform: 'scale(2.5)', transformOrigin: 'center center', maxWidth: '1000px' }}
+              className="relative w-full h-full flex items-center justify-center"
+              style={{ zIndex: 15, transform: 'scale(2.4)', transformOrigin: 'center center', maxWidth: '1000px' }}
             >
               <img 
                 src="hero_genomics.png" 
                 alt="Genomics and molecular biology illustration" 
-                className="w-full h-auto object-contain mix-blend-multiply opacity-95 transition-all"
+                className="w-full h-auto object-contain mix-blend-multiply transition-all"
                 style={{ 
-                  WebkitMaskImage: 'radial-gradient(ellipse at center, black 45%, transparent 72%)',
-                  maskImage: 'radial-gradient(ellipse at center, black 45%, transparent 72%)'
+                  opacity: 0.95,
+                  WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 68%)',
+                  maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 68%)',
+                  filter: 'contrast(1.15) saturate(1.1)'
                 }}
               />
             </div>
