@@ -40,7 +40,7 @@ const MicrobeIcon = () => (
   <img src="icon_microbe.jpg" alt="Microbe Icon" className="w-10 h-10 md:w-12 md:h-12 object-cover rounded-full shadow-sm border border-olive-300/30 transition-transform duration-500 hover:scale-110" />
 );
 const NewsIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2" /><path d="M18 14h-8" /><path d="M15 18h-5" /><path d="M10 6h8v4h-8V6Z" /></svg>
 );
 
 // Category icon map
@@ -71,7 +71,7 @@ const Navbar = () => {
 
           <div className="hidden md:block h-10 lg:h-[3.5rem] w-[1px] bg-gray-300 mx-4 lg:mx-6 group-hover:bg-gray-400 transition-colors duration-300"></div>
 
-          {/* Lab Name — Bold Typography */}
+          {/* Lab Name â€” Bold Typography */}
           <div className="hidden md:flex flex-col justify-center flex-shrink-0">
             <h1 className="font-sans text-[1.1rem] lg:text-[1.4rem] text-ink leading-[1.2] tracking-tight font-extrabold">
               Computational Disease<br />
@@ -79,7 +79,7 @@ const Navbar = () => {
             </h1>
           </div>
         </a>
-        
+
         {/* Navigation Links */}
         <div className="hidden lg:flex flex-1 justify-end items-center space-x-6 xl:space-x-8 font-sans text-[0.7rem] xl:text-[0.75rem] font-bold tracking-[0.1em] uppercase text-gray-900">
           {['About', 'Research', 'People', 'Glimpse', 'Publications'].map((item) => (
@@ -89,7 +89,7 @@ const Navbar = () => {
             </a>
           ))}
           <a href="mailto:tanmoy.roychowdhury@ashoka.edu.in" className="bg-[#0f1110] text-gray-100 px-6 xl:px-7 py-3 rounded-full shadow-md hover:bg-gray-800 transform hover:-translate-y-0.5 transition-all duration-300 ml-2 xl:ml-4 whitespace-nowrap">
-            Join Us / Contact Us
+            Contact Us
           </a>
         </div>
       </div>
@@ -157,9 +157,9 @@ const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="text-muted text-lg md:text-xl lg:text-2xl max-w-xl leading-relaxed font-light mb-8 md:mb-12"
+              className="text-muted text-lg md:text-xl lg:text-2xl max-w-xl leading-relaxed font-light mb-6 md:mb-8"
             >
-              The Computational Disease Genomics Group pioneers AI and multi-omics to unearth structural variations driving complex human diseases.
+              Computational disease genomics group is interested in discovering diagnosis, prevention and therapy of human diseases using biobanks and patient cohorts.
             </motion.p>
 
             <motion.div
@@ -170,9 +170,6 @@ const Hero = () => {
             >
               <a href="#about" className="inline-flex items-center gap-2 bg-ink text-bone font-medium rounded-full px-6 py-4 md:px-10 md:py-5 tracking-widest text-[0.65rem] md:text-[0.7rem] uppercase shadow-2xl hover:bg-olive-800 hover:shadow-none transition-all duration-300 transform hover:-translate-y-1">
                 Explore The Lab
-              </a>
-              <a href="#join" className="inline-flex items-center gap-2 bg-transparent text-ink font-medium rounded-full px-6 py-4 md:px-10 md:py-5 tracking-widest text-[0.65rem] md:text-[0.7rem] uppercase border border-olive-200 hover:border-gold-500 hover:bg-bone transition-all duration-300">
-                Opportunities
               </a>
             </motion.div>
           </motion.div>
@@ -185,16 +182,33 @@ const Hero = () => {
             className="lg:col-span-5 relative flex items-center justify-center w-full min-h-[400px] md:min-h-[500px] lg:min-h-[650px] h-full"
             style={{ transform: 'translateY(-80px)' }}
           >
+            {/* New People DNA Illustration (Center offset to avoid overlap) */}
+            <div
+              className="absolute w-[130%] h-[130%] flex items-center justify-center pointer-events-none"
+              style={{ zIndex: 5, transform: 'translateX(-12%) translateY(0%)' }}
+            >
+              <img
+                src="imageye___-_imgi_2_population-health-SLCHC-scaled-2560x1280.jpg"
+                alt="People in DNA structure"
+                className="w-full h-auto object-contain mix-blend-multiply opacity-90 transition-all"
+                style={{
+                  WebkitMaskImage: 'radial-gradient(ellipse at center, black 50%, transparent 85%)',
+                  maskImage: 'radial-gradient(ellipse at center, black 50%, transparent 85%)',
+                  filter: 'contrast(1.05) saturate(1.1)'
+                }}
+              />
+            </div>
+
             {/* DNA helix */}
-            <div 
-              className="relative w-full h-full flex items-center justify-center"
+            <div
+              className="relative w-full h-full flex items-center justify-center pointer-events-none"
               style={{ zIndex: 15, transform: 'scale(2.4)', transformOrigin: 'center center', maxWidth: '1000px' }}
             >
-              <img 
-                src="hero_genomics.png" 
-                alt="Genomics and molecular biology illustration" 
+              <img
+                src="hero_genomics.png"
+                alt="Genomics and molecular biology illustration"
                 className="w-full h-auto object-contain mix-blend-multiply transition-all"
-                style={{ 
+                style={{
                   opacity: 0.95,
                   WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 68%)',
                   maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 68%)',
@@ -249,21 +263,13 @@ const About = () => (
       >
         Our Science
       </motion.h2>
-      <motion.h3
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, delay: 0.1 }}
-        className="text-4xl md:text-5xl font-serif text-ink mb-10 leading-tight"
-      >
-        Precision in the code of life
-      </motion.h3>
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, delay: 0.2 }}
         className="text-lg md:text-xl text-olive-800 leading-relaxed font-light"
       >
-        Based at Ashoka University, our computational disease genomics group seeks to uncover the genetic architecture of complex diseases. From genome-wide associations to structural variations, we combine multi-omics data, statistical genetics, and machine learning to map the traits of cardiovascular and neuropsychiatric conditions—cultivating a future built on precision medicine.
+        Based at Ashoka University, our computational disease genomics group seeks to uncover the genetic architecture of complex diseases. From genome-wide associations to structural variations, we combine multi-omics data, statistical genetics, and machine learning to map the traits of cardiovascular and neuropsychiatric conditionsâ€”cultivating a future built on precision medicine.
       </motion.p>
     </div>
   </section>
@@ -281,10 +287,10 @@ const ResearchCard = ({ card, idx }) => {
     const rect = cardRef.current.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
-    
+
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
-    
+
     const xPct = (mouseX / width - 0.5) * 2;
     const yPct = (mouseY / height - 0.5) * 2;
 
@@ -312,50 +318,57 @@ const ResearchCard = ({ card, idx }) => {
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={handleMouseLeave}
-        animate={{ 
-          rotateX: isHovered ? rotateX * 1.2 : 0, 
-          rotateY: isHovered ? rotateY * 1.2 : 0, 
-          scale: isHovered ? 1.12 : 1,
-          z: isHovered ? 80 : 0
+        animate={{
+          rotateX: isHovered ? rotateX * 1.2 : 0,
+          rotateY: isHovered ? rotateY * 1.2 : 0,
+          scale: isHovered ? 1.06 : 1,
+          z: isHovered ? 60 : 0
         }}
         transition={{ type: "spring", stiffness: 450, damping: 30 }}
         style={{ transformStyle: "preserve-3d" }}
-        className="bg-olive-800 text-bone rounded-3xl p-10 h-full relative overflow-visible border border-olive-700 shadow-2xl hover:shadow-[0_50px_100px_-20px_rgba(180,140,40,0.6)] transition-all duration-500 hover:z-50"
+        className="text-bone rounded-3xl h-full relative overflow-hidden border border-olive-700 shadow-2xl hover:shadow-[0_50px_100px_-20px_rgba(180,140,40,0.5)] transition-all duration-500 hover:z-50 flex flex-col"
       >
-        {/* Deep glowing backdrop projected far behind */}
-        <div 
-          className="absolute inset-0 bg-gold-400 rounded-3xl opacity-0 group-hover:opacity-25 transition-opacity duration-700 pointer-events-none" 
-          style={{ filter: 'blur(30px)', transform: 'translateZ(-40px)' }}
-        ></div>
+        {/* TOP: Photo */}
+        <div className="relative w-full h-52 overflow-hidden flex-shrink-0">
+          <img
+            src={card.image}
+            alt={card.title}
+            className="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-700 ease-out"
+          />
+          {/* Subtle gradient overlay at the bottom of image */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-olive-900/70"></div>
+        </div>
 
-        {/* Massive numeric background deeply recessed in 3D */}
-        <motion.div
-          animate={{ z: isHovered ? -60 : 0, opacity: isHovered ? 1 : 0.2 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          className="absolute right-4 top-2 text-9xl font-serif text-olive-900 pointer-events-none select-none drop-shadow-2xl"
-        >
-          0{idx + 1}
-        </motion.div>
+        {/* BOTTOM: Dark content area */}
+        <div className="bg-olive-800 px-8 py-8 flex flex-col flex-grow relative overflow-hidden">
+          {/* Deep glowing backdrop */}
+          <div
+            className="absolute inset-0 bg-gold-400 opacity-0 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none"
+            style={{ filter: 'blur(30px)' }}
+          ></div>
 
-        {/* Card Content popping forward insanely far */}
-        <motion.div
-          animate={{ z: isHovered ? 100 : 0 }}
-          transition={{ type: "spring", stiffness: 350, damping: 20 }}
-          className="relative z-10 flex flex-col h-full"
-        >
-          <div className="w-12 h-1 bg-gold-500 mb-8 rounded-full transform origin-left transition-transform duration-500 group-hover:scale-x-150"></div>
-          
-          <h4 className="font-serif text-3xl text-gold-400 mb-6 group-hover:text-gold-300 transition-colors drop-shadow-md leading-tight">{card.title}</h4>
-          
-          <p className="text-olive-100/90 font-light leading-relaxed drop-shadow-sm flex-grow relative z-20">
-            {card.desc}
-          </p>
-          
-          <div className="mt-10 pt-6 border-t border-olive-700 flex items-center justify-between opacity-50 group-hover:opacity-100 transition-opacity">
-            <span className="text-xs uppercase tracking-widest text-gold-500 font-bold">Discover</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400 transform group-hover:translate-x-2 transition-transform duration-300"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </div>
-        </motion.div>
+          {/* Number badge */}
+          <span className="absolute right-5 top-3 text-6xl font-serif text-olive-900/40 pointer-events-none select-none">0{idx + 1}</span>
+
+          <motion.div
+            animate={{ z: isHovered ? 60 : 0 }}
+            transition={{ type: "spring", stiffness: 350, damping: 20 }}
+            className="relative z-10 flex flex-col h-full"
+          >
+            <div className="w-10 h-1 bg-gold-500 mb-5 rounded-full transform origin-left transition-transform duration-500 group-hover:scale-x-150"></div>
+
+            <h4 className="font-serif text-2xl text-gold-400 mb-4 group-hover:text-gold-300 transition-colors leading-tight">{card.title}</h4>
+
+            <p className="text-olive-100/85 font-light leading-relaxed text-sm flex-grow">
+              {card.desc}
+            </p>
+
+            <div className="mt-8 pt-5 border-t border-olive-700 flex items-center justify-between opacity-50 group-hover:opacity-100 transition-opacity">
+              <span className="text-xs uppercase tracking-widest text-gold-500 font-bold">Discover</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400 transform group-hover:translate-x-2 transition-transform duration-300"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+            </div>
+          </motion.div>
+        </div>
       </motion.div>
     </motion.div>
   );
@@ -363,10 +376,9 @@ const ResearchCard = ({ card, idx }) => {
 
 const Research = () => {
   const cards = [
-    { title: "GWAS", desc: "Identifying risk loci and pleiotropic effects for complex traits such as abdominal and thoracic aortic aneurysms." },
-    { title: "Polygenic Risk Scores", desc: "Evaluating cost-effectiveness and predictive power of PRS-stratified screening for cardiovascular diseases." },
-    { title: "Precision Medicine", desc: "Leveraging loss-of-function variants to highlight potential therapeutic targets in human populations." },
-    { title: "AI in Genomics", desc: "Building integrative functional genomic models for brain development and neuropsychiatric risks." }
+    { title: "Polygenic Risk Scores", image: "research_polygenic.png", desc: "Evaluating cost-effectiveness and predictive power of polygenic risk score-stratified screening for cardiovascular and complex diseases." },
+    { title: "Rare Variants in the Population", image: "research_rare_variants.png", desc: "Leveraging rare variant analyses across biobanks to uncover novel disease associations and potential therapeutic targets." },
+    { title: "Functional Genomics", image: "research_functional_genomics.png", desc: "Building integrative functional genomic models to understand gene regulation, brain development, and disease mechanisms." }
   ];
 
   return (
@@ -403,10 +415,10 @@ const TeamCard = ({ member, delay, idx }) => {
     const rect = cardRef.current.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
-    
+
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
-    
+
     const xPct = (mouseX / width - 0.5) * 2;
     const yPct = (mouseY / height - 0.5) * 2;
 
@@ -434,9 +446,9 @@ const TeamCard = ({ member, delay, idx }) => {
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={handleMouseLeave}
-        animate={{ 
-          rotateX: isHovered ? rotateX * 1.2 : 0, 
-          rotateY: isHovered ? rotateY * 1.2 : 0, 
+        animate={{
+          rotateX: isHovered ? rotateX * 1.2 : 0,
+          rotateY: isHovered ? rotateY * 1.2 : 0,
           scale: isHovered ? 1.05 : 1,
           z: isHovered ? 40 : 0
         }}
@@ -446,8 +458,8 @@ const TeamCard = ({ member, delay, idx }) => {
       >
         {/* Full card background photo */}
         <div className="absolute inset-0 w-full h-full">
-          <img 
-            src={member.photo || `data:image/svg+xml;utf8,<svg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'><rect width='100%25' height='100%25' fill='%234a523a'/><text x='50%25' y='40%25' font-size='80' fill='%23D4A853' text-anchor='middle' font-family='serif' alignment-baseline='middle'>${member.initials}</text></svg>`} 
+          <img
+            src={member.photo || `data:image/svg+xml;utf8,<svg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'><rect width='100%25' height='100%25' fill='%234a523a'/><text x='50%25' y='40%25' font-size='80' fill='%23D4A853' text-anchor='middle' font-family='serif' alignment-baseline='middle'>${member.initials}</text></svg>`}
             alt={member.name}
             className="w-full h-full object-cover object-top opacity-80 group-hover:opacity-50 transition-opacity duration-500"
           />
@@ -464,7 +476,7 @@ const TeamCard = ({ member, delay, idx }) => {
           <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
             <h4 className="font-serif text-3xl text-gold-400 group-hover:text-gold-300 transition-colors drop-shadow-md leading-tight mb-1">{member.name}</h4>
             <p className="text-xs font-bold uppercase tracking-widest text-bone/80 mb-4">{member.role}</p>
-            
+
             <p className="text-olive-100/90 font-light text-sm leading-relaxed drop-shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mb-6 line-clamp-4">
               {member.desc}
             </p>
@@ -520,7 +532,7 @@ const Team = () => {
       linkedin: "#",
       github: "#",
       twitter: "#",
-      email: "mailto:govind@dummy.edu",
+      email: "mailto:govind.mangropa@ashoka.edu.in",
       desc: "Assisting in lab operations, data processing pipelines, and maintaining genomics computational infrastructure."
     },
     {
@@ -531,7 +543,7 @@ const Team = () => {
       linkedin: "#",
       github: "#",
       twitter: "#",
-      email: "mailto:joydeep@dummy.edu",
+      email: "mailto:joydeep.das_phd25@ashoka.edu.in",
       desc: "Investigating the genetic basis of complex traits using integrative multi-omics and advanced statistical models."
     }
   ];
@@ -570,7 +582,7 @@ const GlimpseCard = ({ item, idx }) => {
       className="relative group w-full aspect-[3/4] md:aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer shadow-[0_10px_30px_-15px_rgba(0,0,0,0.1)] hover:shadow-2xl transition-all duration-500 border border-olive-200/50"
     >
       <div className="absolute inset-0 bg-olive-800/10 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-      
+
       {/* Upload Placeholder / Image */}
       {item.image ? (
         <img src={item.image} alt={item.title} className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700 ease-out" />
@@ -578,8 +590,8 @@ const GlimpseCard = ({ item, idx }) => {
         <div className="w-full h-full bg-olive-100 flex flex-col items-center justify-center text-olive-600/40 relative">
           {/* Subtle grid pattern background for placeholder */}
           <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, black 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
-          
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="mb-4 transform group-hover:scale-110 transition-transform duration-500"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="mb-4 transform group-hover:scale-110 transition-transform duration-500"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><circle cx="8.5" cy="8.5" r="1.5" /><polyline points="21 15 16 10 5 21" /></svg>
           <span className="font-serif italic text-sm tracking-wide">Image Placeholder</span>
           <span className="font-sans text-[0.6rem] uppercase tracking-widest mt-2">{item.title}.png</span>
         </div>
@@ -621,144 +633,7 @@ const Glimpse = () => {
   );
 };
 
-// --- New Join Us Component (Single Combined Card) ---
-const JoinUs = () => {
-  const [isHovered, setIsHovered] = useState(false);
-  const cardRef = useRef(null);
-  const [rotateX, setRotateX] = useState(0);
-  const [rotateY, setRotateY] = useState(0);
 
-  const handleMouseMove = (e) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    
-    const xPct = (mouseX / width - 0.5) * 2;
-    const yPct = (mouseY / height - 0.5) * 2;
-
-    setRotateX(yPct * 15);
-    setRotateY(-xPct * 15);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    setRotateX(0);
-    setRotateY(0);
-  };
-
-  const positions = [
-    { title: "Postdoctoral Researcher", desc: "Focus on AI-driven GWAS and biobank-scale data." },
-    { title: "Ph.D. Candidate", desc: "For students interested in statistical genetics." },
-    { title: "Research Associate", desc: "Data processing & multi-omics pipeline development." },
-    { title: "Undergraduate Research", desc: "Summer projects mapping structural variance." },
-    { title: "Dissertation Projects", desc: "Short-term hands-on training and dissertation work." }
-  ];
-
-  return (
-    <section id="join" className="py-16 md:py-32 bg-[url('data:image/svg+xml;utf8,<svg width=\\'40\\' height=\\'40\\' xmlns=\\'http://www.w3.org/2000/svg\\'><path d=\\'M0 0h40v40H0V0zm1 1h38v38H1V1z\\' fill=\\'%236B705C\\' fill-opacity=\\'0.02\\' fill-rule=\\'evenodd\\'/></svg>')] bg-olive-50 px-4 md:px-6 lg:px-12 relative overflow-hidden">
-      <SectionDivider />
-      <div className="max-w-7xl mx-auto relative z-10 pt-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
-
-          {/* Text Left */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-5 sticky top-32"
-          >
-            <h2 className="text-xs tracking-widest text-gold-600 font-bold uppercase mb-4">Opportunities</h2>
-            <h3 className="text-4xl md:text-5xl lg:text-7xl font-serif text-ink mb-6 md:mb-8 leading-tight">Join Our <br /><span className="italic text-olive-800">Team</span></h3>
-            <div className="w-16 h-px bg-gold-400 mb-8"></div>
-            <p className="text-lg md:text-xl text-olive-800 font-light leading-relaxed mb-6">
-              We are passionate about computational genomics and discovering the architecture of complex diseases.
-            </p>
-            <p className="text-sm text-muted mb-10 font-light leading-relaxed">
-              If you share our curiosity and drive, we would love to hear from you. 
-            </p>
-            <a href="mailto:tanmoy.roychowdhury@ashoka.edu.in" className="inline-flex items-center gap-3 bg-olive-800 hover:bg-gold-600 text-bone transition-all duration-300 px-8 py-5 rounded-full text-xs font-semibold uppercase tracking-widest shadow-xl transform hover:-translate-y-1">
-              Get In Touch
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
-            </a>
-          </motion.div>
-
-          {/* Single Combined Card Right */}
-          <div className="lg:col-span-7 w-full pt-8 lg:pt-0">
-            <div className="relative w-full py-16 -my-16">
-              {/* Decorative light flare behind card */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gold-200/20 blur-[100px] rounded-full pointer-events-none"></div>
-
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.15, duration: 0.6 }}
-                className="w-full group cursor-pointer"
-                style={{ perspective: 1200 }}
-              >
-                <motion.div
-                  ref={cardRef}
-                  onMouseMove={handleMouseMove}
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={handleMouseLeave}
-                  animate={{ 
-                    rotateX: isHovered ? rotateX * 0.8 : 0, 
-                    rotateY: isHovered ? rotateY * 0.8 : 0, 
-                    scale: isHovered ? 1.03 : 1,
-                    z: isHovered ? 40 : 0
-                  }}
-                  transition={{ type: "spring", stiffness: 450, damping: 30 }}
-                  style={{ transformStyle: "preserve-3d" }}
-                  className="bg-olive-800 text-bone rounded-3xl p-8 md:p-12 relative overflow-visible border border-olive-700 shadow-2xl hover:shadow-[0_50px_100px_-20px_rgba(180,140,40,0.6)] transition-all duration-500"
-                >
-                  {/* Deep glowing backdrop */}
-                  <div 
-                    className="absolute inset-0 bg-gold-400 rounded-3xl opacity-0 group-hover:opacity-25 transition-opacity duration-700 pointer-events-none" 
-                    style={{ filter: 'blur(30px)', transform: 'translateZ(-40px)' }}
-                  ></div>
-
-                  {/* Card Content */}
-                  <motion.div
-                    animate={{ z: isHovered ? 60 : 0 }}
-                    transition={{ type: "spring", stiffness: 350, damping: 20 }}
-                    className="relative z-10"
-                  >
-                    <div className="w-12 h-1 bg-gold-500 mb-8 rounded-full transform origin-left transition-transform duration-500 group-hover:scale-x-150"></div>
-                    
-                    <h4 className="font-serif text-3xl md:text-4xl text-gold-400 mb-3 group-hover:text-gold-300 transition-colors drop-shadow-md leading-tight">Open Positions</h4>
-                    <p className="text-olive-100/70 font-light text-sm mb-10">
-                      We welcome applications at all levels. Explore our current openings below.
-                    </p>
-
-                    <div className="flex flex-col gap-3 lg:gap-4 mb-10">
-                      {positions.map((pos, idx) => (
-                        <a href="mailto:tanmoy.roychowdhury@ashoka.edu.in" key={idx} className="group/card flex items-center justify-between p-4 md:p-5 rounded-xl border border-olive-700/40 hover:border-gold-500/60 hover:bg-olive-800/80 transition-all duration-300">
-                          <h5 className="font-serif text-lg md:text-xl text-gold-300 group-hover/card:text-gold-200 transition-colors m-0 leading-none">{pos.title}</h5>
-                          <div className="hidden sm:flex items-center justify-center w-8 h-8 rounded-full bg-olive-700/30 group-hover/card:bg-gold-500/20 text-olive-400 group-hover/card:text-gold-300 transition-colors">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transform group-hover/card:translate-x-0.5 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                          </div>
-                        </a>
-                      ))}
-                    </div>
-
-                    <p className="text-xs text-olive-400/80 font-light uppercase tracking-widest text-center mt-6">
-                      Click any position to apply directly
-                    </p>
-                  </motion.div>
-                </motion.div>
-              </motion.div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-  );
-};
 
 // --- PUBLICATIONS DATA ---
 const publicationsData = {
@@ -770,7 +645,7 @@ const publicationsData = {
       papers: [
         {
           num: 1,
-          authors: "Thériault S, Holdcraft J, Sharipova D, Faucherre A, Debiec R, Peloso G, Al-Kassou B, Aranki S, Swan EA, Ballotta A, Bellino M, Björck H, Boureau AS, Braund P, Corriveau F, Dagenais F, Folkersen L, Forte A, Francke M, Frigiola A, Gorbatov S, Guo D, Habchi K, Heydarpour M, Isselbacher E, Jopling C, Laporte F, Scouarnec SL, Li Z, Lichtner P, Maj C, Manikpurage H, Nguyen T, Norris R, Ong CS, Pibarot P, Roychowdhury T, Sarubbi B, Simonet F, Sundt T, Surakka I, Tessler I, Willer CJ, Wittmann S, Yang B, Berezovets I, Dopple Sr, Dreßen M, Knoll K, Puehler T, Schunkert H, Avierinos JF, Bissell MM, Bolger A, Bossé Y, Bossone E, Brion M, Citro R, Vincentiis CD, Deeb GM, Corte AD, Dina C, Durst R, Ensminger S, Eriksson P, Evangelista P, Franco-Cereceda A, Gilon D, Giusti B, Hetherington S, Huggins G, Krane M, Tourneau TL, Limongelli G, Mathieu P, Messika-Zeitoun D, Michelena H, Milewicz D, Muehlschlegel J, Murdock D, Nickenig G, Nistri S, Nöthen M, Pluchinotta F, Prakash S, Samani N, Schott JJ, Webb T, Zaffran S, Seyfried SA, Eagle K, Schumacher J, Trenkwalder T, Body S",
+          authors: "ThÃ©riault S, Holdcraft J, Sharipova D, Faucherre A, Debiec R, Peloso G, Al-Kassou B, Aranki S, Swan EA, Ballotta A, Bellino M, BjÃ¶rck H, Boureau AS, Braund P, Corriveau F, Dagenais F, Folkersen L, Forte A, Francke M, Frigiola A, Gorbatov S, Guo D, Habchi K, Heydarpour M, Isselbacher E, Jopling C, Laporte F, Scouarnec SL, Li Z, Lichtner P, Maj C, Manikpurage H, Nguyen T, Norris R, Ong CS, Pibarot P, Roychowdhury T, Sarubbi B, Simonet F, Sundt T, Surakka I, Tessler I, Willer CJ, Wittmann S, Yang B, Berezovets I, Dopple Sr, DreÃŸen M, Knoll K, Puehler T, Schunkert H, Avierinos JF, Bissell MM, Bolger A, BossÃ© Y, Bossone E, Brion M, Citro R, Vincentiis CD, Deeb GM, Corte AD, Dina C, Durst R, Ensminger S, Eriksson P, Evangelista P, Franco-Cereceda A, Gilon D, Giusti B, Hetherington S, Huggins G, Krane M, Tourneau TL, Limongelli G, Mathieu P, Messika-Zeitoun D, Michelena H, Milewicz D, Muehlschlegel J, Murdock D, Nickenig G, Nistri S, NÃ¶then M, Pluchinotta F, Prakash S, Samani N, Schott JJ, Webb T, Zaffran S, Seyfried SA, Eagle K, Schumacher J, Trenkwalder T, Body S",
           title: "Genome and transcriptome-wide analyses identify multiple candidate genes and a significant polygenic contribution in bicuspid aortic valve",
           journal: "Circulation",
           year: 2025,
@@ -786,7 +661,7 @@ const publicationsData = {
         },
         {
           num: 3,
-          authors: "Roychowdhury T*#, Klarin D*, Levin MG*, Spin JM, Rhee YH, Deng A, Headley CA, Surakka I, Tsao NL, Gellatly C, Zuber V, Shen F, Hornsby WE, Laursen IH, Verma SS, Locke AE, Einarsson G, Thorleifsson G, Graham SE, Dikilitas O, Pattee JW, Judy RL, Verges FP, Nielsen JB, Wolford BN, Brumpton BM, Dilmé J, Peypoch O, Juscafresa LC, Edwards TL, Li D, Banasik K, Brunak S, Jacobsen RL, Garcia-Barrio MT, Zhang J, Rasmussen LM, Lee R, Handa A, Wanhainen A, Mani K, Lindholt JS, Obel LM, Strauss E, Oszkinis G, Nelson CP, Saxby K, Herwaarden JV, Van der Laan SW, Setten JV, Camacho M, Davis FM, Wasikowski R, Tsoi LC, Gudjonsson JE, Eliason JL, Coleman DM, Henke PK, Ganesh SK, Chen YE, Guan W, Pankow JS, Pankratz N, Pedersen OB, Erikstrup C, Tang W, Hveem K, Gudbjartsson D, Gretarsdottir S, Thorsteinsdottir U, Holm H, Stefansson K, Ferreira MA, Baras A, Kullo IJ, Ritchie MD, Christensen AH, Iversen KK, Eldrup N, Sillesen H, Ostrowski SR, Bundgaard H, Ullum H, Burgess S, Gill D, Gallagher K, Sabater-Lleal M, DiscovEHR, Regeneron Genetics Center, UK Aneurysm Growth Study, DBDS Genomic Consortium, VA Million Veteran Program, Jones GT, Bown MJ, Tsao PS, Willer CJ#, Damrauer SM#",
+          authors: "Roychowdhury T*#, Klarin D*, Levin MG*, Spin JM, Rhee YH, Deng A, Headley CA, Surakka I, Tsao NL, Gellatly C, Zuber V, Shen F, Hornsby WE, Laursen IH, Verma SS, Locke AE, Einarsson G, Thorleifsson G, Graham SE, Dikilitas O, Pattee JW, Judy RL, Verges FP, Nielsen JB, Wolford BN, Brumpton BM, DilmÃ© J, Peypoch O, Juscafresa LC, Edwards TL, Li D, Banasik K, Brunak S, Jacobsen RL, Garcia-Barrio MT, Zhang J, Rasmussen LM, Lee R, Handa A, Wanhainen A, Mani K, Lindholt JS, Obel LM, Strauss E, Oszkinis G, Nelson CP, Saxby K, Herwaarden JV, Van der Laan SW, Setten JV, Camacho M, Davis FM, Wasikowski R, Tsoi LC, Gudjonsson JE, Eliason JL, Coleman DM, Henke PK, Ganesh SK, Chen YE, Guan W, Pankow JS, Pankratz N, Pedersen OB, Erikstrup C, Tang W, Hveem K, Gudbjartsson D, Gretarsdottir S, Thorsteinsdottir U, Holm H, Stefansson K, Ferreira MA, Baras A, Kullo IJ, Ritchie MD, Christensen AH, Iversen KK, Eldrup N, Sillesen H, Ostrowski SR, Bundgaard H, Ullum H, Burgess S, Gill D, Gallagher K, Sabater-Lleal M, DiscovEHR, Regeneron Genetics Center, UK Aneurysm Growth Study, DBDS Genomic Consortium, VA Million Veteran Program, Jones GT, Bown MJ, Tsao PS, Willer CJ#, Damrauer SM#",
           title: "Genome-wide association meta-analysis identifies risk loci for abdominal aortic aneurysm and highlights PCSK9 as a therapeutic target",
           journal: "Nature Genetics",
           year: 2023,
@@ -802,7 +677,7 @@ const publicationsData = {
         },
         {
           num: 5,
-          authors: "Roychowdhury T*, Lu H*, Hornsby WE, Crone B, Wang GT, Guo D, Sendamarai A, Devineni P, Lin M, Zhou W, Graham SE, Wolford BN, Surakka I, Wang Z, Chang L, Zhang J, Mathis M, Brummett CM, Melendez TL, Shea MJ, Kim KM, Deeb MG, Patel HJ, Eliason J, Eagle KA, Yang B, Ganesh SK, Brumpton B, Åsvold BO, Skogholt AH, Hveem K, VA Million Veteran Program, Pyarajan S, Klarin D, Tsao PS, Damrauer SM, Leal SM, Milewicz DM, Chen EY, Garcia-Barrio MT#, Willer CJ#",
+          authors: "Roychowdhury T*, Lu H*, Hornsby WE, Crone B, Wang GT, Guo D, Sendamarai A, Devineni P, Lin M, Zhou W, Graham SE, Wolford BN, Surakka I, Wang Z, Chang L, Zhang J, Mathis M, Brummett CM, Melendez TL, Shea MJ, Kim KM, Deeb MG, Patel HJ, Eliason J, Eagle KA, Yang B, Ganesh SK, Brumpton B, Ã…svold BO, Skogholt AH, Hveem K, VA Million Veteran Program, Pyarajan S, Klarin D, Tsao PS, Damrauer SM, Leal SM, Milewicz DM, Chen EY, Garcia-Barrio MT#, Willer CJ#",
           title: "Regulatory variants in TCF7L2 are associated with thoracic aortic aneurysm",
           journal: "American Journal of Human Genetics",
           year: 2021,
@@ -810,7 +685,7 @@ const publicationsData = {
         },
         {
           num: 6,
-          authors: "Nielsen JB*, Rom O*, Surakka I*, Graham SE*, Zhou W*, Roychowdhury T, Fritsche LG, Gagliano Taliun SA, Sidore C, Liu Y, Gabrielsen ME, Skogholt AH, Wolford B, Overton W, Zhao Y, Chen J, Zhang H, Hornsby WE, Acheampong A, Grooms A, Schaefer A, Zajac GJM, Villacorta L, Zhang J, Brumpton B, Løset M, Rai V, Lundegaard PR, Olesen MS, Taylor KD, Palmer ND, Chen YD, Choi SH, Lubitz SA, Ellinor PT, Barnes KC, Daya M, Rafaels N, Weiss ST, Lasky-Su J, Tracy RP, Vasan RS, Cupples LA, Mathias RA, Yanek LR, Becker LC, Peyser PA, Bielak LF, Smith JA, Aslibekyan S, Hidalgo BA, Arnett DK, Irvin MR, Wilson JG, Musani SK, Correa A, Rich SS, Guo X, Rotter JI, Konkle BA, Johnsen JM, Ashley-Koch AE, Telen MJ, Sheehan VA, Blangero J, Curran JE, Peralta JM, Montgomery C, Sheu WH, Chung RH, Schwander K, Nouraie SM, Gordeuk VR, Zhang Y, Kooperberg C, Reiner AP, Jackson RD, Bleecker ER, Meyers DA, Li X, Das S, Yu K, LeFaive J, Smith A, Blackwell T, Taliun D, Zollner S, Forer L, Schoenherr S, Fuchsberger C, Pandit A, Zawistowski M, Kheterpal S, Brummett CM, Natarajan P, Schlessinger D, Lee S, Kang HM, Cucca F, Holmen OL, Åsvold BO, Boehnke M, Kathiresan S, Abecasis GR, Chen YE, Willer CJ#, Hveem K#",
+          authors: "Nielsen JB*, Rom O*, Surakka I*, Graham SE*, Zhou W*, Roychowdhury T, Fritsche LG, Gagliano Taliun SA, Sidore C, Liu Y, Gabrielsen ME, Skogholt AH, Wolford B, Overton W, Zhao Y, Chen J, Zhang H, Hornsby WE, Acheampong A, Grooms A, Schaefer A, Zajac GJM, Villacorta L, Zhang J, Brumpton B, LÃ¸set M, Rai V, Lundegaard PR, Olesen MS, Taylor KD, Palmer ND, Chen YD, Choi SH, Lubitz SA, Ellinor PT, Barnes KC, Daya M, Rafaels N, Weiss ST, Lasky-Su J, Tracy RP, Vasan RS, Cupples LA, Mathias RA, Yanek LR, Becker LC, Peyser PA, Bielak LF, Smith JA, Aslibekyan S, Hidalgo BA, Arnett DK, Irvin MR, Wilson JG, Musani SK, Correa A, Rich SS, Guo X, Rotter JI, Konkle BA, Johnsen JM, Ashley-Koch AE, Telen MJ, Sheehan VA, Blangero J, Curran JE, Peralta JM, Montgomery C, Sheu WH, Chung RH, Schwander K, Nouraie SM, Gordeuk VR, Zhang Y, Kooperberg C, Reiner AP, Jackson RD, Bleecker ER, Meyers DA, Li X, Das S, Yu K, LeFaive J, Smith A, Blackwell T, Taliun D, Zollner S, Forer L, Schoenherr S, Fuchsberger C, Pandit A, Zawistowski M, Kheterpal S, Brummett CM, Natarajan P, Schlessinger D, Lee S, Kang HM, Cucca F, Holmen OL, Ã…svold BO, Boehnke M, Kathiresan S, Abecasis GR, Chen YE, Willer CJ#, Hveem K#",
           title: "Loss-of-function genomic variants highlight potential therapeutic targets for cardiovascular disease",
           journal: "Nature Communications",
           year: 2020,
@@ -981,7 +856,7 @@ const publicationsData = {
   news: [
     { text: "Hope for first drug treatment for life-threatening aneurysms", url: "https://le.ac.uk/news/2023/october/aneurysms-drug-treatment" },
     { text: "Study identifies nearly 100 abdominal aortic aneurysm risk genes", url: "https://www.bioworld.com/articles/702563-study-identifies-nearly-100-abdominal-aortic-aneurysm-risk-genes" },
-    { text: "Interview in American Journal of Human Genetics — Highlighted article of September 2021", url: "https://www.ashg.org/publications-news/ashg-news/inside-ajhg-a-chat-with-cristen-willer-and-tanmoy-roychowdhury/" },
+    { text: "Interview in American Journal of Human Genetics â€” Highlighted article of September 2021", url: "https://www.ashg.org/publications-news/ashg-news/inside-ajhg-a-chat-with-cristen-willer-and-tanmoy-roychowdhury/" },
     { text: "Unlocking genetic clues behind aortic aneurysm", url: "https://labblog.uofmhealth.org/lab-notes/unlocking-genetic-clues-behind-aortic-aneurysm" },
     { text: "Revealing the brain's molecular architecture by PsychENCODE consortium (member). Cover story of Science, 14th December, 2018.", url: "https://www.science.org/doi/10.1126/science.362.6420.1262" },
     { text: "Using brain organoids to uncover causes of neuropsychiatric disorders", url: "https://individualizedmedicineblog.mayoclinic.org/2019/01/14/using-brain-organoids-to-uncover-causes-of-neuropsychiatric-disorders/" }
@@ -1014,12 +889,6 @@ const Publications = () => {
       <div className="max-w-5xl mx-auto relative z-10 mt-8 md:mt-16">
         {/* Header */}
         <div className="text-center mb-14 md:mb-20">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-sm tracking-widest text-gold-600 font-bold uppercase mb-4"
-          >Selected Works</motion.h2>
           <motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1034,12 +903,6 @@ const Publications = () => {
             viewport={{ once: true }}
             className="max-w-2xl mx-auto"
           >
-            <p className="text-lg md:text-xl font-serif text-olive-800 italic leading-relaxed mb-3">
-              Broad area of research:
-            </p>
-            <p className="text-xl md:text-2xl font-serif text-ink font-medium leading-relaxed">
-              {publicationsData.broadArea}
-            </p>
             <p className="text-sm text-muted mt-4 font-light">
               {publicationsData.note}
             </p>
@@ -1056,7 +919,7 @@ const Publications = () => {
               viewport={{ once: true, margin: "-30px" }}
               transition={{ delay: catIdx * 0.1 }}
             >
-              {/* Category Header — clickable to expand */}
+              {/* Category Header â€” clickable to expand */}
               <button
                 onClick={() => toggleCategory(catIdx)}
                 className="w-full group"
@@ -1112,7 +975,7 @@ const Publications = () => {
                           <div className="flex flex-wrap items-center gap-2 mb-2">
                             <span className="text-gold-600 font-serif text-sm font-semibold">{pub.num}.</span>
                             <span className="inline-flex items-center gap-1.5 bg-olive-800 text-bone text-[0.55rem] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-md">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" /></svg>
                               {pub.journal}
                             </span>
                             <span className="text-[0.6rem] text-muted">({pub.year})</span>
@@ -1135,8 +998,8 @@ const Publications = () => {
                         {/* External link icon */}
                         <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-60 transition-all duration-300">
                           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-olive-600 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300">
-                            <path d="M7 17L17 7"/>
-                            <path d="M7 7h10v10"/>
+                            <path d="M7 17L17 7" />
+                            <path d="M7 7h10v10" />
                           </svg>
                         </div>
                       </div>
@@ -1202,9 +1065,9 @@ const Publications = () => {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 bg-olive-800 hover:bg-gold-600 text-bone transition-all duration-300 px-8 py-4 rounded-full text-xs font-semibold uppercase tracking-widest shadow-xl transform hover:-translate-y-1"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
             View All on Google Scholar
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
           </a>
         </motion.div>
       </div>
@@ -1224,11 +1087,11 @@ const Footer = () => (
         {/* Contact Column */}
         <div className="md:col-span-5">
           <h3 className="text-[0.65rem] font-sans font-bold uppercase tracking-[0.3em] text-gold-500 mb-8">Contact Us</h3>
-          
+
           {/* Email */}
           <a href="mailto:tanmoy.roychowdhury@ashoka.edu.in" className="group flex items-start gap-4 mb-8">
             <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-gold-500/20 group-hover:border-gold-500/30 transition-all duration-500">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
             </div>
             <div>
               <span className="text-sm font-light text-bone/70 block mb-1">Email</span>
@@ -1239,7 +1102,7 @@ const Footer = () => (
           {/* Lab */}
           <div className="flex items-start gap-4 mb-8">
             <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" /><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" /><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" /><path d="M10 6h4" /><path d="M10 10h4" /><path d="M10 14h4" /><path d="M10 18h4" /></svg>
             </div>
             <div>
               <span className="text-sm font-light text-bone/70 block mb-1">Lab</span>
@@ -1250,7 +1113,7 @@ const Footer = () => (
           {/* Address */}
           <div className="flex items-start gap-4">
             <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
             </div>
             <div>
               <span className="text-sm font-light text-bone/70 block mb-1">Address</span>
@@ -1274,7 +1137,6 @@ const Footer = () => (
               { label: "Publications", href: "#publications" },
               { label: "People", href: "#team" },
               { label: "Glimpse", href: "#glimpse" },
-              { label: "Join Us", href: "#join" },
             ].map((link, i) => (
               <a key={i} href={link.href} className="group flex items-center gap-3 text-bone/80 hover:text-gold-400 transition-all duration-300">
                 <span className="w-4 h-px bg-white/20 group-hover:w-6 group-hover:bg-gold-400 transition-all duration-300"></span>
@@ -1297,7 +1159,7 @@ const Footer = () => (
 
       {/* Bottom bar */}
       <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="text-[0.7rem] text-bone/40 font-light tracking-wider uppercase">© 2026 Computational Disease Genomics Group — Ashoka University</p>
+        <p className="text-[0.7rem] text-bone/40 font-light tracking-wider uppercase">Â© 2026 Computational Disease Genomics Group â€” Ashoka University</p>
         <p className="text-[0.7rem] text-bone/30 font-light tracking-wider">Decoding genomes, one variant at a time.</p>
       </div>
     </div>
@@ -1320,9 +1182,8 @@ const App = () => {
         <About />
         <Research />
         <Team />
-        <Glimpse />
-        <JoinUs />
         <Publications />
+        <Glimpse />
         <Footer />
       </div>
     </div>
@@ -1331,3 +1192,4 @@ const App = () => {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
+
