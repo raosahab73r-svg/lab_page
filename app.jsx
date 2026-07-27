@@ -687,55 +687,58 @@ const TeamCard = ({ member, delay, idx }) => {
           <div className="h-full w-0 group-hover:w-full transition-all duration-700 ease-out" style={{ background: `linear-gradient(90deg, transparent, ${accentColors[idx % accentColors.length]}, transparent)` }}></div>
         </div>
 
-        {/* Vertical Social Icons Bar floating near the photo */}
-        <div className="absolute top-5 right-5 z-30 flex flex-col items-center gap-3.5 bg-black/40 hover:bg-black/70 backdrop-blur-md py-3.5 px-2.5 rounded-full border border-white/15 shadow-xl transition-all duration-300 group-hover:border-gold-400/40">
-          {member.linkedin && (
-            <a href={member.linkedin} target="_blank" rel="noreferrer" title="LinkedIn" className="text-white/70 hover:text-gold-400 hover:scale-110 transition-all duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-            </a>
-          )}
-          {member.github && (
-            <a href={member.github} target="_blank" rel="noreferrer" title="GitHub" className="text-white/70 hover:text-gold-400 hover:scale-110 transition-all duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-            </a>
-          )}
-          {member.twitter && (
-            <a href={member.twitter} target="_blank" rel="noreferrer" title="Twitter" className="text-white/70 hover:text-gold-400 hover:scale-110 transition-all duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
-            </a>
-          )}
-          {member.email && (
-            <a href={member.email} target="_blank" rel="noreferrer" title="Email" className="text-white/70 hover:text-gold-400 hover:scale-110 transition-all duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            </a>
-          )}
-        </div>
-
-        {/* Card Content */}
-        <div className="relative z-10 flex flex-col justify-end h-full p-7 md:p-8">
-          <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+        {/* Card Content & Connected Social Dock */}
+        <div className="relative z-10 flex flex-col justify-end h-full p-6 md:p-7">
+          <div className="flex items-end justify-between gap-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
             
-            {/* Role badge */}
-            <div className="mb-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-y-2 group-hover:translate-y-0">
-              <span className="inline-block text-[0.6rem] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full border border-white/15 text-white/70 backdrop-blur-sm bg-white/[0.05]">
+            {/* Left Box: Member Info & Description */}
+            <div className="flex-1 min-w-0">
+              {/* Role badge */}
+              <div className="mb-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-y-2 group-hover:translate-y-0">
+                <span className="inline-block text-[0.6rem] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full border border-white/15 text-white/80 backdrop-blur-sm bg-white/[0.08]">
+                  {member.role}
+                </span>
+              </div>
+
+              {/* Name */}
+              <h4 className="font-serif text-2xl md:text-[1.7rem] text-white leading-tight mb-1 drop-shadow-lg">
+                {member.name}
+              </h4>
+              
+              {/* Role (visible by default, hides on hover) */}
+              <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-gold-400 mb-2 group-hover:opacity-0 transition-opacity duration-300">
                 {member.role}
-              </span>
+              </p>
+
+              {/* Description */}
+              <p className="text-white/70 font-light text-[0.8rem] leading-relaxed mb-1 line-clamp-4 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                {member.desc}
+              </p>
             </div>
 
-            {/* Name */}
-            <h4 className="font-serif text-2xl md:text-[1.7rem] text-white leading-tight mb-1 drop-shadow-lg">
-              {member.name}
-            </h4>
-            
-            {/* Role (visible by default, hides on hover) */}
-            <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-gold-500/80 mb-3 group-hover:opacity-0 transition-opacity duration-300">
-              {member.role}
-            </p>
-
-            {/* Description */}
-            <p className="text-white/60 font-light text-[0.8rem] leading-relaxed mb-1 line-clamp-4 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
-              {member.desc}
-            </p>
+            {/* Right Connected Box: Vertical Social Icons Dock */}
+            <div className="flex flex-col items-center gap-3.5 py-3 pl-3.5 border-l border-white/20 group-hover:border-gold-400/50 opacity-80 group-hover:opacity-100 transition-all duration-500 transform translate-x-2 group-hover:translate-x-0 bg-black/30 group-hover:bg-black/60 backdrop-blur-md rounded-r-2xl px-3 shadow-xl">
+              {member.linkedin && (
+                <a href={member.linkedin} target="_blank" rel="noreferrer" title="LinkedIn" className="text-white/70 hover:text-gold-400 hover:scale-110 transition-all duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+              )}
+              {member.github && (
+                <a href={member.github} target="_blank" rel="noreferrer" title="GitHub" className="text-white/70 hover:text-gold-400 hover:scale-110 transition-all duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+              )}
+              {member.twitter && (
+                <a href={member.twitter} target="_blank" rel="noreferrer" title="Twitter" className="text-white/70 hover:text-gold-400 hover:scale-110 transition-all duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+                </a>
+              )}
+              {member.email && (
+                <a href={member.email} target="_blank" rel="noreferrer" title="Email" className="text-white/70 hover:text-gold-400 hover:scale-110 transition-all duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </motion.div>
