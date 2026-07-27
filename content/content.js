@@ -85,17 +85,6 @@ const SITE_CONTENT = {
       desc: "His work spans biology, physics, and data science, charting structural variants and neuropsychiatric dysregulation. Faculty at Ashoka University."
     },
     {
-      name: "Govind",
-      role: "Research Assistant",
-      initials: "G",
-      photo: "",   // e.g. "content/photos/team/govind.jpg"
-      linkedin: "#",
-      github: "#",
-      twitter: "#",
-      email: "mailto:govind.mangropa@ashoka.edu.in",
-      desc: "Assisting in lab operations, data processing pipelines, and maintaining genomics computational infrastructure."
-    },
-    {
       name: "Joydeep",
       role: "Ph.D. Candidate",
       initials: "J",
@@ -105,6 +94,17 @@ const SITE_CONTENT = {
       twitter: "#",
       email: "mailto:joydeep.das_phd25@ashoka.edu.in",
       desc: "Investigating the genetic basis of complex traits using integrative multi-omics and advanced statistical models."
+    },
+    {
+      name: "Govind",
+      role: "Research Assistant",
+      initials: "G",
+      photo: "",   // e.g. "content/photos/team/govind.jpg"
+      linkedin: "#",
+      github: "#",
+      twitter: "#",
+      email: "mailto:govind.mangropa@ashoka.edu.in",
+      desc: "Assisting in lab operations, data processing pipelines, and maintaining genomics computational infrastructure."
     },
 
     {
