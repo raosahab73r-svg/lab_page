@@ -580,8 +580,8 @@ const Research = () => {
   );
 };
 
-// --- Premium Team Card Component ---
-const TeamCard = ({ member, delay, idx }) => {
+// --- Premium Team Card Component (80% Photo, Clean Name & Designation at Bottom) ---
+const TeamCard = ({ member, delay, idx, onSelect }) => {
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef(null);
   const [rotateX, setRotateX] = useState(0);
@@ -627,6 +627,7 @@ const TeamCard = ({ member, delay, idx }) => {
     >
       <motion.div
         ref={cardRef}
+        onClick={onSelect}
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={handleMouseLeave}
@@ -637,35 +638,28 @@ const TeamCard = ({ member, delay, idx }) => {
         }}
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
         style={{ transformStyle: "preserve-3d" }}
-        className="rounded-[1.75rem] h-[520px] relative overflow-hidden shadow-[0_8px_30px_-10px_rgba(0,0,0,0.2)] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.35)] transition-shadow duration-700 cursor-pointer"
+        className="rounded-[2rem] h-[480px] md:h-[500px] relative overflow-hidden border border-white/10 group-hover:border-gold-400/50 shadow-[0_10px_35px_-10px_rgba(0,0,0,0.3)] group-hover:shadow-[0_25px_60px_-15px_rgba(212,168,83,0.3)] transition-all duration-700 cursor-pointer flex flex-col justify-end bg-ink"
       >
-        {/* Card Background */}
+        {/* Card Background / Profile Photo (Takes up ~80% of visual area!) */}
         <div className="absolute inset-0 w-full h-full">
           {hasPhoto ? (
             <>
               <img
                 src={member.photo}
                 alt={member.name}
-                className="w-full h-full object-cover object-top transition-all duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
+              {/* Subtle dark gradient only at bottom for clean text contrast */}
+              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 via-20% to-transparent opacity-90 group-hover:opacity-95 transition-opacity duration-500"></div>
             </>
           ) : (
             <>
-              {/* Rich gradient background */}
               <div className="absolute inset-0" style={{ background: gradientPalettes[idx % gradientPalettes.length] }}></div>
-              
-              {/* Subtle animated texture overlay */}
-              <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '20px 20px' }}></div>
-              
-              {/* Decorative glow */}
+              <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '20px 20px' }}></div>
               <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full opacity-20 group-hover:opacity-30 transition-opacity duration-700 blur-[60px]" style={{ background: accentColors[idx % accentColors.length] }}></div>
               <div className="absolute -bottom-16 -left-16 w-48 h-48 rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-700 blur-[50px]" style={{ background: accentColors[idx % accentColors.length] }}></div>
-
-              {/* Large elegant initials */}
-              <div className="absolute inset-0 flex items-center justify-center">
+              <div className="absolute inset-0 flex items-center justify-center pb-24">
                 <div className="relative">
-                  {/* Decorative ring */}
                   <div className="w-32 h-32 rounded-full border border-white/[0.08] group-hover:border-white/[0.15] transition-all duration-700 group-hover:scale-110 flex items-center justify-center">
                     <div className="w-28 h-28 rounded-full border border-white/[0.05] flex items-center justify-center">
                       <span className="text-5xl font-serif text-white/20 group-hover:text-white/30 transition-colors duration-500 select-none tracking-wide">
@@ -675,79 +669,53 @@ const TeamCard = ({ member, delay, idx }) => {
                   </div>
                 </div>
               </div>
-
-              {/* Bottom gradient for text readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 via-30% to-transparent"></div>
             </>
           )}
         </div>
 
-        {/* Gold accent line at top */}
+        {/* Top gold shimmer bar */}
         <div className="absolute top-0 left-0 right-0 h-[3px] z-20">
           <div className="h-full w-0 group-hover:w-full transition-all duration-700 ease-out" style={{ background: `linear-gradient(90deg, transparent, ${accentColors[idx % accentColors.length]}, transparent)` }}></div>
         </div>
 
-        {/* Card Content & Connected Social Dock */}
-        <div className="relative z-10 flex flex-col justify-end h-full p-6 md:p-7">
-          <div className="flex items-end justify-between gap-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-            
-            {/* Left Box: Member Info & Description */}
-            <div className="flex-1 min-w-0">
-              {/* Role badge */}
-              <div className="mb-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-y-2 group-hover:translate-y-0">
-                <span className="inline-block text-[0.6rem] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full border border-white/15 text-white/80 backdrop-blur-sm bg-white/[0.08]">
-                  {member.role}
-                </span>
-              </div>
+        {/* Minimalist Frosted Glass Footer (Bottom ~20%: ONLY Designation, Name, & Click Indicator) */}
+        <div className="relative z-10 w-full bg-black/65 group-hover:bg-black/85 backdrop-blur-md border-t border-white/10 group-hover:border-gold-400/40 p-5 md:p-6 transition-all duration-500">
+          {/* Role / Designation */}
+          <span className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-gold-400 group-hover:text-gold-300 transition-colors duration-300 block truncate mb-1.5">
+            {member.role}
+          </span>
 
-              {/* Name */}
-              <h4 className="font-serif text-2xl md:text-[1.7rem] text-white leading-tight mb-1 drop-shadow-lg">
-                {member.name}
-              </h4>
-              
-              {/* Role (visible by default, hides on hover) */}
-              <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-gold-400 mb-2 group-hover:opacity-0 transition-opacity duration-300">
-                {member.role}
-              </p>
+          {/* Name */}
+          <h4 className="font-serif text-2xl md:text-[1.55rem] text-white font-medium leading-snug drop-shadow-md break-words">
+            {member.name}
+          </h4>
 
-              {/* Description */}
-              <p className="text-white/70 font-light text-[0.8rem] leading-relaxed mb-1 line-clamp-4 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
-                {member.desc}
-              </p>
-            </div>
-
-            {/* Right Connected Box: Vertical Social Icons Dock */}
-            <div className="flex flex-col items-center gap-3.5 py-3 pl-3.5 border-l border-white/20 group-hover:border-gold-400/50 opacity-80 group-hover:opacity-100 transition-all duration-500 transform translate-x-2 group-hover:translate-x-0 bg-black/30 group-hover:bg-black/60 backdrop-blur-md rounded-r-2xl px-3 shadow-xl">
-              {member.linkedin && (
-                <a href={member.linkedin} target="_blank" rel="noreferrer" title="LinkedIn" className="text-white/70 hover:text-gold-400 hover:scale-110 transition-all duration-300">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                </a>
-              )}
-              {member.github && (
-                <a href={member.github} target="_blank" rel="noreferrer" title="GitHub" className="text-white/70 hover:text-gold-400 hover:scale-110 transition-all duration-300">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                </a>
-              )}
-              {member.twitter && (
-                <a href={member.twitter} target="_blank" rel="noreferrer" title="Twitter" className="text-white/70 hover:text-gold-400 hover:scale-110 transition-all duration-300">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
-                </a>
-              )}
-              {member.email && (
-                <a href={member.email} target="_blank" rel="noreferrer" title="Email" className="text-white/70 hover:text-gold-400 hover:scale-110 transition-all duration-300">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                </a>
-              )}
-            </div>
+          {/* Interactive Click Prompt */}
+          <div className="flex items-center gap-2 text-white/50 group-hover:text-gold-300 text-[0.7rem] tracking-wider uppercase mt-3 font-light transition-colors duration-300">
+            <span className="w-1.5 h-1.5 rounded-full bg-gold-400 group-hover:scale-125 transition-transform duration-300 animate-pulse"></span>
+            <span>View Profile & Bio</span>
+            <svg className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
           </div>
         </div>
       </motion.div>
     </motion.div>
   );
-}
+};
 
 const Team = () => {
   const teamMembers = SITE_CONTENT.team;
+  const [selectedMember, setSelectedMember] = useState(null);
+
+  // Close modal on Escape key press
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setSelectedMember(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   return (
     <section id="team" className="py-16 md:py-32 px-4 md:px-6 lg:px-12 bg-cream relative overflow-hidden">
       {/* Subtle decorative background */}
@@ -773,11 +741,144 @@ const Team = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 md:gap-6 py-6 items-stretch justify-center">
           {teamMembers.map((member, idx) => (
             <div key={idx} className="w-full">
-              <TeamCard member={member} idx={idx} delay={idx * 0.1} />
+              <TeamCard member={member} idx={idx} delay={idx * 0.1} onSelect={() => setSelectedMember(member)} />
             </div>
           ))}
         </div>
       </div>
+
+      {/* --- Stunning Glassmorphic Profile Pop-Up Modal --- */}
+      <AnimatePresence>
+        {selectedMember && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedMember(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/80 backdrop-blur-md overflow-y-auto"
+          >
+            <motion.div
+              initial={{ scale: 0.92, opacity: 0, y: 25 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.92, opacity: 0, y: 25 }}
+              transition={{ type: "spring", stiffness: 350, damping: 28 }}
+              onClick={(e) => e.stopPropagation()}
+              className="max-w-4xl w-full bg-[#161816]/95 border border-white/20 rounded-[2.2rem] shadow-[0_30px_100px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col md:flex-row relative my-auto max-h-[90vh] md:max-h-[85vh]"
+            >
+              {/* Left Column: Portrait / Avatar */}
+              <div className="w-full md:w-5/12 h-64 sm:h-80 md:h-auto relative bg-ink min-h-[260px] shrink-0">
+                {selectedMember.photo && selectedMember.photo.trim() !== "" ? (
+                  <>
+                    <img
+                      src={selectedMember.photo}
+                      alt={selectedMember.name}
+                      className="w-full h-full object-cover object-top"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#161816] via-transparent to-transparent opacity-60"></div>
+                  </>
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center relative bg-gradient-to-br from-[#1f2421] to-[#3d3b2c]">
+                    <div className="w-36 h-36 rounded-full border border-white/10 flex items-center justify-center">
+                      <span className="text-6xl font-serif text-white/30 tracking-wider">
+                        {selectedMember.initials}
+                      </span>
+                    </div>
+                  </div>
+                )}
+                {/* Gold vertical shimmer divider on desktop */}
+                <div className="hidden md:block absolute top-0 bottom-0 right-0 w-[2px] bg-gradient-to-b from-transparent via-gold-400/50 to-transparent"></div>
+              </div>
+
+              {/* Right Column: Full Profile Info & Bio Content */}
+              <div className="w-full md:w-7/12 p-6 sm:p-8 md:p-10 flex flex-col justify-between relative overflow-y-auto">
+                {/* Close Button */}
+                <button
+                  onClick={() => setSelectedMember(null)}
+                  className="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/10 hover:bg-gold-400 text-white hover:text-ink flex items-center justify-center transition-all duration-300 shadow-md z-10 group"
+                  aria-label="Close modal"
+                >
+                  <svg className="w-5 h-5 transform group-hover:rotate-90 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+
+                {/* Profile Header */}
+                <div className="pr-10 mb-6">
+                  <div className="inline-block mb-3">
+                    <span className="px-3.5 py-1 rounded-full border border-gold-400/40 bg-gold-500/10 text-gold-300 text-[0.65rem] font-bold uppercase tracking-[0.2em] shadow-[0_0_15px_rgba(212,168,83,0.15)]">
+                      {selectedMember.role}
+                    </span>
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif text-white font-medium leading-tight tracking-wide">
+                    {selectedMember.name}
+                  </h3>
+                </div>
+
+                {/* Bio Description Area */}
+                <div className="flex-1 my-2 pr-2 overflow-y-auto max-h-[220px] sm:max-h-[260px] md:max-h-[300px]">
+                  <h5 className="text-[0.65rem] uppercase tracking-[0.2em] font-bold text-white/40 mb-2">Research Focus & Biography</h5>
+                  <p className="text-white/80 font-light text-sm sm:text-base leading-relaxed tracking-wide whitespace-pre-line">
+                    {selectedMember.desc}
+                  </p>
+                </div>
+
+                {/* Bottom Connect Dock: Real-Colored Brand Logos */}
+                <div className="pt-6 mt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 shrink-0">
+                  <span className="text-[0.65rem] tracking-[0.2em] uppercase font-bold text-white/50">
+                    Connect on Socials
+                  </span>
+                  <div className="flex items-center gap-3">
+                    {selectedMember.linkedin && (
+                      <a
+                        href={selectedMember.linkedin}
+                        target="_blank"
+                        rel="noreferrer"
+                        title="LinkedIn Profile"
+                        className="w-10 h-10 rounded-full bg-[#0A66C2] text-white flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-[0_0_16px_rgba(10,102,194,0.8)] transition-all duration-300"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                      </a>
+                    )}
+                    {selectedMember.github && (
+                      <a
+                        href={selectedMember.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        title="GitHub Profile"
+                        className="w-10 h-10 rounded-full bg-[#24292e] border border-white/20 text-white flex items-center justify-center shadow-lg hover:scale-110 hover:bg-[#333] hover:shadow-[0_0_16px_rgba(255,255,255,0.5)] transition-all duration-300"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                      </a>
+                    )}
+                    {selectedMember.twitter && (
+                      <a
+                        href={selectedMember.twitter}
+                        target="_blank"
+                        rel="noreferrer"
+                        title="Twitter / X Profile"
+                        className="w-10 h-10 rounded-full bg-[#1DA1F2] text-white flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-[0_0_16px_rgba(29,161,242,0.8)] transition-all duration-300"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.936 9.936 0 0024 4.59z"/></svg>
+                      </a>
+                    )}
+                    {selectedMember.email && (
+                      <a
+                        href={selectedMember.email}
+                        target="_blank"
+                        rel="noreferrer"
+                        title="Send Email"
+                        className="w-10 h-10 rounded-full bg-[#EA4335] text-white flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-[0_0_16px_rgba(234,67,53,0.8)] transition-all duration-300"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
