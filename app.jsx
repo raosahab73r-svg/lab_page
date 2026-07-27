@@ -26,28 +26,23 @@ const SectionDivider = () => (
   </div>
 );
 
-// --- Category Images for Publications ---
-const HeartLungIcon = () => (
-  <img src="icon_cardio.png" alt="Heart Icon" className="w-12 h-12 md:w-14 md:h-14 object-contain transition-transform duration-500 hover:scale-110 drop-shadow-md" />
-);
-const BrainIcon = () => (
-  <img src="icon_brain.jpg" alt="Brain Icon" className="w-10 h-10 md:w-12 md:h-12 object-cover rounded-full shadow-sm border border-olive-300/30 transition-transform duration-500 hover:scale-110" />
-);
-const DnaIcon = () => (
-  <img src="hero_genomics.png" alt="DNA Icon" className="w-10 h-10 md:w-12 md:h-12 object-cover rounded-full shadow-sm border border-olive-300/30 transition-transform duration-500 hover:scale-110" style={{ filter: 'brightness(1.1) contrast(1.1)' }} />
-);
-const MicrobeIcon = () => (
-  <img src="icon_microbe.jpg" alt="Microbe Icon" className="w-10 h-10 md:w-12 md:h-12 object-cover rounded-full shadow-sm border border-olive-300/30 transition-transform duration-500 hover:scale-110" />
-);
 const NewsIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2" /><path d="M18 14h-8" /><path d="M15 18h-5" /><path d="M10 6h8v4h-8V6Z" /></svg>
 );
 
-// Category icon map
-const categoryIcons = [HeartLungIcon, BrainIcon, DnaIcon, MicrobeIcon];
+
+
+const navLinks = [
+  { label: 'About', href: '#about' },
+  { label: 'Research', href: '#research' },
+  { label: 'People', href: '#team' },
+  { label: 'Glimpse', href: '#glimpse' },
+  { label: 'Publications', href: '#publications' }
+];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -55,45 +50,126 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
+
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-bone/95 backdrop-blur-md shadow-[0_4px_20px_-10px_rgba(0,0,0,0.1)] py-3 md:py-4 border-b border-olive-200/20' : 'bg-transparent py-4 md:py-6'}`}
-    >
-      <div className="max-w-[90rem] mx-auto px-4 md:px-6 lg:px-10 flex justify-between items-center h-20">
-        <a href="#" className="flex items-center group flex-shrink-0">
-          {/* Logo */}
-          <div className="relative flex items-center">
-            <img src="Ashoka_University_logo_with_wordmark.png" alt="Ashoka University" className="h-10 md:h-12 lg:h-[3.25rem] object-contain" />
-          </div>
+    <>
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-bone/95 backdrop-blur-md shadow-[0_4px_20px_-10px_rgba(0,0,0,0.1)] py-3 md:py-4 border-b border-olive-200/20' : 'bg-transparent py-4 md:py-6'}`}
+      >
+        <div className="max-w-[90rem] mx-auto px-4 md:px-6 lg:px-10 flex justify-between items-center h-20">
+          <a href="#" className="flex items-center group flex-shrink-0">
+            {/* Logo */}
+            <div className="relative flex items-center">
+              <img src="Ashoka_University_logo_with_wordmark.png" alt="Ashoka University" className="h-10 md:h-12 lg:h-[3.25rem] object-contain" />
+            </div>
 
-          <div className="hidden md:block h-10 lg:h-[3.5rem] w-[1px] bg-gray-300 mx-4 lg:mx-6 group-hover:bg-gray-400 transition-colors duration-300"></div>
+            <div className="hidden md:block h-10 lg:h-[3.5rem] w-[1px] bg-gray-300 mx-4 lg:mx-6 group-hover:bg-gray-400 transition-colors duration-300"></div>
 
-          {/* Lab Name â€” Bold Typography */}
-          <div className="hidden md:flex flex-col justify-center flex-shrink-0">
-            <h1 className="font-sans text-[1.1rem] lg:text-[1.4rem] text-ink leading-[1.2] tracking-tight font-extrabold">
-              Computational Disease<br />
-              Genomics Group
-            </h1>
-          </div>
-        </a>
-
-        {/* Navigation Links */}
-        <div className="hidden lg:flex flex-1 justify-end items-center space-x-6 xl:space-x-8 font-sans text-[0.7rem] xl:text-[0.75rem] font-bold tracking-[0.1em] uppercase text-gray-900">
-          {['About', 'Research', 'People', 'Glimpse', 'Publications'].map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`} className="relative group py-2">
-              <span className="group-hover:text-gold-600 transition-colors duration-300">{item}</span>
-              <span className="absolute bottom-1 left-0 w-full h-[2px] bg-gold-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-            </a>
-          ))}
-          <a href="mailto:tanmoy.roychowdhury@ashoka.edu.in" className="bg-[#0f1110] text-gray-100 px-6 xl:px-7 py-3 rounded-full shadow-md hover:bg-gray-800 transform hover:-translate-y-0.5 transition-all duration-300 ml-2 xl:ml-4 whitespace-nowrap">
-            Contact Us
+            {/* Lab Name */}
+            <div className="hidden md:flex flex-col justify-center flex-shrink-0">
+              <h1 className="font-sans text-[1.1rem] lg:text-[1.4rem] text-ink leading-[1.2] tracking-tight font-extrabold">
+                Computational Disease<br />
+                Genomics Group
+              </h1>
+            </div>
           </a>
+
+          {/* Desktop Navigation Links */}
+          <div className="hidden lg:flex flex-1 justify-end items-center space-x-6 xl:space-x-8 font-sans text-[0.7rem] xl:text-[0.75rem] font-bold tracking-[0.1em] uppercase text-gray-900">
+            {navLinks.map((item) => (
+              <a key={item.label} href={item.href} className="relative group py-2">
+                <span className="group-hover:text-gold-600 transition-colors duration-300">{item.label}</span>
+                <span className="absolute bottom-1 left-0 w-full h-[2px] bg-gold-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+              </a>
+            ))}
+            <a href="mailto:tanmoy.roychowdhury@ashoka.edu.in" className="bg-[#0f1110] text-gray-100 px-6 xl:px-7 py-3 rounded-full shadow-md hover:bg-gray-800 transform hover:-translate-y-0.5 transition-all duration-300 ml-2 xl:ml-4 whitespace-nowrap">
+              Contact Us
+            </a>
+          </div>
+
+          {/* Mobile Hamburger Button */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="lg:hidden relative z-[60] w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-lg hover:bg-olive-200/30 transition-colors duration-300"
+            aria-label="Toggle menu"
+          >
+            <span className={`block w-5 h-[2px] bg-ink rounded-full transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-[5px]' : ''}`}></span>
+            <span className={`block w-5 h-[2px] bg-ink rounded-full transition-all duration-300 ${mobileOpen ? 'opacity-0 scale-0' : ''}`}></span>
+            <span className={`block w-5 h-[2px] bg-ink rounded-full transition-all duration-300 ${mobileOpen ? '-rotate-45 -translate-y-[5px]' : ''}`}></span>
+          </button>
         </div>
-      </div>
-    </motion.nav>
+      </motion.nav>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setMobileOpen(false)}
+              className="fixed inset-0 bg-ink/40 backdrop-blur-sm z-[55] lg:hidden"
+            />
+
+            {/* Slide-in Panel */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+              className="fixed top-0 right-0 h-full w-[75vw] max-w-[320px] bg-bone shadow-2xl z-[56] lg:hidden flex flex-col"
+            >
+              <div className="pt-28 px-8 flex-1 flex flex-col">
+                <nav className="flex flex-col space-y-2">
+                  {navLinks.map((item, idx) => (
+                    <motion.a
+                      key={item.label}
+                      href={item.href}
+                      onClick={() => setMobileOpen(false)}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.06 }}
+                      className="text-ink font-sans text-sm font-bold uppercase tracking-[0.15em] py-3 px-4 rounded-lg hover:bg-olive-200/30 hover:text-gold-700 transition-all duration-300 border-b border-olive-200/20"
+                    >
+                      {item.label}
+                    </motion.a>
+                  ))}
+                </nav>
+
+                <motion.a
+                  href="mailto:tanmoy.roychowdhury@ashoka.edu.in"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.35 }}
+                  className="mt-8 bg-ink text-bone text-center font-sans text-xs font-bold uppercase tracking-[0.15em] py-4 rounded-full shadow-lg hover:bg-olive-800 transition-all duration-300"
+                >
+                  Contact Us
+                </motion.a>
+              </div>
+
+              {/* Branding at bottom of drawer */}
+              <div className="px-8 pb-8">
+                <div className="border-t border-olive-200/30 pt-6">
+                  <p className="font-serif text-sm text-muted italic">Computational Disease<br/>Genomics Group</p>
+                  <p className="text-[0.6rem] text-muted/60 mt-2 uppercase tracking-wider">Ashoka University</p>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
@@ -159,7 +235,7 @@ const Hero = () => {
               transition={{ duration: 1, delay: 0.5 }}
               className="text-muted text-lg md:text-xl lg:text-2xl max-w-xl leading-relaxed font-light mb-6 md:mb-8"
             >
-              Computational disease genomics group is interested in discovering diagnosis, prevention and therapy of human diseases using biobanks and patient cohorts.
+              {SITE_CONTENT.hero.subtitle}
             </motion.p>
 
             <motion.div
@@ -198,7 +274,6 @@ const Hero = () => {
                 }}
               />
             </div>
-
             {/* DNA helix */}
             <div
               className="relative w-full h-full flex items-center justify-center pointer-events-none"
@@ -252,178 +327,287 @@ const Hero = () => {
 };
 
 const About = () => (
-  <section id="about" className="py-16 md:py-24 px-4 md:px-6 lg:px-12 bg-cream">
+  <section id="about" className="py-20 md:py-32 lg:py-40 px-4 md:px-6 lg:px-12 bg-cream relative overflow-hidden">
+    {/* Subtle decorative background */}
+    <div className="absolute top-0 left-0 w-[30%] h-[30%] bg-gold-200/20 rounded-full blur-[120px] pointer-events-none"></div>
+    <div className="absolute bottom-0 right-0 w-[25%] h-[25%] bg-sage-200/25 rounded-full blur-[100px] pointer-events-none"></div>
+
     <SectionDivider />
-    <div className="max-w-4xl mx-auto text-center">
+
+    <div className="max-w-5xl mx-auto mt-8 md:mt-12">
+      {/* Section label */}
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-sm tracking-widest text-gold-600 font-bold uppercase mb-4"
+        className="text-sm tracking-widest text-gold-600 font-bold uppercase mb-5 text-center"
       >
         Our Science
       </motion.h2>
-      <motion.p
+
+      {/* Big heading */}
+      <motion.h3
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, delay: 0.2 }}
-        className="text-lg md:text-xl text-olive-800 leading-relaxed font-light"
+        viewport={{ once: true }}
+        transition={{ delay: 0.1 }}
+        className="text-3xl md:text-4xl lg:text-5xl font-serif text-ink text-center leading-tight mb-6"
       >
-        Based at Ashoka University, our computational disease genomics group seeks to uncover the genetic architecture of complex diseases. From genome-wide associations to structural variations, we combine multi-omics data, statistical genetics, and machine learning to map the traits of cardiovascular and neuropsychiatric conditionsâ€”cultivating a future built on precision medicine.
-      </motion.p>
+        Genomics for <span className="text-olive-600 italic">Human Health</span>
+      </motion.h3>
+
+      {/* Gold accent divider */}
+      <motion.div
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2, duration: 0.8 }}
+        className="w-16 h-[2px] bg-gold-500 mx-auto mb-12 md:mb-16 origin-center"
+      />
+
+      {/* Paragraphs — each individually animated with proper spacing */}
+      <div className="space-y-8 md:space-y-10">
+        {SITE_CONTENT.about.paragraphs.map((para, idx) => {
+          return (
+            <motion.p
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15 + idx * 0.1 }}
+              className="text-lg md:text-xl lg:text-[1.35rem] text-olive-800 leading-[1.85] font-light text-left sm:text-justify"
+            >
+              {para}
+            </motion.p>
+          );
+        })}
+      </div>
     </div>
   </section>
 );
 
-// --- Live Dynamic 3D Tracking Research Card ---
-const ResearchCard = ({ card, idx }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const cardRef = useRef(null);
-  const [rotateX, setRotateX] = useState(0);
-  const [rotateY, setRotateY] = useState(0);
-
-  const handleMouseMove = (e) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-
-    const xPct = (mouseX / width - 0.5) * 2;
-    const yPct = (mouseY / height - 0.5) * 2;
-
-    setRotateX(yPct * 20);
-    setRotateY(-xPct * 20);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    setRotateX(0);
-    setRotateY(0);
-  };
+// --- Research Area Expandable Card ---
+const ResearchArea = ({ area, idx, isExpanded, onToggle }) => {
+  const gradientAccents = [
+    'from-gold-500/20 via-gold-300/10 to-transparent',
+    'from-sage-600/20 via-sage-400/10 to-transparent',
+    'from-olive-600/20 via-olive-400/10 to-transparent'
+  ];
+  const accentDots = ['bg-gold-500', 'bg-sage-600', 'bg-olive-600'];
+  const hoverGlows = [
+    'group-hover:shadow-[0_20px_60px_-15px_rgba(212,168,83,0.25)]',
+    'group-hover:shadow-[0_20px_60px_-15px_rgba(126,153,128,0.25)]',
+    'group-hover:shadow-[0_20px_60px_-15px_rgba(107,112,92,0.25)]'
+  ];
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.95, y: 20 }}
-      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: idx * 0.15, duration: 0.6 }}
-      className="w-full h-full group cursor-pointer"
-      style={{ perspective: 1200 }}
+      transition={{ delay: idx * 0.12, duration: 0.6 }}
+      className="h-full"
     >
-      <motion.div
-        ref={cardRef}
-        onMouseMove={handleMouseMove}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={handleMouseLeave}
-        animate={{
-          rotateX: isHovered ? rotateX * 1.2 : 0,
-          rotateY: isHovered ? rotateY * 1.2 : 0,
-          scale: isHovered ? 1.06 : 1,
-          z: isHovered ? 60 : 0
-        }}
-        transition={{ type: "spring", stiffness: 450, damping: 30 }}
-        style={{ transformStyle: "preserve-3d" }}
-        className="text-bone rounded-3xl h-full relative overflow-hidden border border-olive-700 shadow-2xl hover:shadow-[0_50px_100px_-20px_rgba(180,140,40,0.5)] transition-all duration-500 hover:z-50 flex flex-col"
+      <button
+        onClick={onToggle}
+        className="w-full group h-full text-left"
       >
-        {/* TOP: Photo */}
-        <div className="relative w-full h-52 overflow-hidden flex-shrink-0">
-          <img
-            src={card.image}
-            alt={card.title}
-            className="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-700 ease-out"
-          />
-          {/* Subtle gradient overlay at the bottom of image */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-olive-900/70"></div>
-        </div>
+        <div className={`relative h-full rounded-3xl p-7 md:p-9 transition-all duration-500 overflow-hidden flex flex-col
+          bg-white/60 backdrop-blur-sm border border-white/80
+          hover:bg-white/90 hover:border-gold-300/40 hover:-translate-y-1
+          ${hoverGlows[idx]}
+          ${isExpanded ? 'bg-white/95 border-gold-400/50 shadow-[0_20px_60px_-15px_rgba(107,112,92,0.2)] -translate-y-1 ring-1 ring-gold-400/20' : 'shadow-[0_8px_30px_-12px_rgba(107,112,92,0.08)]'}
+        `}>
 
-        {/* BOTTOM: Dark content area */}
-        <div className="bg-olive-800 px-8 py-8 flex flex-col flex-grow relative overflow-hidden">
-          {/* Deep glowing backdrop */}
-          <div
-            className="absolute inset-0 bg-gold-400 opacity-0 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none"
-            style={{ filter: 'blur(30px)' }}
-          ></div>
+          {/* Gradient accent blob */}
+          <div className={`absolute -top-16 -right-16 w-40 h-40 rounded-full bg-gradient-to-br ${gradientAccents[idx]} blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`}></div>
+          <div className={`absolute -bottom-10 -left-10 w-24 h-24 rounded-full bg-gradient-to-tr ${gradientAccents[idx]} blur-xl opacity-30 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none`}></div>
 
-          {/* Number badge */}
-          <span className="absolute right-5 top-3 text-6xl font-serif text-olive-900/40 pointer-events-none select-none">0{idx + 1}</span>
+          {/* Top row: Number */}
+          <div className="mb-6 relative z-10">
+            <span className="text-6xl font-serif text-olive-200/40 font-light select-none leading-none">0{idx + 1}</span>
+          </div>
 
-          <motion.div
-            animate={{ z: isHovered ? 60 : 0 }}
-            transition={{ type: "spring", stiffness: 350, damping: 20 }}
-            className="relative z-10 flex flex-col h-full"
-          >
-            <div className="w-10 h-1 bg-gold-500 mb-5 rounded-full transform origin-left transition-transform duration-500 group-hover:scale-x-150"></div>
+          {/* Title */}
+          <h4 className="font-serif text-[1.4rem] md:text-2xl text-ink leading-snug group-hover:text-olive-800 transition-colors duration-300 mb-2 relative z-10">
+            {area.title}
+          </h4>
 
-            <h4 className="font-serif text-2xl text-gold-400 mb-4 group-hover:text-gold-300 transition-colors leading-tight">{card.title}</h4>
+          {/* Tagline */}
+          <p className="text-[0.8rem] text-muted/70 font-light leading-relaxed mb-6 relative z-10">{area.tagline}</p>
 
-            <p className="text-olive-100/85 font-light leading-relaxed text-sm flex-grow">
-              {card.desc}
-            </p>
-
-            <div className="mt-8 pt-5 border-t border-olive-700 flex items-center justify-between opacity-50 group-hover:opacity-100 transition-opacity">
-              <span className="text-xs uppercase tracking-widest text-gold-500 font-bold">Discover</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400 transform group-hover:translate-x-2 transition-transform duration-300"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+          {/* Bottom: accent dot + Read more */}
+          <div className="mt-auto flex items-center gap-3 relative z-10">
+            <div className={`w-2 h-2 rounded-full ${accentDots[idx]} transition-transform duration-300 group-hover:scale-150`}></div>
+            <span className={`text-[0.7rem] uppercase tracking-[0.15em] font-medium transition-colors duration-300 ${isExpanded ? 'text-gold-600' : 'text-olive-400 group-hover:text-gold-600'}`}>
+              {isExpanded ? 'Collapse' : 'Read more'}
+            </span>
+            <div className={`ml-auto text-olive-300 group-hover:text-gold-500 transition-all duration-300 ${isExpanded ? 'rotate-180 text-gold-500' : ''}`}>
+              <ChevronDown />
             </div>
-          </motion.div>
+          </div>
+
         </div>
-      </motion.div>
+      </button>
     </motion.div>
   );
 };
 
 const Research = () => {
-  const cards = [
-    { title: "Polygenic Risk Scores", image: "research_polygenic.png", desc: "Evaluating cost-effectiveness and predictive power of polygenic risk score-stratified screening for cardiovascular and complex diseases." },
-    { title: "Rare Variants in the Population", image: "research_rare_variants.png", desc: "Leveraging rare variant analyses across biobanks to uncover novel disease associations and potential therapeutic targets." },
-    { title: "Functional Genomics", image: "research_functional_genomics.png", desc: "Building integrative functional genomic models to understand gene regulation, brain development, and disease mechanisms." }
-  ];
-
+  const [expandedIdx, setExpandedIdx] = useState(null);
+  const researchAreas = SITE_CONTENT.research.areas;
+  const diseaseAreas = SITE_CONTENT.research.diseaseAreas;
   return (
-    <section id="research" className="py-16 md:py-32 bg-sage-50 text-ink px-4 md:px-6 lg:px-12 relative overflow-hidden">
+    <section id="research" className="py-20 md:py-32 lg:py-40 bg-sage-50 text-ink px-4 md:px-6 lg:px-12 relative overflow-hidden">
+      {/* Decorative background */}
+      <div className="absolute top-0 right-0 w-[35%] h-[35%] bg-sage-200/30 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[25%] h-[25%] bg-gold-200/20 rounded-full blur-[100px] pointer-events-none"></div>
+
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-12 md:mb-24">
-          <h2 className="text-sm tracking-widest text-olive-600 font-bold uppercase mb-4">Focus Areas</h2>
-          <h3 className="text-4xl md:text-5xl lg:text-7xl font-serif text-ink">Our Research</h3>
+        <div className="text-center mb-14 md:mb-20">
+          <h2 className="text-sm tracking-widest text-olive-800 font-serif uppercase mb-4">Focus Areas</h2>
+          <h3 className="text-4xl md:text-5xl lg:text-7xl font-serif text-olive-800">Our Research</h3>
           <div className="mt-8 flex justify-center opacity-50"><SectionDivider /></div>
         </div>
 
-        {/* Massive padding prevents crazy 3D scaling & shadows from getting clipped by the scroll container */}
-        <div className="flex overflow-x-auto gap-6 md:gap-10 py-[40px] md:py-[100px] snap-x snap-mandatory scroll-smooth hide-scrollbar px-8 -mx-8 md:px-16 md:-mx-16 lg:px-24 lg:-mx-24 items-stretch">
-          {cards.map((card, idx) => (
-            <div key={idx} className="flex-none w-[85vw] md:w-[350px] lg:w-[320px] snap-center">
-              <ResearchCard card={card} idx={idx} />
-            </div>
+        {/* Research Areas — 3 horizontal cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-12 lg:mb-16">
+          {researchAreas.map((area, idx) => (
+            <ResearchArea
+              key={idx}
+              area={area}
+              idx={idx}
+              isExpanded={expandedIdx === idx}
+              onToggle={() => setExpandedIdx(expandedIdx === idx ? null : idx)}
+            />
           ))}
         </div>
+
+        {/* Expanded content — notepad style, full width below the cards */}
+        {expandedIdx !== null && (
+          <motion.div
+            key={expandedIdx}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+            className="mb-12 lg:mb-16"
+          >
+            <div className="relative bg-[#FFFEF9] border border-olive-200/40 rounded-2xl shadow-[0_15px_50px_-12px_rgba(107,112,92,0.15)] overflow-hidden">
+              {/* Red margin line */}
+              <div className="absolute left-10 md:left-14 top-0 bottom-0 w-[2px] bg-red-300/40 z-10 pointer-events-none"></div>
+              
+              {/* Notepad holes */}
+              <div className="absolute left-3 md:left-5 top-8 flex flex-col gap-[2.1rem] z-10 pointer-events-none">
+                {Array.from({ length: 12 }).map((_, i) => (
+                  <div key={i} className="w-4 h-4 rounded-full bg-bone border-2 border-olive-200/50 shadow-inner"></div>
+                ))}
+              </div>
+
+              <div className="pl-14 md:pl-20 pr-6 md:pr-10 lg:pr-14 py-8 md:py-10"
+                style={{
+                  backgroundImage: 'repeating-linear-gradient(transparent, transparent 2.05rem, #C2C5AA33 2.05rem, #C2C5AA33 2.1rem)',
+                  backgroundPositionY: '0.6rem'
+                }}
+              >
+                <h4 className="font-handwriting text-3xl md:text-4xl text-blue-700 mb-6 font-bold">{researchAreas[expandedIdx].title}</h4>
+                {researchAreas[expandedIdx].paragraphs.map((para, pIdx) => (
+                  <motion.p
+                    key={pIdx}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: pIdx * 0.08, duration: 0.4 }}
+                    className="font-handwriting text-xl md:text-[1.35rem] text-blue-700 leading-[2.1rem] mb-4"
+                  >
+                    {para}
+                  </motion.p>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+        {/* Disease Focus Areas — full width below */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+        >
+          <div className="bg-bone border border-olive-200/60 rounded-3xl p-8 shadow-[0_15px_40px_-15px_rgba(107,112,92,0.15)] relative overflow-hidden">
+            
+
+            {/* Subtle glow and abstract backdrop */}
+            <div className="absolute -top-10 -right-10 w-48 h-48 bg-gold-200/20 rounded-full blur-[40px] pointer-events-none z-0"></div>
+
+            <div className="relative z-10 flex justify-between">
+              
+              <div className="flex-grow pb-4">
+                <h4 className="text-[2rem] font-serif text-olive-800 mb-2 leading-tight">
+                  Current Disease<br />
+                  <span className="italic text-gold-600">Focus Areas</span>
+                </h4>
+                
+                <p className="text-[0.7rem] font-sans uppercase tracking-widest text-muted/60 mb-8">
+                  Spanning cardiovascular, respiratory, metabolic & autoimmune domains
+                </p>
+
+                <div className="flex flex-wrap gap-4 md:gap-6">
+                  {diseaseAreas.map((disease, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, x: 10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.4 + idx * 0.1 }}
+                      className="flex items-center gap-3 group cursor-default"
+                    >
+                      <div className="w-8 h-8 rounded-full bg-cream border border-gold-200/60 flex items-center justify-center shrink-0 group-hover:bg-gold-200/40 transition-colors duration-300">
+                        <span className="w-2 h-2 rounded-full bg-orange-400 group-hover:scale-125 transition-transform duration-300"></span>
+                      </div>
+                      <span className="text-[1.05rem] text-olive-800 font-medium group-hover:text-ink transition-colors duration-300">{disease}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Bold rounded orange line on the right */}
+              <div className="w-2 bg-orange-400 rounded-full shrink-0 ml-6 md:ml-8 my-1 shadow-sm"></div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
 };
 
-// --- Live Dynamic 3D Tracking Team Card Component (Unified with Research Card style) ---
+// --- Premium Team Card Component ---
 const TeamCard = ({ member, delay, idx }) => {
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef(null);
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
 
+  const hasPhoto = member.photo && member.photo.trim() !== '';
+
+  // Curated gradient palettes for members without photos
+  const gradientPalettes = [
+    'linear-gradient(135deg, #2F3325 0%, #3a4a2e 30%, #4a5a3a 60%, #2F3325 100%)',
+    'linear-gradient(135deg, #1a2a2e 0%, #2b3d42 30%, #3a5048 60%, #1a2a2e 100%)',
+    'linear-gradient(135deg, #2d2a25 0%, #3e3830 30%, #4a4238 60%, #2d2a25 100%)',
+    'linear-gradient(135deg, #252a33 0%, #333a48 30%, #3e4858 60%, #252a33 100%)',
+    'linear-gradient(135deg, #2a2530 0%, #3a3040 30%, #483a50 60%, #2a2530 100%)'
+  ];
+
+  // Accent colors that pair with each gradient
+  const accentColors = ['#8fae6b', '#6bb5a0', '#c4a05a', '#7b9ec7', '#b08bc4'];
+
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-
-    const xPct = (mouseX / width - 0.5) * 2;
-    const yPct = (mouseY / height - 0.5) * 2;
-
-    setRotateX(yPct * 20);
-    setRotateY(-xPct * 20);
+    const xPct = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+    const yPct = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+    setRotateX(yPct * 12);
+    setRotateY(-xPct * 12);
   };
 
   const handleMouseLeave = () => {
@@ -434,12 +618,12 @@ const TeamCard = ({ member, delay, idx }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.95, y: 20 }}
-      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: delay || idx * 0.15, duration: 0.6 }}
-      className="w-full h-full group cursor-pointer"
-      style={{ perspective: 1200 }}
+      transition={{ delay: delay || idx * 0.12, duration: 0.7, ease: 'easeOut' }}
+      className="w-full h-full group"
+      style={{ perspective: 1000 }}
     >
       <motion.div
         ref={cardRef}
@@ -447,122 +631,146 @@ const TeamCard = ({ member, delay, idx }) => {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={handleMouseLeave}
         animate={{
-          rotateX: isHovered ? rotateX * 1.2 : 0,
-          rotateY: isHovered ? rotateY * 1.2 : 0,
-          scale: isHovered ? 1.05 : 1,
-          z: isHovered ? 40 : 0
+          rotateX: isHovered ? rotateX : 0,
+          rotateY: isHovered ? rotateY : 0,
+          scale: isHovered ? 1.03 : 1,
         }}
-        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+        transition={{ type: "spring", stiffness: 300, damping: 25 }}
         style={{ transformStyle: "preserve-3d" }}
-        className="bg-olive-800 rounded-3xl h-[480px] relative overflow-hidden border border-olive-700 shadow-xl hover:shadow-[0_40px_80px_-20px_rgba(180,140,40,0.5)] transition-all duration-500 hover:z-50"
+        className="rounded-[1.75rem] h-[520px] relative overflow-hidden shadow-[0_8px_30px_-10px_rgba(0,0,0,0.2)] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.35)] transition-shadow duration-700 cursor-pointer"
       >
-        {/* Full card background photo */}
+        {/* Card Background */}
         <div className="absolute inset-0 w-full h-full">
-          <img
-            src={member.photo || `data:image/svg+xml;utf8,<svg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'><rect width='100%25' height='100%25' fill='%234a523a'/><text x='50%25' y='40%25' font-size='80' fill='%23D4A853' text-anchor='middle' font-family='serif' alignment-baseline='middle'>${member.initials}</text></svg>`}
-            alt={member.name}
-            className="w-full h-full object-cover object-top opacity-80 group-hover:opacity-50 transition-opacity duration-500"
-          />
-          {/* Overlay gradient so text is readable */}
-          <div className="absolute inset-0 bg-gradient-to-t from-olive-900 via-olive-900/80 to-transparent"></div>
+          {hasPhoto ? (
+            <>
+              <img
+                src={member.photo}
+                alt={member.name}
+                className="w-full h-full object-cover object-top transition-all duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
+            </>
+          ) : (
+            <>
+              {/* Rich gradient background */}
+              <div className="absolute inset-0" style={{ background: gradientPalettes[idx % gradientPalettes.length] }}></div>
+              
+              {/* Subtle animated texture overlay */}
+              <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '20px 20px' }}></div>
+              
+              {/* Decorative glow */}
+              <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full opacity-20 group-hover:opacity-30 transition-opacity duration-700 blur-[60px]" style={{ background: accentColors[idx % accentColors.length] }}></div>
+              <div className="absolute -bottom-16 -left-16 w-48 h-48 rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-700 blur-[50px]" style={{ background: accentColors[idx % accentColors.length] }}></div>
+
+              {/* Large elegant initials */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="relative">
+                  {/* Decorative ring */}
+                  <div className="w-32 h-32 rounded-full border border-white/[0.08] group-hover:border-white/[0.15] transition-all duration-700 group-hover:scale-110 flex items-center justify-center">
+                    <div className="w-28 h-28 rounded-full border border-white/[0.05] flex items-center justify-center">
+                      <span className="text-5xl font-serif text-white/20 group-hover:text-white/30 transition-colors duration-500 select-none tracking-wide">
+                        {member.initials}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom gradient for text readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            </>
+          )}
         </div>
 
-        {/* Card Content popping forward */}
-        <motion.div
-          animate={{ z: isHovered ? 60 : 0 }}
-          transition={{ type: "spring", stiffness: 350, damping: 20 }}
-          className="relative z-10 flex flex-col justify-end h-full p-8"
-        >
-          <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
-            <h4 className="font-serif text-3xl text-gold-400 group-hover:text-gold-300 transition-colors drop-shadow-md leading-tight mb-1">{member.name}</h4>
-            <p className="text-xs font-bold uppercase tracking-widest text-bone/80 mb-4">{member.role}</p>
+        {/* Gold accent line at top */}
+        <div className="absolute top-0 left-0 right-0 h-[3px] z-20">
+          <div className="h-full w-0 group-hover:w-full transition-all duration-700 ease-out" style={{ background: `linear-gradient(90deg, transparent, ${accentColors[idx % accentColors.length]}, transparent)` }}></div>
+        </div>
 
-            <p className="text-olive-100/90 font-light text-sm leading-relaxed drop-shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mb-6 line-clamp-4">
-              {member.desc}
+        {/* Vertical Social Icons Bar floating near the photo */}
+        <div className="absolute top-5 right-5 z-30 flex flex-col items-center gap-3.5 bg-black/40 hover:bg-black/70 backdrop-blur-md py-3.5 px-2.5 rounded-full border border-white/15 shadow-xl transition-all duration-300 group-hover:border-gold-400/40">
+          {member.linkedin && (
+            <a href={member.linkedin} target="_blank" rel="noreferrer" title="LinkedIn" className="text-white/70 hover:text-gold-400 hover:scale-110 transition-all duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+          )}
+          {member.github && (
+            <a href={member.github} target="_blank" rel="noreferrer" title="GitHub" className="text-white/70 hover:text-gold-400 hover:scale-110 transition-all duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+          )}
+          {member.twitter && (
+            <a href={member.twitter} target="_blank" rel="noreferrer" title="Twitter" className="text-white/70 hover:text-gold-400 hover:scale-110 transition-all duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+            </a>
+          )}
+          {member.email && (
+            <a href={member.email} target="_blank" rel="noreferrer" title="Email" className="text-white/70 hover:text-gold-400 hover:scale-110 transition-all duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </a>
+          )}
+        </div>
+
+        {/* Card Content */}
+        <div className="relative z-10 flex flex-col justify-end h-full p-7 md:p-8">
+          <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+            
+            {/* Role badge */}
+            <div className="mb-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-y-2 group-hover:translate-y-0">
+              <span className="inline-block text-[0.6rem] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full border border-white/15 text-white/70 backdrop-blur-sm bg-white/[0.05]">
+                {member.role}
+              </span>
+            </div>
+
+            {/* Name */}
+            <h4 className="font-serif text-2xl md:text-[1.7rem] text-white leading-tight mb-1 drop-shadow-lg">
+              {member.name}
+            </h4>
+            
+            {/* Role (visible by default, hides on hover) */}
+            <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-gold-500/80 mb-3 group-hover:opacity-0 transition-opacity duration-300">
+              {member.role}
             </p>
 
-            {/* Social Icons */}
-            <div className="flex items-center gap-5 border-t border-olive-600/50 pt-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-              {member.linkedin && (
-                <a href={member.linkedin} target="_blank" rel="noreferrer" className="text-gold-500 hover:text-bone hover:scale-110 transition-all">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                </a>
-              )}
-              {member.github && (
-                <a href={member.github} target="_blank" rel="noreferrer" className="text-gold-500 hover:text-bone hover:scale-110 transition-all">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                </a>
-              )}
-              {member.twitter && (
-                <a href={member.twitter} target="_blank" rel="noreferrer" className="text-gold-500 hover:text-bone hover:scale-110 transition-all">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
-                </a>
-              )}
-              {member.email && (
-                <a href={member.email} target="_blank" rel="noreferrer" className="text-gold-500 hover:text-bone hover:scale-110 transition-all">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                </a>
-              )}
-            </div>
+            {/* Description */}
+            <p className="text-white/60 font-light text-[0.8rem] leading-relaxed mb-1 line-clamp-4 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+              {member.desc}
+            </p>
           </div>
-        </motion.div>
+        </div>
       </motion.div>
     </motion.div>
   );
 }
 
 const Team = () => {
-  const teamMembers = [
-    {
-      name: "Dr. Tanmoy Roychowdhury",
-      role: "Principal Investigator",
-      initials: "TR",
-      photo: "",
-      linkedin: "#",
-      github: "#",
-      twitter: "#",
-      email: "mailto:tanmoy.roychowdhury@ashoka.edu.in",
-      desc: "His work spans biology, physics, and data science, charting structural variants and neuropsychiatric dysregulation. Faculty at Ashoka University."
-    },
-    {
-      name: "Govind",
-      role: "Research Assistant",
-      initials: "G",
-      photo: "",
-      linkedin: "#",
-      github: "#",
-      twitter: "#",
-      email: "mailto:govind.mangropa@ashoka.edu.in",
-      desc: "Assisting in lab operations, data processing pipelines, and maintaining genomics computational infrastructure."
-    },
-    {
-      name: "Joydeep",
-      role: "Ph.D. Candidate",
-      initials: "J",
-      photo: "",
-      linkedin: "#",
-      github: "#",
-      twitter: "#",
-      email: "mailto:joydeep.das_phd25@ashoka.edu.in",
-      desc: "Investigating the genetic basis of complex traits using integrative multi-omics and advanced statistical models."
-    }
-  ];
-
+  const teamMembers = SITE_CONTENT.team;
   return (
-    <section id="team" className="py-16 md:py-32 px-4 md:px-6 lg:px-12 bg-cream">
+    <section id="team" className="py-16 md:py-32 px-4 md:px-6 lg:px-12 bg-cream relative overflow-hidden">
+      {/* Subtle decorative background */}
+      <div className="absolute top-0 left-0 w-[30%] h-[30%] bg-sage-200/20 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-0 right-0 w-[25%] h-[25%] bg-gold-200/15 rounded-full blur-[100px] pointer-events-none"></div>
+
       <SectionDivider />
-      <div className="max-w-6xl mx-auto mt-8 md:mt-16">
+      <div className="max-w-[85rem] mx-auto mt-8 md:mt-16 relative z-10">
         <div className="text-center mb-10 md:mb-20">
-          <h2 className="text-sm tracking-widest text-olive-600 font-bold uppercase mb-4">The People</h2>
-          <h3 className="text-4xl md:text-5xl font-serif text-ink italic">Meet the Lab</h3>
+          <h2 className="text-sm tracking-widest text-olive-600 font-serif uppercase mb-4">The People</h2>
+          <h3 className="text-4xl md:text-5xl lg:text-7xl font-serif text-ink">Meet the Lab</h3>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="w-16 h-[2px] bg-gold-500 mx-auto mt-8 origin-center"
+          />
+          <p className="text-muted/60 font-light text-sm mt-6 max-w-lg mx-auto">Researchers, students, and collaborators driving genomics innovation at Ashoka University</p>
         </div>
 
-        {/* Horizontally scrolling row for unlimited team members */}
-        {/* Massive padding prevents crazy 3D scaling & shadows from getting clipped by the scroll container */}
-        <div className="flex overflow-x-auto gap-6 md:gap-12 py-[40px] md:py-[100px] snap-x snap-mandatory scroll-smooth hide-scrollbar px-8 -mx-8 md:px-16 md:-mx-16 lg:px-24 lg:-mx-24 items-stretch">
+        {/* Grid layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 md:gap-6 py-6 items-stretch justify-center">
           {teamMembers.map((member, idx) => (
-            <div key={idx} className="flex-none w-[85vw] md:w-[350px] lg:w-[320px] snap-center">
-              <TeamCard member={member} idx={idx} delay={idx * 0.2} />
+            <div key={idx} className="w-full">
+              <TeamCard member={member} idx={idx} delay={idx * 0.1} />
             </div>
           ))}
         </div>
@@ -571,36 +779,83 @@ const Team = () => {
   );
 };
 
-// --- GlimpseCard Component (Photo Gallery Style) ---
+// --- GlimpseCard Component (Vintage Photo Print / Polaroid Style) ---
 const GlimpseCard = ({ item, idx }) => {
+  const imageList = item.images && item.images.length > 0 ? item.images : (item.image ? [item.image] : []);
+  const validImages = imageList.filter(img => img && img.trim() !== "");
+  const hasImages = validImages.length > 0;
+  const [currentIdx, setCurrentIdx] = useState(0);
+
+  useEffect(() => {
+    if (hasImages && validImages.length > 1) {
+      const interval = setInterval(() => {
+        setCurrentIdx((prev) => (prev + 1) % validImages.length);
+      }, 3500);
+      return () => clearInterval(interval);
+    }
+  }, [hasImages, validImages.length]);
+
+  // Expanded alternating rotations so any number of photos look naturally scattered
+  const rotations = [
+    '-rotate-3 hover:rotate-0',
+    'rotate-2 hover:rotate-0',
+    '-rotate-1 hover:rotate-0',
+    'rotate-3 hover:rotate-0',
+    '-rotate-2 hover:rotate-0',
+    'rotate-1 hover:rotate-0',
+    '-rotate-3 hover:rotate-0',
+    'rotate-2 hover:rotate-0'
+  ];
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: idx * 0.15, duration: 0.8 }}
-      className="relative group w-full aspect-[3/4] md:aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer shadow-[0_10px_30px_-15px_rgba(0,0,0,0.1)] hover:shadow-2xl transition-all duration-500 border border-olive-200/50"
+      transition={{ delay: idx * 0.1, duration: 0.8 }}
+      className={`relative group w-full bg-[#FFFEF9] p-4 pb-7 md:p-5 md:pb-9 rounded-2xl shadow-[0_15px_35px_-10px_rgba(0,0,0,0.2)] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.35)] transition-all duration-500 border border-stone-200/80 cursor-pointer transform ${rotations[idx % rotations.length]} hover:-translate-y-2 hover:z-30`}
     >
-      <div className="absolute inset-0 bg-olive-800/10 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+      {/* Photo Area with subtle inner border/shadow */}
+      <div className="relative w-full aspect-[4/3] md:aspect-[1/1] rounded-lg overflow-hidden bg-stone-100 border border-stone-200/60 shadow-inner">
+        {hasImages ? (
+          <>
+            <AnimatePresence initial={false}>
+              <motion.img
+                key={currentIdx}
+                src={validImages[currentIdx]}
+                alt={`${item.title} ${currentIdx + 1}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1.2, ease: "easeInOut" }}
+                className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+              />
+            </AnimatePresence>
+            {validImages.length > 1 && (
+              <div className="absolute top-3 right-3 z-20 flex gap-1.5 bg-black/30 backdrop-blur-sm px-2 py-1 rounded-full">
+                {validImages.map((_, i) => (
+                  <div key={i} className={`h-1 rounded-full transition-all duration-300 ${i === currentIdx ? 'bg-gold-400 w-2.5' : 'bg-white/60 w-1'}`}></div>
+                ))}
+              </div>
+            )}
+          </>
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-[#EAE6DF] via-[#DCD6CD] to-[#C8C1B4] flex flex-col items-center justify-center text-stone-600 relative overflow-hidden">
+            {/* Vintage photo paper grain texture */}
+            <div className="absolute inset-0 opacity-15" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #555 1px, transparent 0)', backgroundSize: '16px 16px' }}></div>
+            
+            <div className="w-16 h-16 rounded-full bg-white/40 border border-white/60 flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 transition-transform duration-500 z-10">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-stone-700"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><circle cx="8.5" cy="8.5" r="1.5" /><polyline points="21 15 16 10 5 21" /></svg>
+            </div>
+            <span className="font-sans text-[0.7rem] uppercase tracking-widest text-stone-600 font-medium z-10">Photo Placeholder</span>
+          </div>
+        )}
+      </div>
 
-      {/* Upload Placeholder / Image */}
-      {item.image ? (
-        <img src={item.image} alt={item.title} className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700 ease-out" />
-      ) : (
-        <div className="w-full h-full bg-olive-100 flex flex-col items-center justify-center text-olive-600/40 relative">
-          {/* Subtle grid pattern background for placeholder */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, black 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
-
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="mb-4 transform group-hover:scale-110 transition-transform duration-500"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><circle cx="8.5" cy="8.5" r="1.5" /><polyline points="21 15 16 10 5 21" /></svg>
-          <span className="font-serif italic text-sm tracking-wide">Image Placeholder</span>
-          <span className="font-sans text-[0.6rem] uppercase tracking-widest mt-2">{item.title}.png</span>
-        </div>
-      )}
-
-      {/* Elegant Caption Overlay */}
-      <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 bg-gradient-to-t from-ink/90 via-ink/40 to-transparent z-20 flex flex-col justify-end transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500">
-        <h4 className="font-serif text-2xl md:text-3xl text-bone mb-1 drop-shadow-md">{item.title}</h4>
-        <p className="font-sans text-[0.65rem] md:text-xs uppercase tracking-widest text-gold-400 opacity-60 group-hover:opacity-100 transition-opacity duration-500">{item.subtitle}</p>
+      {/* Caption on the White Photo Paper Border (Polaroid Style) */}
+      <div className="pt-5 px-2 text-center">
+        <h4 className="font-handwriting text-2xl md:text-3xl text-stone-800 tracking-wide font-bold mb-1 group-hover:text-gold-700 transition-colors duration-300">{item.title}</h4>
+        <p className="font-serif italic text-xs md:text-sm text-stone-500">{item.subtitle}</p>
       </div>
     </motion.div>
   );
@@ -608,22 +863,29 @@ const GlimpseCard = ({ item, idx }) => {
 
 // --- Glimpse Section Component ---
 const Glimpse = () => {
-  const items = [
-    { title: "Lab Members", subtitle: "The current roster", image: "" },
-    { title: "Group Outing", subtitle: "Lab retreat 2024", image: "" },
-    { title: "Lab Space", subtitle: "Computational infrastructure", image: "" }
-  ];
-
+  const items = SITE_CONTENT.glimpse;
   return (
-    <section id="glimpse" className="py-16 md:py-32 bg-bone text-ink px-4 md:px-6 lg:px-12 relative overflow-hidden">
+    <section id="glimpse" className="py-16 md:py-32 bg-[#F7F5F0] text-ink px-4 md:px-6 lg:px-12 relative overflow-hidden">
+      {/* Subtle background ambient glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[50%] bg-gold-200/20 rounded-full blur-[140px] pointer-events-none"></div>
+
       <SectionDivider />
       <div className="max-w-7xl mx-auto relative z-10 mt-8 md:mt-16">
-        <div className="text-center mb-10 md:mb-20">
-          <h2 className="text-sm tracking-widest text-olive-600 font-bold uppercase mb-4">Gallery</h2>
-          <h3 className="text-4xl md:text-5xl lg:text-6xl font-serif text-ink italic leading-tight">A Glimpse</h3>
+        <div className="text-center mb-12 md:mb-24">
+          <h2 className="text-sm tracking-widest text-olive-600 font-serif uppercase mb-4">Gallery</h2>
+          <h3 className="text-4xl md:text-5xl lg:text-7xl font-serif text-ink">A Glimpse</h3>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="w-16 h-[2px] bg-gold-500 mx-auto mt-8 origin-center"
+          />
+          <p className="text-muted/70 font-serif italic text-base mt-6 max-w-md mx-auto">Moments, people, and spaces from our laboratory</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-4 md:px-0">
+        {/* Responsive grid wrapping cleanly for any number of photo cards */}
+        <div className={`grid grid-cols-1 sm:grid-cols-2 ${items.length <= 2 ? 'max-w-4xl' : 'lg:grid-cols-3 max-w-7xl'} mx-auto gap-8 md:gap-10 px-2 md:px-0 py-4 items-stretch justify-center`}>
           {items.map((item, idx) => (
             <GlimpseCard key={idx} item={item} idx={idx} />
           ))}
@@ -636,232 +898,7 @@ const Glimpse = () => {
 
 
 // --- PUBLICATIONS DATA ---
-const publicationsData = {
-  broadArea: "Computational Genomics, Human Genetics and Precision Health",
-  note: "(*Co-first author, # Co-corresponding author)",
-  categories: [
-    {
-      name: "Cardiovascular, Metabolic & Lung Disease Genomics",
-      papers: [
-        {
-          num: 1,
-          authors: "ThÃ©riault S, Holdcraft J, Sharipova D, Faucherre A, Debiec R, Peloso G, Al-Kassou B, Aranki S, Swan EA, Ballotta A, Bellino M, BjÃ¶rck H, Boureau AS, Braund P, Corriveau F, Dagenais F, Folkersen L, Forte A, Francke M, Frigiola A, Gorbatov S, Guo D, Habchi K, Heydarpour M, Isselbacher E, Jopling C, Laporte F, Scouarnec SL, Li Z, Lichtner P, Maj C, Manikpurage H, Nguyen T, Norris R, Ong CS, Pibarot P, Roychowdhury T, Sarubbi B, Simonet F, Sundt T, Surakka I, Tessler I, Willer CJ, Wittmann S, Yang B, Berezovets I, Dopple Sr, DreÃŸen M, Knoll K, Puehler T, Schunkert H, Avierinos JF, Bissell MM, Bolger A, BossÃ© Y, Bossone E, Brion M, Citro R, Vincentiis CD, Deeb GM, Corte AD, Dina C, Durst R, Ensminger S, Eriksson P, Evangelista P, Franco-Cereceda A, Gilon D, Giusti B, Hetherington S, Huggins G, Krane M, Tourneau TL, Limongelli G, Mathieu P, Messika-Zeitoun D, Michelena H, Milewicz D, Muehlschlegel J, Murdock D, Nickenig G, Nistri S, NÃ¶then M, Pluchinotta F, Prakash S, Samani N, Schott JJ, Webb T, Zaffran S, Seyfried SA, Eagle K, Schumacher J, Trenkwalder T, Body S",
-          title: "Genome and transcriptome-wide analyses identify multiple candidate genes and a significant polygenic contribution in bicuspid aortic valve",
-          journal: "Circulation",
-          year: 2025,
-          pmid: "41645906"
-        },
-        {
-          num: 2,
-          authors: "Kelemen M, Danesh J, Di Angelantonio E, Inouye M, O'Sullivan J, Pennells L, Roychowdhury T, Sweeting MJ, Wood AM, Harrison S, Kim LG",
-          title: "Evaluating the cost-effectiveness of polygenic risk score-stratified screening for abdominal aortic aneurysm",
-          journal: "Nature Communications",
-          year: 2024,
-          pmid: "39277617"
-        },
-        {
-          num: 3,
-          authors: "Roychowdhury T*#, Klarin D*, Levin MG*, Spin JM, Rhee YH, Deng A, Headley CA, Surakka I, Tsao NL, Gellatly C, Zuber V, Shen F, Hornsby WE, Laursen IH, Verma SS, Locke AE, Einarsson G, Thorleifsson G, Graham SE, Dikilitas O, Pattee JW, Judy RL, Verges FP, Nielsen JB, Wolford BN, Brumpton BM, DilmÃ© J, Peypoch O, Juscafresa LC, Edwards TL, Li D, Banasik K, Brunak S, Jacobsen RL, Garcia-Barrio MT, Zhang J, Rasmussen LM, Lee R, Handa A, Wanhainen A, Mani K, Lindholt JS, Obel LM, Strauss E, Oszkinis G, Nelson CP, Saxby K, Herwaarden JV, Van der Laan SW, Setten JV, Camacho M, Davis FM, Wasikowski R, Tsoi LC, Gudjonsson JE, Eliason JL, Coleman DM, Henke PK, Ganesh SK, Chen YE, Guan W, Pankow JS, Pankratz N, Pedersen OB, Erikstrup C, Tang W, Hveem K, Gudbjartsson D, Gretarsdottir S, Thorsteinsdottir U, Holm H, Stefansson K, Ferreira MA, Baras A, Kullo IJ, Ritchie MD, Christensen AH, Iversen KK, Eldrup N, Sillesen H, Ostrowski SR, Bundgaard H, Ullum H, Burgess S, Gill D, Gallagher K, Sabater-Lleal M, DiscovEHR, Regeneron Genetics Center, UK Aneurysm Growth Study, DBDS Genomic Consortium, VA Million Veteran Program, Jones GT, Bown MJ, Tsao PS, Willer CJ#, Damrauer SM#",
-          title: "Genome-wide association meta-analysis identifies risk loci for abdominal aortic aneurysm and highlights PCSK9 as a therapeutic target",
-          journal: "Nature Genetics",
-          year: 2023,
-          pmid: "37845353"
-        },
-        {
-          num: 4,
-          authors: "Klarin D*, Devineni P*, Sendamarai AK*, Angueira AR, Graham SE, Shen YH, Levin MG, Pirruccello JP, Surakka I, Karnam PR, Roychowdhury T, Li Y, Wang M, Aragam KG, Paruchuri K, Zuber V, Shakt GE, Tsao NL, Judy RL, Vy HMT, Verma SS, Rader DJ, Do R, Bavaria JE, Nadkarni GN, Ritchie MD; VA Million Veteran Program; Burgess S, Guo DC, Ellinor PT, LeMaire SA, Milewicz DM, Willer CJ, Natarajan P, Tsao PS, Pyarajan S#, Damrauer SM#",
-          title: "Genome-wide Association Study of Thoracic aortic aneurysm and Dissection in the Million Veteran Program",
-          journal: "Nature Genetics",
-          year: 2022,
-          pmid: "37308786"
-        },
-        {
-          num: 5,
-          authors: "Roychowdhury T*, Lu H*, Hornsby WE, Crone B, Wang GT, Guo D, Sendamarai A, Devineni P, Lin M, Zhou W, Graham SE, Wolford BN, Surakka I, Wang Z, Chang L, Zhang J, Mathis M, Brummett CM, Melendez TL, Shea MJ, Kim KM, Deeb MG, Patel HJ, Eliason J, Eagle KA, Yang B, Ganesh SK, Brumpton B, Ã…svold BO, Skogholt AH, Hveem K, VA Million Veteran Program, Pyarajan S, Klarin D, Tsao PS, Damrauer SM, Leal SM, Milewicz DM, Chen EY, Garcia-Barrio MT#, Willer CJ#",
-          title: "Regulatory variants in TCF7L2 are associated with thoracic aortic aneurysm",
-          journal: "American Journal of Human Genetics",
-          year: 2021,
-          pmid: "34265237"
-        },
-        {
-          num: 6,
-          authors: "Nielsen JB*, Rom O*, Surakka I*, Graham SE*, Zhou W*, Roychowdhury T, Fritsche LG, Gagliano Taliun SA, Sidore C, Liu Y, Gabrielsen ME, Skogholt AH, Wolford B, Overton W, Zhao Y, Chen J, Zhang H, Hornsby WE, Acheampong A, Grooms A, Schaefer A, Zajac GJM, Villacorta L, Zhang J, Brumpton B, LÃ¸set M, Rai V, Lundegaard PR, Olesen MS, Taylor KD, Palmer ND, Chen YD, Choi SH, Lubitz SA, Ellinor PT, Barnes KC, Daya M, Rafaels N, Weiss ST, Lasky-Su J, Tracy RP, Vasan RS, Cupples LA, Mathias RA, Yanek LR, Becker LC, Peyser PA, Bielak LF, Smith JA, Aslibekyan S, Hidalgo BA, Arnett DK, Irvin MR, Wilson JG, Musani SK, Correa A, Rich SS, Guo X, Rotter JI, Konkle BA, Johnsen JM, Ashley-Koch AE, Telen MJ, Sheehan VA, Blangero J, Curran JE, Peralta JM, Montgomery C, Sheu WH, Chung RH, Schwander K, Nouraie SM, Gordeuk VR, Zhang Y, Kooperberg C, Reiner AP, Jackson RD, Bleecker ER, Meyers DA, Li X, Das S, Yu K, LeFaive J, Smith A, Blackwell T, Taliun D, Zollner S, Forer L, Schoenherr S, Fuchsberger C, Pandit A, Zawistowski M, Kheterpal S, Brummett CM, Natarajan P, Schlessinger D, Lee S, Kang HM, Cucca F, Holmen OL, Ã…svold BO, Boehnke M, Kathiresan S, Abecasis GR, Chen YE, Willer CJ#, Hveem K#",
-          title: "Loss-of-function genomic variants highlight potential therapeutic targets for cardiovascular disease",
-          journal: "Nature Communications",
-          year: 2020,
-          pmid: "33339817"
-        },
-        {
-          num: 7,
-          authors: "Zhou W*, Brumpton B*, Kabil O*, Gudmundsson J*, Thorleifsson G*, Weinstock J, Zawistowski M, Nielsen JB, Chaker L, Medici M, Teumer A, Naitza S, Sanna S, Schultheiss UT, Cappola A, Karjalainen J, Kurki M, Oneka M, Taylor P, Fritsche LG, Graham SE, Wolford BN, Overton W, Rasheed H, Haug EB, Gabrielsen ME, Skogholt AH, Surakka I, Davey Smith G, Pandit A, Roychowdhury T, Hornsby WE, Jonasson JG, Senter L, Liyanarachchi S, Ringel MD, Xu L, Kiemeney LA, He H, Netea-Maier RT, Mayordomo JI, Plantinga TS, Hrafnkelsson J, Hjartarson H, Sturgis EM, Palotie A, Daly M, Citterio CE, Arvan P, Brummett CM, Boehnke M, de la Chapelle A, Stefansson K, Hveem K, Willer CJ#, Asvold BO#",
-          title: "GWAS of thyroid stimulating hormone highlights pleiotropic effects and inverse genetic association with thyroid cancer",
-          journal: "Nature Communications",
-          year: 2020,
-          pmid: "32769997"
-        }
-      ]
-    },
-    {
-      name: "Brain and Developmental Disease Genomics",
-      papers: [
-        {
-          num: 1,
-          authors: "Adkar S, Lynch J, Choi RB, Roychowdhury T, Judy RL, Paruchuri K, Go DC, Bamezai S, Cabot J, Sorondo S, Levin MG, Milewicz DM, Willer CJ, Natarajan P, Pyarajan S, Chang KM, Damrauer S, Tsao P, Skirboll S, Leeper NJ, Klarin D",
-          title: "Dissecting the genetic architecture of intracranial aneurysms",
-          journal: "Circulation: Genomic and Precision Medicine",
-          year: 2025,
-          pmid: "40255156"
-        },
-        {
-          num: 2,
-          authors: "Amiri A*, Coppola G*, Scuderi S*, Wu F*, Roychowdhury T*, Liu F, Pochareddy S, Shin Y, Safi A, Song L, Zhu Y, Sousa AM, PsychENCODE consortium, Gerstein M, Crawford GE, Sestan N, Abyzov A#, Vaccarino FM#",
-          title: "Transcriptome and epigenome landscape of human cortical development modeled in brain organoids",
-          journal: "Science",
-          year: 2018,
-          pmid: "30545853"
-        },
-        {
-          num: 3,
-          authors: "Bae T, Tomasini L, Mariani J, Zhou B, Roychowdhury T, Franjic D, Pletikos M, Pattni R, Chen BJ, Venturini E, Riley-Gillis B, Sestan N, Urban AE, Abyzov A#, Vaccarino FM#",
-          title: "Different mutational rates and mechanisms in human cells at pre-gastrulation and neurogenesis",
-          journal: "Science",
-          year: 2018,
-          pmid: "29217587"
-        },
-        {
-          num: 4,
-          authors: "Hu B et al.",
-          title: "Neuronal and glial 3D chromatin architecture informs the cellular etiology of brain disorders",
-          journal: "Nature Communications",
-          year: 2021,
-          pmid: "34172755"
-        },
-        {
-          num: 5,
-          authors: "Gandal MJ et al.",
-          title: "Transcriptome-wide isoform-level dysregulation in ASD, schizophrenia, and bipolar disorder",
-          journal: "Science",
-          year: 2018,
-          pmid: "30545856"
-        },
-        {
-          num: 6,
-          authors: "Li M et al.",
-          title: "Integrative functional genomic analysis of human brain development and neuropsychiatric risks",
-          journal: "Science",
-          year: 2018,
-          pmid: "30545854"
-        },
-        {
-          num: 7,
-          authors: "Wang D et al.",
-          title: "Comprehensive functional genomic resource and integrative model for the human brain",
-          journal: "Science",
-          year: 2018,
-          pmid: "30545857"
-        }
-      ]
-    },
-    {
-      name: "Structural Variations in Genomes",
-      papers: [
-        {
-          num: 1,
-          authors: "Zhou B, Purmann C, Guo H, Shin GW, Huang Y, Pattni R, Meng Q, Greer SU, Roychowdhury T, Wood RN, Ho M, Dohna H, Abyzov A, Hallmayer J, Wong WH, Ji H, Urban AE",
-          title: "Resolving the 22q11.2 deletions using CTLR-Seq reveals chromosomal rearrangement mechanisms and individual variance in breakpoints",
-          journal: "PNAS",
-          year: 2024,
-          pmid: "39042694"
-        },
-        {
-          num: 2,
-          authors: "Roychowdhury T, Abyzov A",
-          title: "Chromatin organization modulates the origin of heritable structural variations in human genome",
-          journal: "Nucleic Acids Research",
-          year: 2019,
-          pmid: "30773596"
-        },
-        {
-          num: 3,
-          authors: "Roychowdhury T#, Mandal S, Bhattacharya A#",
-          title: "Analysis of IS6110 insertion sites provides a glimpse into genome evolution of Mycobacterium tuberculosis",
-          journal: "Scientific Reports",
-          year: 2015,
-          pmid: "26215170"
-        }
-      ]
-    },
-    {
-      name: "Pathogen Genomics (Early works)",
-      papers: [
-        {
-          num: 1,
-          authors: "Mandal S, Roychowdhury T, Bhattacharya A",
-          title: "Pattern of genomic variation in SARS-CoV-2 (COVID-19) suggests restricted nonrandom changes: Analysis using Shewhart control charts",
-          journal: "Journal of Biosciences",
-          year: 2021,
-          pmid: "33709963"
-        },
-        {
-          num: 2,
-          authors: "Roychowdhury T, Singh VK, Bhattacharya A",
-          title: "Classification of pathogenic microbes using a minimal set of single nucleotide polymorphisms derived from whole genome sequences",
-          journal: "Genomics",
-          year: 2018,
-          pmid: "29432978"
-        },
-        {
-          num: 3,
-          authors: "Biswal DK*, Roychowdhury T*, Pandey P, Tandon V",
-          title: "De novo genome and transcriptome analyses provide insights into the biology of the trematode human parasite Fasciolopsis buski",
-          journal: "PLoS One",
-          year: 2018,
-          pmid: "30325945"
-        },
-        {
-          num: 4,
-          authors: "Mandal S, Roychowdhury T, Chirom K, Bhattacharya A, Singh RKB",
-          title: "Complex multifractal nature in Mycobacterium tuberculosis genome",
-          journal: "Scientific Reports",
-          year: 2017,
-          pmid: "28440326"
-        },
-        {
-          num: 5,
-          authors: "Kumar M, Prasad NG, Roychowdhury T, Thakur PK, Banakar P, Shukla RN, Jones MG, Rao U",
-          title: "De novo Transcriptome sequencing and Analysis of the Cereal Cyst Nematode, Heterodera avenae",
-          journal: "PLoS One",
-          year: 2014,
-          pmid: "24802510"
-        },
-        {
-          num: 6,
-          authors: "Roychowdhury T, Vishnoi A, Bhattacharya A",
-          title: "Next-Generation Anchor Based Phylogeny (NexABP): Constructing phylogeny from Next-generation sequencing data",
-          journal: "Scientific Reports",
-          year: 2013,
-          pmid: "24022334"
-        },
-        {
-          num: 7,
-          authors: "Das S*, Roychowdhury T*, Kumar P, Kumar A, Kalra P, Singh J, Singh S, Prasad HK#, Bhattacharya A#",
-          title: "Genetic heterogeneity revealed by sequence analysis of Mycobacterium tuberculosis isolates from extra-pulmonary tuberculosis patients",
-          journal: "BMC Genomics",
-          year: 2013,
-          pmid: "23773324"
-        }
-      ]
-    }
-  ],
-  news: [
-    { text: "Hope for first drug treatment for life-threatening aneurysms", url: "https://le.ac.uk/news/2023/october/aneurysms-drug-treatment" },
-    { text: "Study identifies nearly 100 abdominal aortic aneurysm risk genes", url: "https://www.bioworld.com/articles/702563-study-identifies-nearly-100-abdominal-aortic-aneurysm-risk-genes" },
-    { text: "Interview in American Journal of Human Genetics â€” Highlighted article of September 2021", url: "https://www.ashg.org/publications-news/ashg-news/inside-ajhg-a-chat-with-cristen-willer-and-tanmoy-roychowdhury/" },
-    { text: "Unlocking genetic clues behind aortic aneurysm", url: "https://labblog.uofmhealth.org/lab-notes/unlocking-genetic-clues-behind-aortic-aneurysm" },
-    { text: "Revealing the brain's molecular architecture by PsychENCODE consortium (member). Cover story of Science, 14th December, 2018.", url: "https://www.science.org/doi/10.1126/science.362.6420.1262" },
-    { text: "Using brain organoids to uncover causes of neuropsychiatric disorders", url: "https://individualizedmedicineblog.mayoclinic.org/2019/01/14/using-brain-organoids-to-uncover-causes-of-neuropsychiatric-disorders/" }
-  ]
-};
+const publicationsData = SITE_CONTENT.publications;
 
 const Publications = () => {
   const [expandedCategory, setExpandedCategory] = useState(null);
@@ -928,11 +965,7 @@ const Publications = () => {
                   {/* Left accent bar */}
                   <div className={`absolute left-0 top-0 bottom-0 w-[4px] ${categoryColors[catIdx].bg} rounded-l-xl transition-all duration-500`}></div>
 
-                  {/* Category icon */}
-                  <div className="shrink-0 pl-4 text-olive-400 group-hover:text-gold-600 transition-colors duration-300">
-                    {React.createElement(categoryIcons[catIdx] || DnaIcon)}
-                  </div>
-
+                  <div className="shrink-0 pl-4"></div>
                   <div className="flex-grow text-left">
                     <h4 className="font-serif text-xl md:text-2xl text-ink leading-snug group-hover:text-olive-800 transition-colors">
                       {category.name}
@@ -1019,8 +1052,8 @@ const Publications = () => {
           className="mt-16"
         >
           <div className="text-center mb-10">
-            <h4 className="text-sm tracking-widest text-gold-600 font-bold uppercase mb-3">In the News</h4>
-            <h5 className="text-2xl md:text-3xl font-serif text-ink">News & Highlights</h5>
+            <h4 className="text-sm tracking-widest text-gold-600 font-serif uppercase mb-3">In the News</h4>
+            <h5 className="text-4xl md:text-5xl lg:text-7xl font-serif text-ink">News & Highlights</h5>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1060,7 +1093,7 @@ const Publications = () => {
           className="text-center mt-16 md:mt-24"
         >
           <a
-            href="https://scholar.google.com/citations?user=REPLACE_SCHOLAR_ID"
+            href={publicationsData.scholarUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 bg-olive-800 hover:bg-gold-600 text-bone transition-all duration-300 px-8 py-4 rounded-full text-xs font-semibold uppercase tracking-widest shadow-xl transform hover:-translate-y-1"
@@ -1086,16 +1119,16 @@ const Footer = () => (
 
         {/* Contact Column */}
         <div className="md:col-span-5">
-          <h3 className="text-[0.65rem] font-sans font-bold uppercase tracking-[0.3em] text-gold-500 mb-8">Contact Us</h3>
+          <h3 className="text-[0.65rem] font-serif uppercase tracking-[0.3em] text-gold-500 mb-8">Contact Us</h3>
 
           {/* Email */}
-          <a href="mailto:tanmoy.roychowdhury@ashoka.edu.in" className="group flex items-start gap-4 mb-8">
+          <a href={`mailto:${SITE_CONTENT.footer.email}`} className="group flex items-start gap-4 mb-8">
             <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-gold-500/20 group-hover:border-gold-500/30 transition-all duration-500">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
             </div>
             <div>
               <span className="text-sm font-light text-bone/70 block mb-1">Email</span>
-              <span className="text-[0.95rem] font-serif text-bone group-hover:text-gold-400 transition-colors duration-300 break-all">tanmoy.roychowdhury@ashoka.edu.in</span>
+              <span className="text-[0.95rem] font-serif text-bone group-hover:text-gold-400 transition-colors duration-300 break-all">{SITE_CONTENT.footer.email}</span>
             </div>
           </a>
 
@@ -1106,7 +1139,7 @@ const Footer = () => (
             </div>
             <div>
               <span className="text-sm font-light text-bone/70 block mb-1">Lab</span>
-              <span className="text-[0.95rem] font-serif text-bone leading-relaxed">Computational Disease Genomics Group</span>
+              <span className="text-[0.95rem] font-serif text-bone leading-relaxed">{SITE_CONTENT.footer.labName}</span>
             </div>
           </div>
 
@@ -1117,11 +1150,12 @@ const Footer = () => (
             </div>
             <div>
               <span className="text-sm font-light text-bone/70 block mb-1">Address</span>
-              <span className="text-[0.95rem] font-serif text-bone leading-relaxed">
-                Ashoka University<br />
-                Rajiv Gandhi Education City<br />
-                Sonipat, Haryana 131029<br />
-                India
+              <span className="text-[0.95rem] font-serif text-bone leading-relaxed text-bone/80">
+                {SITE_CONTENT.footer.address.map((line, idx) => (
+                  <React.Fragment key={idx}>
+                    {line}<br />
+                  </React.Fragment>
+                ))}
               </span>
             </div>
           </div>
@@ -1129,7 +1163,7 @@ const Footer = () => (
 
         {/* Explore Column */}
         <div className="md:col-span-3">
-          <h3 className="text-[0.65rem] font-sans font-bold uppercase tracking-[0.3em] text-gold-500 mb-8">Explore</h3>
+          <h3 className="text-[0.65rem] font-serif uppercase tracking-[0.3em] text-gold-500 mb-8">Explore</h3>
           <nav className="flex flex-col space-y-4">
             {[
               { label: "Overview", href: "#" },
@@ -1159,12 +1193,13 @@ const Footer = () => (
 
       {/* Bottom bar */}
       <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="text-[0.7rem] text-bone/40 font-light tracking-wider uppercase">Â© 2026 Computational Disease Genomics Group â€” Ashoka University</p>
+        <p className="text-[0.7rem] text-bone/40 font-light tracking-wider uppercase">© 2026 Computational Disease Genomics Group — Ashoka University</p>
         <p className="text-[0.7rem] text-bone/30 font-light tracking-wider">Decoding genomes, one variant at a time.</p>
       </div>
     </div>
   </footer>
 );
+
 
 const App = () => {
   return (
