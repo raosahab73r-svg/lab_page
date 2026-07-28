@@ -920,10 +920,15 @@ const GlimpseDeck = ({ items }) => {
               </div>
               
               {/* Text content under photo - hidden if empty */}
-              {(item.title || item.description) && (
-                <div className="text-center px-2 mt-4">
-                  {item.title && <h4 className="font-handwriting text-2xl md:text-3xl text-stone-800 font-bold tracking-wide">{item.title}</h4>}
-                  {item.description && <p className="font-serif italic text-xs md:text-sm text-stone-500 mt-1.5">{item.description}</p>}
+              {(item.title || item.description || item.date) && (
+                <div className="w-full mt-2 md:mt-4 flex flex-col items-center justify-center">
+                  {item.title && <h4 className="font-handwriting text-2xl md:text-3xl text-stone-800 font-bold tracking-wide text-center">{item.title}</h4>}
+                  {item.description && <p className="font-serif italic text-xs md:text-sm text-stone-500 mt-1.5 text-center">{item.description}</p>}
+                  {item.date && (
+                    <div className="mt-2 md:mt-4 text-center">
+                       <span className="font-handwriting font-bold text-xl md:text-3xl text-blue-800/90 inline-block -rotate-2">{item.date}</span>
+                    </div>
+                  )}
                 </div>
               )}
 

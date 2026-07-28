@@ -143,22 +143,20 @@ const SITE_CONTENT = {
     {
       image: "content/photos/glimpse/IMG_20251113_165306715_HDR_AE (1) (1).jpg",
       title: "",
-      description: ""
-    },
-    {
-      image: "content/photos/glimpse/DSCN5573.jpg",
-      title: "",
-      description: ""
+      description: "",
+      date: "Nov 13, 2025"
     },
     {
       image: "content/photos/glimpse/IMG_20260305_181637359_HDR_AE~2.jpg",
       title: "",
-      description: ""
+      description: "",
+      date: "Dec 05, 2025"
     },
     {
       image: "content/photos/glimpse/IMG_20260415_131433072_HDR_AE (1).jpg",
       title: "",
-      description: ""
+      description: "",
+      date: "Oct 28, 2025"
     }
   ],
 
