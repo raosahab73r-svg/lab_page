@@ -20,8 +20,7 @@ const SITE_CONTENT = {
   about: {
     paragraphs: [
       "Our research group is dedicated to harnessing genomics to improve human health. We leverage large-scale genomic and phenotypic datasets from population biobanks and disease-specific patient cohorts to develop genomics-informed approaches for disease diagnosis, prevention, risk prediction, and therapeutic stratification. Our research spans a broad spectrum of complex diseases, including cardiovascular, metabolic, respiratory, and immune disorders.",
-      "We aim to investigate the full spectrum of human genetic variation using bioinformatics and statistical genetics methodologies to uncover the molecular basis of disease susceptibility and clinical heterogeneity. By integrating population-scale genomic data with deep phenotypic information, we aim to identify clinically relevant genetic factors that can inform precision medicine. A major focus of our research is the development of genomics-driven precision health strategies for the Indian population.",
-      "Based at Ashoka University, our computational disease genomics group seeks to uncover the genetic architecture of complex diseases. From genome-wide associations to structural variations, we combine multi-omics data, statistical genetics, and machine learning to map the traits of cardiovascular and neuropsychiatric conditions \u2014 cultivating a future built on precision medicine."
+      "We aim to investigate the full spectrum of human genetic variation using bioinformatics and statistical genetics methodologies to uncover the molecular basis of disease susceptibility and clinical heterogeneity. By integrating population-scale genomic data with deep phenotypic information, we aim to identify clinically relevant genetic factors that can inform precision medicine. A major focus of our research is the development of genomics-driven precision health strategies for the Indian population."
     ]
   },
 
@@ -111,7 +110,7 @@ const SITE_CONTENT = {
       name: "Sourav Sangam Mohanty",
       role: "Research Assistant",
       initials: "SSM",
-      photo: "",   // e.g. "content/photos/team/joydeep.jpg"
+      photo: "content/photos/team/ssm.jpeg",   // e.g. "content/photos/team/joydeep.jpg"
       linkedin: "#",
       github: "#",
       twitter: "#",
@@ -141,9 +140,26 @@ const SITE_CONTENT = {
   //  You can provide a single 'image' or an array of 'images' for a slideshow.
   // ─────────────────────────────────────────────
   glimpse: [
-    { title: "Lab Members", subtitle: "The current roster", images: [""] },       // e.g. images: ["content/photos/glimpse/lab_members.jpg"]
-    { title: "Group Outing", subtitle: "Lab retreat 2024", images: ["", ""] }     // Add multiple strings for a slideshow
-    // You can add as many photo cards or slideshows here as you like! The gallery grid adapts automatically.
+    {
+      image: "content/photos/glimpse/IMG_20251113_165306715_HDR_AE (1) (1).jpg",
+      title: "",
+      description: ""
+    },
+    {
+      image: "content/photos/glimpse/DSCN5573.jpg",
+      title: "",
+      description: ""
+    },
+    {
+      image: "content/photos/glimpse/IMG_20260305_181637359_HDR_AE~2.jpg",
+      title: "",
+      description: ""
+    },
+    {
+      image: "content/photos/glimpse/IMG_20260415_131433072_HDR_AE (1).jpg",
+      title: "",
+      description: ""
+    }
   ],
 
   // ─────────────────────────────────────────────

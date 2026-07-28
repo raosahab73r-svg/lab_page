@@ -36,8 +36,8 @@ const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Research', href: '#research' },
   { label: 'People', href: '#team' },
-  { label: 'Glimpse', href: '#glimpse' },
-  { label: 'Publications', href: '#publications' }
+  { label: 'Publications', href: '#publications' },
+  { label: 'Glimpse', href: '#glimpse' }
 ];
 
 const Navbar = () => {
@@ -90,7 +90,7 @@ const Navbar = () => {
                 <span className="absolute bottom-1 left-0 w-full h-[2px] bg-gold-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
               </a>
             ))}
-            <a href="mailto:tanmoy.roychowdhury@ashoka.edu.in" className="bg-[#0f1110] text-gray-100 px-6 xl:px-7 py-3 rounded-full shadow-md hover:bg-gray-800 transform hover:-translate-y-0.5 transition-all duration-300 ml-2 xl:ml-4 whitespace-nowrap">
+            <a href="#footer" className="bg-[#0f1110] text-gray-100 px-6 xl:px-7 py-3 rounded-full shadow-md hover:bg-gray-800 transform hover:-translate-y-0.5 transition-all duration-300 ml-2 xl:ml-4 whitespace-nowrap">
               Contact Us
             </a>
           </div>
@@ -148,7 +148,8 @@ const Navbar = () => {
                 </nav>
 
                 <motion.a
-                  href="mailto:tanmoy.roychowdhury@ashoka.edu.in"
+                  href="#footer"
+                  onClick={() => setMobileOpen(false)}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.35 }}
@@ -336,15 +337,6 @@ const About = () => (
 
     <div className="max-w-5xl mx-auto mt-8 md:mt-12">
       {/* Section label */}
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-sm tracking-widest text-gold-600 font-bold uppercase mb-5 text-center"
-      >
-        Our Science
-      </motion.h2>
-
       {/* Big heading */}
       <motion.h3
         initial={{ opacity: 0, y: 20 }}
@@ -353,7 +345,7 @@ const About = () => (
         transition={{ delay: 0.1 }}
         className="text-3xl md:text-4xl lg:text-5xl font-serif text-ink text-center leading-tight mb-6"
       >
-        Genomics for <span className="text-olive-600 italic">Human Health</span>
+        Our <span className="text-olive-600 italic">Science</span>
       </motion.h3>
 
       {/* Gold accent divider */}
@@ -734,7 +726,7 @@ const Team = () => {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="w-16 h-[2px] bg-gold-500 mx-auto mt-8 origin-center"
           />
-          <p className="text-muted/60 font-light text-sm mt-6 max-w-lg mx-auto">Researchers, students, and collaborators driving genomics innovation at Ashoka University</p>
+          <p className="text-muted/60 font-light text-sm mt-6 max-w-lg mx-auto">Researchers and students driving genomics innovation at Ashoka University</p>
         </div>
 
         {/* Grid layout */}
@@ -883,116 +875,84 @@ const Team = () => {
   );
 };
 
-// --- GlimpseCard Component (Vintage Photo Print / Polaroid Style) ---
-const GlimpseCard = ({ item, idx }) => {
-  const imageList = item.images && item.images.length > 0 ? item.images : (item.image ? [item.image] : []);
-  const validImages = imageList.filter(img => img && img.trim() !== "");
-  const hasImages = validImages.length > 0;
-  const [currentIdx, setCurrentIdx] = useState(0);
 
-  useEffect(() => {
-    if (hasImages && validImages.length > 1) {
-      const interval = setInterval(() => {
-        setCurrentIdx((prev) => (prev + 1) % validImages.length);
-      }, 3500);
-      return () => clearInterval(interval);
-    }
-  }, [hasImages, validImages.length]);
+// --- GlimpseDeck Component (Interactive Coverflow) ---
+const GlimpseDeck = ({ items }) => {
+  const validItems = items.filter(item => item && item.image && item.image.trim() !== "");
+  // Start with the middle item in the center
+  const [centerIdx, setCenterIdx] = React.useState(Math.floor((validItems.length - 1) / 2));
 
-  // Expanded alternating rotations so any number of photos look naturally scattered
-  const rotations = [
-    '-rotate-3 hover:rotate-0',
-    'rotate-2 hover:rotate-0',
-    '-rotate-1 hover:rotate-0',
-    'rotate-3 hover:rotate-0',
-    '-rotate-2 hover:rotate-0',
-    'rotate-1 hover:rotate-0',
-    '-rotate-3 hover:rotate-0',
-    'rotate-2 hover:rotate-0'
-  ];
+  if (validItems.length === 0) return null;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: idx * 0.1, duration: 0.8 }}
-      className={`relative group w-full bg-[#FFFEF9] p-4 pb-7 md:p-5 md:pb-9 rounded-2xl shadow-[0_15px_35px_-10px_rgba(0,0,0,0.2)] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.35)] transition-all duration-500 border border-stone-200/80 cursor-pointer transform ${rotations[idx % rotations.length]} hover:-translate-y-2 hover:z-30`}
-    >
-      {/* Photo Area with subtle inner border/shadow */}
-      <div className="relative w-full aspect-[4/3] md:aspect-[1/1] rounded-lg overflow-hidden bg-stone-100 border border-stone-200/60 shadow-inner">
-        {hasImages ? (
-          <>
-            <AnimatePresence initial={false}>
-              <motion.img
-                key={currentIdx}
-                src={validImages[currentIdx]}
-                alt={`${item.title} ${currentIdx + 1}`}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1.2, ease: "easeInOut" }}
-                className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
-              />
-            </AnimatePresence>
-            {validImages.length > 1 && (
-              <div className="absolute top-3 right-3 z-20 flex gap-1.5 bg-black/30 backdrop-blur-sm px-2 py-1 rounded-full">
-                {validImages.map((_, i) => (
-                  <div key={i} className={`h-1 rounded-full transition-all duration-300 ${i === currentIdx ? 'bg-gold-400 w-2.5' : 'bg-white/60 w-1'}`}></div>
-                ))}
-              </div>
-            )}
-          </>
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-[#EAE6DF] via-[#DCD6CD] to-[#C8C1B4] flex flex-col items-center justify-center text-stone-600 relative overflow-hidden">
-            {/* Vintage photo paper grain texture */}
-            <div className="absolute inset-0 opacity-15" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #555 1px, transparent 0)', backgroundSize: '16px 16px' }}></div>
-            
-            <div className="w-16 h-16 rounded-full bg-white/40 border border-white/60 flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 transition-transform duration-500 z-10">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-stone-700"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><circle cx="8.5" cy="8.5" r="1.5" /><polyline points="21 15 16 10 5 21" /></svg>
-            </div>
-            <span className="font-sans text-[0.7rem] uppercase tracking-widest text-stone-600 font-medium z-10">Photo Placeholder</span>
-          </div>
-        )}
-      </div>
+    <div className="relative w-full max-w-6xl mx-auto flex items-center justify-center h-[550px] md:h-[750px] lg:h-[850px]">
+      {validItems.map((item, i) => {
+        const spread = 15; // Rotation spread in degrees
+        const offset = i - centerIdx; // Distance from the currently centered item
+        const rotation = offset * spread;
+        const isActive = i === centerIdx;
+        
+        // Active item is highest z-index, others fall behind based on distance from center
+        const zIndex = 50 - Math.abs(offset);
 
-      {/* Caption on the White Photo Paper Border (Polaroid Style) */}
-      <div className="pt-5 px-2 text-center">
-        <h4 className="font-handwriting text-2xl md:text-3xl text-stone-800 tracking-wide font-bold mb-1 group-hover:text-gold-700 transition-colors duration-300">{item.title}</h4>
-        <p className="font-serif italic text-xs md:text-sm text-stone-500">{item.subtitle}</p>
-      </div>
-    </motion.div>
+        return (
+          <div
+            key={i}
+            onClick={() => setCenterIdx(i)}
+            className="absolute cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]"
+            style={{
+              zIndex: zIndex,
+              transform: isActive 
+                ? 'scale(1.15) translateY(-30px)' 
+                : `translateX(${offset * 110}px) translateY(${Math.abs(offset) * 20}px) rotate(${rotation}deg) scale(${1 - Math.abs(offset) * 0.08})`,
+            }}
+          >
+            {/* Polaroid Wrapper */}
+            <div className={`bg-white p-4 md:p-5 pb-12 md:pb-16 rounded shadow-[0_15px_35px_-10px_rgba(0,0,0,0.25)] transition-shadow duration-500 border border-stone-200/50 flex flex-col ${isActive ? 'shadow-[0_30px_60px_-15px_rgba(0,0,0,0.45)]' : 'hover:shadow-[0_20px_45px_-10px_rgba(0,0,0,0.35)]'}`}>
+              
+              <div className="w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] aspect-[4/3] bg-stone-100 overflow-hidden relative">
+                <img
+                  src={item.image}
+                  alt={item.title || `Lab glimpse ${i + 1}`}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              
+              {/* Text content under photo - hidden if empty */}
+              {(item.title || item.description) && (
+                <div className="text-center px-2 mt-4">
+                  {item.title && <h4 className="font-handwriting text-2xl md:text-3xl text-stone-800 font-bold tracking-wide">{item.title}</h4>}
+                  {item.description && <p className="font-serif italic text-xs md:text-sm text-stone-500 mt-1.5">{item.description}</p>}
+                </div>
+              )}
+
+            </div>
+          </div>
+        );
+      })}
+    </div>
   );
 };
 
 // --- Glimpse Section Component ---
 const Glimpse = () => {
-  const items = SITE_CONTENT.glimpse;
+  const items = SITE_CONTENT.glimpse || [];
+  
   return (
     <section id="glimpse" className="py-16 md:py-32 bg-[#F7F5F0] text-ink px-4 md:px-6 lg:px-12 relative overflow-hidden">
-      {/* Subtle background ambient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[50%] bg-gold-200/20 rounded-full blur-[140px] pointer-events-none"></div>
 
       <SectionDivider />
       <div className="max-w-7xl mx-auto relative z-10 mt-8 md:mt-16">
-        <div className="text-center mb-12 md:mb-24">
+        <div className="text-center mb-12 md:mb-20">
           <h2 className="text-sm tracking-widest text-olive-600 font-serif uppercase mb-4">Gallery</h2>
-          <h3 className="text-4xl md:text-5xl lg:text-7xl font-serif text-ink">A Glimpse</h3>
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="w-16 h-[2px] bg-gold-500 mx-auto mt-8 origin-center"
-          />
-          <p className="text-muted/70 font-serif italic text-base mt-6 max-w-md mx-auto">Moments, people, and spaces from our laboratory</p>
+          <h3 className="text-4xl md:text-5xl lg:text-7xl font-serif text-ink">Glimpse</h3>
+          <div className="w-16 h-[2px] bg-gold-500 mx-auto mt-8"></div>
         </div>
 
-        {/* Responsive grid wrapping cleanly for any number of photo cards */}
-        <div className={`grid grid-cols-1 sm:grid-cols-2 ${items.length <= 2 ? 'max-w-4xl' : 'lg:grid-cols-3 max-w-7xl'} mx-auto gap-8 md:gap-10 px-2 md:px-0 py-4 items-stretch justify-center`}>
-          {items.map((item, idx) => (
-            <GlimpseCard key={idx} item={item} idx={idx} />
-          ))}
+        <div className="py-8 md:py-12">
+          <GlimpseDeck items={items} />
         </div>
       </div>
     </section>
@@ -1213,96 +1173,108 @@ const Publications = () => {
 }
 
 const Footer = () => (
-  <footer className="bg-ink text-bone relative overflow-hidden">
-    {/* Subtle gold glow at top */}
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent"></div>
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[40%] h-24 bg-gold-400/5 blur-[60px] pointer-events-none"></div>
+  <footer id="footer" className="bg-[#0a0f0d] text-bone relative overflow-hidden">
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[90%] h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent"></div>
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[40%] h-28 bg-gold-400/6 blur-[80px] pointer-events-none"></div>
+    <div className="absolute bottom-0 right-0 w-[30%] h-[30%] bg-emerald-900/8 rounded-full blur-[100px] pointer-events-none"></div>
+    <svg className="absolute inset-0 w-full h-full opacity-[0.025] pointer-events-none" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="dna-helix" x="0" y="0" width="60" height="80" patternUnits="userSpaceOnUse"><path d="M30 0 Q45 20 30 40 Q15 60 30 80" stroke="#C8A96E" strokeWidth="0.8" fill="none"/><path d="M30 0 Q15 20 30 40 Q45 60 30 80" stroke="#C8A96E" strokeWidth="0.8" fill="none"/><line x1="18" y1="10" x2="42" y2="10" stroke="#C8A96E" strokeWidth="0.4" opacity="0.5"/><line x1="15" y1="20" x2="45" y2="20" stroke="#C8A96E" strokeWidth="0.4" opacity="0.5"/><line x1="18" y1="30" x2="42" y2="30" stroke="#C8A96E" strokeWidth="0.4" opacity="0.5"/><line x1="18" y1="50" x2="42" y2="50" stroke="#C8A96E" strokeWidth="0.4" opacity="0.5"/><line x1="15" y1="60" x2="45" y2="60" stroke="#C8A96E" strokeWidth="0.4" opacity="0.5"/><line x1="18" y1="70" x2="42" y2="70" stroke="#C8A96E" strokeWidth="0.4" opacity="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(#dna-helix)" /></svg>
 
-    <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-20 pb-10">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20">
+    <div className="relative z-10">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-20 md:pt-24 pb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
 
-        {/* Contact Column */}
-        <div className="md:col-span-5">
-          <h3 className="text-[0.65rem] font-serif uppercase tracking-[0.3em] text-gold-500 mb-8">Contact Us</h3>
-
-          {/* Email */}
-          <a href={`mailto:${SITE_CONTENT.footer.email}`} className="group flex items-start gap-4 mb-8">
-            <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-gold-500/20 group-hover:border-gold-500/30 transition-all duration-500">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
-            </div>
-            <div>
-              <span className="text-sm font-light text-bone/70 block mb-1">Email</span>
-              <span className="text-[0.95rem] font-serif text-bone group-hover:text-gold-400 transition-colors duration-300 break-all">{SITE_CONTENT.footer.email}</span>
-            </div>
-          </a>
-
-          {/* Lab */}
-          <div className="flex items-start gap-4 mb-8">
-            <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" /><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" /><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" /><path d="M10 6h4" /><path d="M10 10h4" /><path d="M10 14h4" /><path d="M10 18h4" /></svg>
-            </div>
-            <div>
-              <span className="text-sm font-light text-bone/70 block mb-1">Lab</span>
-              <span className="text-[0.95rem] font-serif text-bone leading-relaxed">{SITE_CONTENT.footer.labName}</span>
+          <div className="flex flex-col">
+            <img src="Ashoka_University_logo_with_wordmark.png" alt="Ashoka University Logo" className="h-16 md:h-20 object-contain mb-6 brightness-0 invert opacity-85 self-start" />
+            <p className="font-serif text-[1.1rem] text-bone/65 italic leading-relaxed mb-6">Computational Disease<br />Genomics Group</p>
+            <div className="w-10 h-px bg-gold-500/30 mb-6"></div>
+            <div className="flex items-center gap-2.5 mt-auto">
+              {[
+                { label: "GitHub", href: "https://github.com/raosahab73r-svg", path: "M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" },
+                { label: "Google Scholar", href: "#", path: "M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" },
+                { label: "ORCID", href: "#", path: "M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z" },
+              ].map((s, i) => (
+                <a key={i} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
+                  className="w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-bone/40 hover:text-gold-400 hover:bg-gold-500/10 hover:border-gold-500/25 hover:-translate-y-0.5 transition-all duration-400">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d={s.path}/></svg>
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Address */}
-          <div className="flex items-start gap-4">
-            <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
-            </div>
-            <div>
-              <span className="text-sm font-light text-bone/70 block mb-1">Address</span>
-              <span className="text-[0.95rem] font-serif text-bone leading-relaxed text-bone/80">
-                {SITE_CONTENT.footer.address.map((line, idx) => (
-                  <React.Fragment key={idx}>
-                    {line}<br />
-                  </React.Fragment>
-                ))}
-              </span>
+          <div className="flex flex-col">
+            <h3 className="text-[0.6rem] font-sans uppercase tracking-[0.25em] text-gold-500/70 font-semibold mb-6">Contact</h3>
+            <a href={`mailto:${SITE_CONTENT.footer.email}`} className="group flex items-start gap-3.5 mb-6">
+              <div className="w-9 h-9 rounded-lg bg-gold-500/8 border border-gold-500/15 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-gold-500/15 group-hover:border-gold-500/30 transition-all duration-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
+              </div>
+              <div>
+                <span className="text-[0.7rem] text-bone/45 block mb-1 font-light">Email</span>
+                <span className="text-[0.85rem] font-serif text-bone/80 group-hover:text-gold-400 transition-colors duration-300 break-all leading-relaxed">{SITE_CONTENT.footer.email}</span>
+              </div>
+            </a>
+            <div className="flex items-start gap-3.5">
+              <div className="w-9 h-9 rounded-lg bg-gold-500/8 border border-gold-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" /><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" /><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" /><path d="M10 6h4" /><path d="M10 10h4" /><path d="M10 14h4" /><path d="M10 18h4" /></svg>
+              </div>
+              <div>
+                <span className="text-[0.7rem] text-bone/45 block mb-1 font-light">Lab</span>
+                <span className="text-[0.85rem] font-serif text-bone/80 leading-relaxed">{SITE_CONTENT.footer.labName}</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Explore Column */}
-        <div className="md:col-span-3">
-          <h3 className="text-[0.65rem] font-serif uppercase tracking-[0.3em] text-gold-500 mb-8">Explore</h3>
-          <nav className="flex flex-col space-y-4">
-            {[
-              { label: "Overview", href: "#" },
-              { label: "Research", href: "#research" },
-              { label: "Publications", href: "#publications" },
-              { label: "People", href: "#team" },
-              { label: "Glimpse", href: "#glimpse" },
-            ].map((link, i) => (
-              <a key={i} href={link.href} className="group flex items-center gap-3 text-bone/80 hover:text-gold-400 transition-all duration-300">
-                <span className="w-4 h-px bg-white/20 group-hover:w-6 group-hover:bg-gold-400 transition-all duration-300"></span>
-                <span className="text-sm font-light tracking-wide">{link.label}</span>
-              </a>
-            ))}
-          </nav>
-        </div>
-
-        {/* Logo & Branding Column */}
-        <div className="md:col-span-4 flex flex-col items-center md:items-end justify-between">
-          <div className="text-center md:text-right">
-            <img src="Ashoka_University_logo_with_wordmark.png" alt="Ashoka University Logo" className="h-16 md:h-20 object-contain mb-6 brightness-0 invert opacity-80" />
-            <p className="font-serif text-lg text-bone/60 italic leading-relaxed mb-2">Computational Disease<br />Genomics Group</p>
-            <div className="w-12 h-px bg-gold-500/40 ml-auto mr-auto md:mr-0 mt-4"></div>
+          <div className="flex flex-col">
+            <h3 className="text-[0.6rem] font-sans uppercase tracking-[0.25em] text-gold-500/70 font-semibold mb-6">Visit Us</h3>
+            <div className="flex items-start gap-3.5 mb-5">
+              <div className="w-9 h-9 rounded-lg bg-gold-500/8 border border-gold-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
+              </div>
+              <div>
+                <span className="text-[0.7rem] text-bone/45 block mb-1 font-light">Location</span>
+                <span className="text-[0.9rem] font-serif text-bone/85 leading-relaxed block mb-0.5">TSB 4th Floor</span>
+                <span className="text-[0.8rem] font-serif text-bone/45 leading-relaxed block">
+                  {SITE_CONTENT.footer.address.map((line, idx) => (
+                    <React.Fragment key={idx}>{line}<br /></React.Fragment>
+                  ))}
+                </span>
+              </div>
+            </div>
+            <a href="https://maps.google.com/?q=Ashoka+University+Sonipat" target="_blank" rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 text-[0.72rem] text-bone/50 hover:text-gold-400 transition-all duration-300 font-light">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold-500/50 group-hover:text-gold-400 transition-colors"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
+              Open in Google Maps
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-50 group-hover:opacity-100 transition-opacity"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+            </a>
           </div>
-        </div>
 
+
+        </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="text-[0.7rem] text-bone/40 font-light tracking-wider uppercase">© 2026 Computational Disease Genomics Group — Ashoka University</p>
-        <p className="text-[0.7rem] text-bone/30 font-light tracking-wider">Decoding genomes, one variant at a time.</p>
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 pb-12">
+        <div className="w-full h-48 md:h-56 rounded-2xl overflow-hidden border border-white/[0.08] bg-[#111] relative group hover:border-gold-500/20 transition-all duration-700">
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f0d]/50 via-transparent to-[#0a0f0d]/20 z-10 pointer-events-none"></div>
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3493.5938173420847!2d77.10099497551061!3d28.94008747549646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390daddd9b15f9ad%3A0xc6ba2b83c50f83d9!2sAshoka%20University!5e0!3m2!1sen!2sin!4v1714488392000!5m2!1sen!2sin" 
+            width="100%" height="100%" 
+            style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) contrast(1.1) brightness(0.85)' }} 
+            allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"
+            className="absolute inset-0 w-full h-full grayscale-[50%] group-hover:grayscale-0 transition-all duration-1000 scale-[1.02]"
+          ></iframe>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 pb-8">
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-gold-500/20 to-transparent mb-6"></div>
+        <div className="flex items-center justify-center">
+          <p className="text-[0.65rem] text-bone/35 font-light tracking-wider uppercase text-center">© 2026 Computational Disease Genomics Group — Ashoka University</p>
+        </div>
       </div>
     </div>
   </footer>
 );
+
+
 
 
 const App = () => {
