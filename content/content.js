@@ -95,15 +95,15 @@ const SITE_CONTENT = {
       desc: "Investigating the genetic basis of complex traits using integrative multi-omics and advanced statistical models."
     },
     {
-      name: "Govind",
+      name: "Govind Rajput",
       role: "Research Assistant",
-      initials: "G",
-      photo: "",   // e.g. "content/photos/team/govind.jpg"
+      initials: "GR",
+      photo: "content/photos/team/govind.jpg",
       linkedin: "#",
       github: "#",
       twitter: "#",
-      email: "mailto:govind.mangropa@ashoka.edu.in",
-      desc: "Assisting in lab operations, data processing pipelines, and maintaining genomics computational infrastructure."
+      email: "mailto:[EMAIL_ADDRESS]",
+      desc: "Computational Genomics & HPC"
     },
 
     {
