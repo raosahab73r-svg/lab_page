@@ -1186,58 +1186,58 @@ const Footer = () => (
 
     <div className="relative z-10">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-20 md:pt-24 pb-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
 
           <div className="flex flex-col">
-            <img src="Ashoka_University_logo_with_wordmark.png" alt="Ashoka University Logo" className="h-16 md:h-20 object-contain mb-6 brightness-0 invert opacity-85 self-start" />
-            <p className="font-serif text-[1.1rem] text-bone/65 italic leading-relaxed mb-6">Computational Disease<br />Genomics Group</p>
-            <div className="w-10 h-px bg-gold-500/30 mb-6"></div>
-            <div className="flex items-center gap-2.5 mt-auto">
+            <img src="Ashoka_University_logo_with_wordmark.png" alt="Ashoka University Logo" className="h-20 md:h-28 object-contain mb-8 brightness-0 invert opacity-85 self-start" />
+            <p className="font-serif text-xl md:text-2xl text-bone/70 italic leading-relaxed mb-8">Computational Disease<br />Genomics Group</p>
+            <div className="w-16 h-px bg-gold-500/40 mb-8"></div>
+            <div className="flex items-center gap-4 mt-auto">
               {[
                 { label: "GitHub", href: "https://github.com/raosahab73r-svg", path: "M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" },
                 { label: "Google Scholar", href: "#", path: "M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" },
                 { label: "ORCID", href: "#", path: "M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z" },
               ].map((s, i) => (
                 <a key={i} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
-                  className="w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-bone/40 hover:text-gold-400 hover:bg-gold-500/10 hover:border-gold-500/25 hover:-translate-y-0.5 transition-all duration-400">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d={s.path}/></svg>
+                  className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-bone/40 hover:text-gold-400 hover:bg-gold-500/10 hover:border-gold-500/25 hover:-translate-y-1 transition-all duration-400">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d={s.path}/></svg>
                 </a>
               ))}
             </div>
           </div>
 
           <div className="flex flex-col">
-            <h3 className="text-[0.6rem] font-sans uppercase tracking-[0.25em] text-gold-500/70 font-semibold mb-6">Contact</h3>
-            <a href={`mailto:${SITE_CONTENT.footer.email}`} className="group flex items-start gap-3.5 mb-6">
-              <div className="w-9 h-9 rounded-lg bg-gold-500/8 border border-gold-500/15 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-gold-500/15 group-hover:border-gold-500/30 transition-all duration-400">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
+            <h3 className="text-[0.8rem] md:text-sm font-sans uppercase tracking-[0.25em] text-gold-500/70 font-semibold mb-8">Contact</h3>
+            <a href={`mailto:${SITE_CONTENT.footer.email}`} className="group flex items-start gap-5 mb-8">
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-gold-500/8 border border-gold-500/15 flex items-center justify-center flex-shrink-0 mt-1 group-hover:bg-gold-500/15 group-hover:border-gold-500/30 transition-all duration-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
               </div>
-              <div>
-                <span className="text-[0.7rem] text-bone/45 block mb-1 font-light">Email</span>
-                <span className="text-[0.85rem] font-serif text-bone/80 group-hover:text-gold-400 transition-colors duration-300 break-all leading-relaxed">{SITE_CONTENT.footer.email}</span>
+              <div className="flex-1">
+                <span className="text-sm md:text-base text-bone/50 block mb-1 font-light">Email</span>
+                <span className="text-lg md:text-xl font-serif text-bone/90 group-hover:text-gold-400 transition-colors duration-300 break-all leading-relaxed">{SITE_CONTENT.footer.email}</span>
               </div>
             </a>
-            <div className="flex items-start gap-3.5">
-              <div className="w-9 h-9 rounded-lg bg-gold-500/8 border border-gold-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" /><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" /><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" /><path d="M10 6h4" /><path d="M10 10h4" /><path d="M10 14h4" /><path d="M10 18h4" /></svg>
+            <div className="flex items-start gap-5">
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-gold-500/8 border border-gold-500/15 flex items-center justify-center flex-shrink-0 mt-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" /><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" /><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" /><path d="M10 6h4" /><path d="M10 10h4" /><path d="M10 14h4" /><path d="M10 18h4" /></svg>
               </div>
-              <div>
-                <span className="text-[0.7rem] text-bone/45 block mb-1 font-light">Lab</span>
-                <span className="text-[0.85rem] font-serif text-bone/80 leading-relaxed">{SITE_CONTENT.footer.labName}</span>
+              <div className="flex-1">
+                <span className="text-sm md:text-base text-bone/50 block mb-1 font-light">Lab</span>
+                <span className="text-lg md:text-xl font-serif text-bone/90 leading-relaxed block">{SITE_CONTENT.footer.labName}</span>
               </div>
             </div>
           </div>
 
           <div className="flex flex-col">
-            <h3 className="text-[0.6rem] font-sans uppercase tracking-[0.25em] text-gold-500/70 font-semibold mb-6">Visit Us</h3>
-            <div className="flex items-start gap-3.5 mb-5">
-              <div className="w-9 h-9 rounded-lg bg-gold-500/8 border border-gold-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
+            <h3 className="text-[0.8rem] md:text-sm font-sans uppercase tracking-[0.25em] text-gold-500/70 font-semibold mb-8">Visit Us</h3>
+            <div className="flex items-start gap-5 mb-8">
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-gold-500/8 border border-gold-500/15 flex items-center justify-center flex-shrink-0 mt-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
               </div>
-              <div>
-                <span className="text-[0.7rem] text-bone/45 block mb-1 font-light">Location</span>
-                <span className="text-[0.9rem] font-serif text-bone/85 leading-relaxed block mb-0.5">TSB 4th Floor</span>
-                <span className="text-[0.8rem] font-serif text-bone/45 leading-relaxed block">
+              <div className="flex-1">
+                <span className="text-sm md:text-base text-bone/50 block mb-2 font-light">Location</span>
+                <span className="text-xl md:text-2xl font-serif text-bone block mb-2">TSB 4th Floor</span>
+                <span className="text-base md:text-lg font-serif text-bone/60 leading-relaxed block">
                   {SITE_CONTENT.footer.address.map((line, idx) => (
                     <React.Fragment key={idx}>{line}<br /></React.Fragment>
                   ))}
@@ -1245,34 +1245,33 @@ const Footer = () => (
               </div>
             </div>
             <a href="https://maps.google.com/?q=Ashoka+University+Sonipat" target="_blank" rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 text-[0.72rem] text-bone/50 hover:text-gold-400 transition-all duration-300 font-light">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold-500/50 group-hover:text-gold-400 transition-colors"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
+              className="group inline-flex items-center gap-3 text-base md:text-lg text-bone/60 hover:text-orange-400 transition-all duration-300 font-light mt-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-orange-500/70 group-hover:text-orange-400 transition-colors"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
               Open in Google Maps
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-50 group-hover:opacity-100 transition-opacity"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-50 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-1"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
             </a>
           </div>
-
 
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 pb-12">
-        <div className="w-full h-48 md:h-56 rounded-2xl overflow-hidden border border-white/[0.08] bg-[#111] relative group hover:border-gold-500/20 transition-all duration-700">
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f0d]/50 via-transparent to-[#0a0f0d]/20 z-10 pointer-events-none"></div>
+      <div className="max-w-[90rem] mx-auto px-6 lg:px-12 pb-16">
+        <div className="w-full h-[400px] md:h-[500px] lg:h-[600px] rounded-[2rem] overflow-hidden border-2 border-orange-500/30 bg-[#111] relative group hover:border-orange-500/60 shadow-[0_0_40px_rgba(249,115,22,0.15)] hover:shadow-[0_0_60px_rgba(249,115,22,0.25)] transition-all duration-700">
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f0d]/80 via-orange-900/10 to-[#0a0f0d]/40 z-10 pointer-events-none mix-blend-overlay"></div>
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3493.5938173420847!2d77.10099497551061!3d28.94008747549646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390daddd9b15f9ad%3A0xc6ba2b83c50f83d9!2sAshoka%20University!5e0!3m2!1sen!2sin!4v1714488392000!5m2!1sen!2sin" 
             width="100%" height="100%" 
-            style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) contrast(1.1) brightness(0.85)' }} 
+            style={{ border: 0, filter: 'contrast(1.2) sepia(0.3) hue-rotate(-15deg) saturate(1.5) brightness(0.9)' }} 
             allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"
-            className="absolute inset-0 w-full h-full grayscale-[50%] group-hover:grayscale-0 transition-all duration-1000 scale-[1.02]"
+            className="absolute inset-0 w-full h-full grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 scale-[1.02]"
           ></iframe>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 pb-8">
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-gold-500/20 to-transparent mb-6"></div>
+      <div className="max-w-[90rem] mx-auto px-6 lg:px-12 pb-12">
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-orange-500/40 to-transparent mb-8"></div>
         <div className="flex items-center justify-center">
-          <p className="text-[0.65rem] text-bone/35 font-light tracking-wider uppercase text-center">© 2026 Computational Disease Genomics Group — Ashoka University</p>
+          <p className="text-xs md:text-sm text-bone/50 font-light tracking-widest uppercase text-center">© 2026 Computational Disease Genomics Group — Ashoka University</p>
         </div>
       </div>
     </div>
