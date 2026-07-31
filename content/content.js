@@ -31,7 +31,7 @@ const SITE_CONTENT = {
     areas: [
       {
         title: "Polygenic Risk Scores",
-        tagline: "Risk prediction, patient stratification & precision medicine for India",
+        tagline: "GWAS, Risk prediction, Patient stratification",
         paragraphs: [
           "Common complex diseases arise through the combined influence of genetic and environmental factors. Unlike Mendelian disorders, their genetic architecture is highly polygenic, with disease risk determined by the cumulative effects of numerous common genetic variants, each contributing a small effect. Genome-wide association studies (GWAS) have identified hundreds of genomic loci associated with these complex diseases, providing valuable insights into their genetic basis.",
           "Recent advances have led to the development of polygenic risk scores (PRS), which are calculated using GWAS summary statistics. These scores can be applied to independent cohorts that were not included in the original GWAS, enabling the estimation of an individual\u2019s genetic predisposition to disease. PRS derived from disease-associated GWAS are increasingly becoming valuable for prediction of future disease risk. However, PRS developed using predominantly European ancestry datasets often demonstrate reduced predictive performance in other populations. The emergence of multi-ancestry GWAS has improved the transferability and predictive accuracy of PRS across diverse populations, although important challenges remain.",
@@ -41,7 +41,7 @@ const SITE_CONTENT = {
       },
       {
         title: "Rare Variants in Disease",
-        tagline: "High-impact coding variants, biobank analyses & polygenic interactions",
+        tagline: "High-impact coding variants, rare variants - polygenic interaction, target discovery",
         paragraphs: [
           "Although genome-wide association studies (GWAS) have been highly successful in identifying common variants with small effect sizes across the genome, translating these associations into therapeutic interventions for complex diseases remains challenging. This is largely due to the large number of associated loci, the predominance of non-coding variants, and the difficulty of pinpointing causal genes and biological mechanisms. Consequently, the discovery of high-impact rare variants within protein-coding regions continues to provide some of the most actionable insights into disease biology.",
           "Despite their low population frequencies, rare variants collectively outnumber common variants within an individual\u2019s genome. Understanding the functional consequences of these variants is therefore essential for deciphering the genetic basis of disease at the individual level. Recent large-scale biobank studies have provided compelling evidence that common and rare genetic variants often converge on the same causal genes, highlighting complementary mechanisms underlying disease susceptibility. Furthermore, although population genetic models traditionally classify diseases as either monogenic or polygenic, this distinction is increasingly recognized as an oversimplification at the individual level. For a given disease, an individual may carry predominantly polygenic risk, a pathogenic rare variant with a large effect, or a combination of both.",
@@ -75,6 +75,7 @@ const SITE_CONTENT = {
     {
       name: "Dr. Tanmoy Roychowdhury",
       role: "Principal Investigator",
+      education: "Ph.D.",
       initials: "TR",
       photo: "content/photos/team/tanmoy_roy.jpg",   // Added photo
       linkedin: "#",
@@ -86,6 +87,7 @@ const SITE_CONTENT = {
     {
       name: "Joydeep",
       role: "Ph.D. Candidate",
+      education: "Ph.D.",
       initials: "J",
       photo: "",   // e.g. "content/photos/team/joydeep.jpg"
       linkedin: "#",
@@ -97,6 +99,7 @@ const SITE_CONTENT = {
     {
       name: "Govind Rajput",
       role: "Research Assistant",
+      education: "M.Sc.",
       initials: "GR",
       photo: "content/photos/team/govind.jpg",
       linkedin: "#",
@@ -109,6 +112,7 @@ const SITE_CONTENT = {
     {
       name: "Sourav Sangam Mohanty",
       role: "Research Assistant",
+      education: "M.Sc.",
       initials: "SSM",
       photo: "content/photos/team/ssm.jpeg",   // e.g. "content/photos/team/joydeep.jpg"
       linkedin: "#",
@@ -122,6 +126,7 @@ const SITE_CONTENT = {
     {
       name: "Khusi Rana",
       role: "Research Assistant",
+      education: "M.Sc.",
       initials: "KR",
       photo: "",   // e.g. "content/photos/team/joydeep.jpg"
       linkedin: "#",

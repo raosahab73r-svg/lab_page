@@ -415,18 +415,15 @@ const ResearchArea = ({ area, idx, isExpanded, onToggle }) => {
           <div className={`absolute -top-16 -right-16 w-40 h-40 rounded-full bg-gradient-to-br ${gradientAccents[idx]} blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`}></div>
           <div className={`absolute -bottom-10 -left-10 w-24 h-24 rounded-full bg-gradient-to-tr ${gradientAccents[idx]} blur-xl opacity-30 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none`}></div>
 
-          {/* Top row: Number */}
-          <div className="mb-6 relative z-10">
-            <span className="text-6xl font-serif text-olive-200/40 font-light select-none leading-none">0{idx + 1}</span>
-          </div>
+
 
           {/* Title */}
-          <h4 className="font-serif text-[1.4rem] md:text-2xl text-ink leading-snug group-hover:text-olive-800 transition-colors duration-300 mb-2 relative z-10">
+          <h4 className="font-serif text-2xl md:text-3xl text-ink leading-snug group-hover:text-olive-800 transition-colors duration-300 mb-3 relative z-10">
             {area.title}
           </h4>
 
           {/* Tagline */}
-          <p className="text-[0.8rem] text-muted/70 font-light leading-relaxed mb-6 relative z-10">{area.tagline}</p>
+          <p className="text-sm md:text-base text-muted/70 font-light leading-relaxed mb-6 relative z-10">{area.tagline}</p>
 
           {/* Bottom: accent dot + Read more */}
           <div className="mt-auto flex items-center gap-3 relative z-10">
@@ -572,125 +569,89 @@ const Research = () => {
   );
 };
 
-// --- Premium Team Card Component (80% Photo, Clean Name & Designation at Bottom) ---
+// --- Premium Team Card (Photo-Forward, Editorial Magazine Style) ---
 const TeamCard = ({ member, delay, idx, onSelect }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const cardRef = useRef(null);
-  const [rotateX, setRotateX] = useState(0);
-  const [rotateY, setRotateY] = useState(0);
-
   const hasPhoto = member.photo && member.photo.trim() !== '';
 
-  // Curated gradient palettes for members without photos
-  const gradientPalettes = [
-    'linear-gradient(135deg, #2F3325 0%, #3a4a2e 30%, #4a5a3a 60%, #2F3325 100%)',
-    'linear-gradient(135deg, #1a2a2e 0%, #2b3d42 30%, #3a5048 60%, #1a2a2e 100%)',
-    'linear-gradient(135deg, #2d2a25 0%, #3e3830 30%, #4a4238 60%, #2d2a25 100%)',
-    'linear-gradient(135deg, #252a33 0%, #333a48 30%, #3e4858 60%, #252a33 100%)',
-    'linear-gradient(135deg, #2a2530 0%, #3a3040 30%, #483a50 60%, #2a2530 100%)'
+  const monogramGradients = [
+    'linear-gradient(145deg, #1a1f16 0%, #2a3024 40%, #1a1f16 100%)',
+    'linear-gradient(145deg, #1c2026 0%, #2a3038 40%, #1c2026 100%)',
+    'linear-gradient(145deg, #221f1a 0%, #352f26 40%, #221f1a 100%)',
+    'linear-gradient(145deg, #1a2220 0%, #263432 40%, #1a2220 100%)',
+    'linear-gradient(145deg, #201a24 0%, #342a3a 40%, #201a24 100%)'
   ];
-
-  // Accent colors that pair with each gradient
-  const accentColors = ['#8fae6b', '#6bb5a0', '#c4a05a', '#7b9ec7', '#b08bc4'];
-
-  const handleMouseMove = (e) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const xPct = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
-    const yPct = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
-    setRotateX(yPct * 12);
-    setRotateY(-xPct * 12);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    setRotateX(0);
-    setRotateY(0);
-  };
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: delay || idx * 0.12, duration: 0.7, ease: 'easeOut' }}
-      className="w-full h-full group"
-      style={{ perspective: 1000 }}
+      transition={{ delay: delay || idx * 0.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      className="w-full h-full"
     >
-      <motion.div
-        ref={cardRef}
+      <div
         onClick={onSelect}
-        onMouseMove={handleMouseMove}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={handleMouseLeave}
-        animate={{
-          rotateX: isHovered ? rotateX : 0,
-          rotateY: isHovered ? rotateY : 0,
-          scale: isHovered ? 1.03 : 1,
-        }}
-        transition={{ type: "spring", stiffness: 300, damping: 25 }}
-        style={{ transformStyle: "preserve-3d" }}
-        className="rounded-[2rem] h-[480px] md:h-[500px] relative overflow-hidden border border-white/10 group-hover:border-gold-400/50 shadow-[0_10px_35px_-10px_rgba(0,0,0,0.3)] group-hover:shadow-[0_25px_60px_-15px_rgba(212,168,83,0.3)] transition-all duration-700 cursor-pointer flex flex-col justify-end bg-ink"
+        className="group relative h-[420px] md:h-[480px] rounded-[22px] overflow-hidden cursor-pointer border border-white/[0.06] hover:border-[#B89B5E]/40 shadow-[0_8px_30px_-8px_rgba(0,0,0,0.15)] hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.35)] transition-all duration-500 hover:-translate-y-3"
       >
-        {/* Card Background / Profile Photo (Takes up ~80% of visual area!) */}
+        {/* Full Photo Background */}
         <div className="absolute inset-0 w-full h-full">
           {hasPhoto ? (
-            <>
-              <img
-                src={member.photo}
-                alt={member.name}
-                className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-              />
-              {/* Subtle dark gradient only at bottom for clean text contrast */}
-              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 via-20% to-transparent opacity-90 group-hover:opacity-95 transition-opacity duration-500"></div>
-            </>
+            <img
+              src={member.photo}
+              alt={member.name}
+              className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+            />
           ) : (
-            <>
-              <div className="absolute inset-0" style={{ background: gradientPalettes[idx % gradientPalettes.length] }}></div>
-              <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '20px 20px' }}></div>
-              <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full opacity-20 group-hover:opacity-30 transition-opacity duration-700 blur-[60px]" style={{ background: accentColors[idx % accentColors.length] }}></div>
-              <div className="absolute -bottom-16 -left-16 w-48 h-48 rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-700 blur-[50px]" style={{ background: accentColors[idx % accentColors.length] }}></div>
-              <div className="absolute inset-0 flex items-center justify-center pb-24">
-                <div className="relative">
-                  <div className="w-32 h-32 rounded-full border border-white/[0.08] group-hover:border-white/[0.15] transition-all duration-700 group-hover:scale-110 flex items-center justify-center">
-                    <div className="w-28 h-28 rounded-full border border-white/[0.05] flex items-center justify-center">
-                      <span className="text-5xl font-serif text-white/20 group-hover:text-white/30 transition-colors duration-500 select-none tracking-wide">
-                        {member.initials}
-                      </span>
-                    </div>
-                  </div>
-                </div>
+            <div className="w-full h-full flex items-center justify-center relative" style={{ background: monogramGradients[idx % monogramGradients.length] }}>
+              <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 0.5px, transparent 0)', backgroundSize: '16px 16px' }}></div>
+              <div className="absolute w-48 h-48 rounded-full bg-gold-400/8 blur-[70px] group-hover:bg-gold-400/15 transition-all duration-700"></div>
+              <div className="relative w-28 h-28 rounded-full border border-white/[0.08] group-hover:border-[#B89B5E]/30 flex items-center justify-center transition-all duration-500 group-hover:scale-110">
+                <span className="text-4xl font-serif text-white/20 group-hover:text-white/40 transition-colors duration-500 tracking-wider select-none">
+                  {member.initials}
+                </span>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 via-30% to-transparent"></div>
-            </>
+            </div>
           )}
         </div>
 
-        {/* Top gold shimmer bar */}
-        <div className="absolute top-0 left-0 right-0 h-[3px] z-20">
-          <div className="h-full w-0 group-hover:w-full transition-all duration-700 ease-out" style={{ background: `linear-gradient(90deg, transparent, ${accentColors[idx % accentColors.length]}, transparent)` }}></div>
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 via-[38%] to-black/5 group-hover:from-black/90 transition-all duration-500"></div>
+
+        {/* Gold top accent — animates on hover */}
+        <div className="absolute top-0 left-0 right-0 h-[2px] z-10">
+          <div className="h-full w-0 group-hover:w-full bg-gradient-to-r from-transparent via-[#B89B5E] to-transparent transition-all duration-700 ease-out"></div>
         </div>
 
-        {/* Minimalist Frosted Glass Footer (Bottom ~20%: ONLY Designation, Name, & Click Indicator) */}
-        <div className="relative z-10 w-full bg-black/65 group-hover:bg-black/85 backdrop-blur-md border-t border-white/10 group-hover:border-gold-400/40 p-5 md:p-6 transition-all duration-500">
-          {/* Role / Designation */}
-          <span className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-gold-400 group-hover:text-gold-300 transition-colors duration-300 block truncate mb-1.5">
-            {member.role}
-          </span>
+        {/* Frosted bottom bar */}
+        <div className="absolute bottom-0 left-0 right-0 z-10 backdrop-blur-sm bg-black/20 border-t border-white/[0.06] p-5 md:p-6">
+          {/* Role & Education */}
+          <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+            <span className="inline-block text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-[#B89B5E] font-sans">
+              {member.role}
+            </span>
+            {member.education && (
+              <>
+                <span className="w-1 h-1 rounded-full bg-[#B89B5E]/50 hidden sm:block"></span>
+                <span className="inline-block text-[0.65rem] font-medium tracking-[0.1em] text-white/80 font-sans">
+                  {member.education}
+                </span>
+              </>
+            )}
+          </div>
 
           {/* Name */}
-          <h4 className="font-serif text-2xl md:text-[1.55rem] text-white font-medium leading-snug drop-shadow-md break-words">
+          <h4 className="font-serif text-[1.35rem] md:text-[1.65rem] text-white font-medium leading-tight tracking-wide truncate">
             {member.name}
           </h4>
 
-          {/* Interactive Click Prompt */}
-          <div className="flex items-center gap-2 text-white/50 group-hover:text-gold-300 text-[0.7rem] tracking-wider uppercase mt-3 font-light transition-colors duration-300">
-            <span className="w-1.5 h-1.5 rounded-full bg-gold-400 group-hover:scale-125 transition-transform duration-300 animate-pulse"></span>
-            <span>View Profile & Bio</span>
-            <svg className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+          {/* View profile — fades in on hover */}
+          <div className="flex items-center gap-2 mt-3 opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out">
+            <div className="w-6 h-[1px] bg-[#B89B5E]/60"></div>
+            <span className="text-[0.6rem] uppercase tracking-[0.2em] text-white/50 font-light">View Profile</span>
+            <svg className="w-3 h-3 text-white/30 group-hover:translate-x-0.5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
           </div>
         </div>
-      </motion.div>
+      </div>
     </motion.div>
   );
 };
@@ -715,7 +676,7 @@ const Team = () => {
       <div className="absolute bottom-0 right-0 w-[25%] h-[25%] bg-gold-200/15 rounded-full blur-[100px] pointer-events-none"></div>
 
       <SectionDivider />
-      <div className="max-w-[85rem] mx-auto mt-8 md:mt-16 relative z-10">
+      <div className="max-w-[80rem] mx-auto mt-8 md:mt-16 relative z-10">
         <div className="text-center mb-10 md:mb-20">
           <h2 className="text-sm tracking-widest text-olive-600 font-serif uppercase mb-4">The People</h2>
           <h3 className="text-4xl md:text-5xl lg:text-7xl font-serif text-ink">Meet the Lab</h3>
@@ -729,8 +690,8 @@ const Team = () => {
           <p className="text-muted/60 font-light text-sm mt-6 max-w-lg mx-auto">Researchers and students driving genomics innovation at Ashoka University</p>
         </div>
 
-        {/* Grid layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 md:gap-6 py-6 items-stretch justify-center">
+        {/* Grid layout - Adjusted to 4 columns for larger cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 lg:gap-10 py-6 items-stretch justify-center">
           {teamMembers.map((member, idx) => (
             <div key={idx} className="w-full">
               <TeamCard member={member} idx={idx} delay={idx * 0.1} onSelect={() => setSelectedMember(member)} />
@@ -739,26 +700,27 @@ const Team = () => {
         </div>
       </div>
 
-      {/* --- Stunning Glassmorphic Profile Pop-Up Modal --- */}
+      {/* --- Premium Profile Modal --- */}
       <AnimatePresence>
         {selectedMember && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
             onClick={() => setSelectedMember(null)}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/80 backdrop-blur-md overflow-y-auto"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/60 backdrop-blur-lg overflow-y-auto"
           >
             <motion.div
-              initial={{ scale: 0.92, opacity: 0, y: 25 }}
+              initial={{ scale: 0.94, opacity: 0, y: 30 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.92, opacity: 0, y: 25 }}
+              exit={{ scale: 0.94, opacity: 0, y: 30 }}
               transition={{ type: "spring", stiffness: 350, damping: 28 }}
               onClick={(e) => e.stopPropagation()}
-              className="max-w-4xl w-full bg-[#161816]/95 border border-white/20 rounded-[2.2rem] shadow-[0_30px_100px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col md:flex-row relative my-auto max-h-[90vh] md:max-h-[85vh]"
+              className="max-w-[920px] w-full bg-[#111411] border border-white/[0.08] rounded-[28px] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col md:flex-row relative my-auto max-h-[90vh] md:max-h-[85vh]"
             >
-              {/* Left Column: Portrait / Avatar */}
-              <div className="w-full md:w-5/12 h-64 sm:h-80 md:h-auto relative bg-ink min-h-[260px] shrink-0">
+              {/* Left: Portrait (45%) */}
+              <div className="w-full md:w-[45%] h-72 sm:h-80 md:h-auto relative bg-[#0a0d0a] min-h-[280px] shrink-0">
                 {selectedMember.photo && selectedMember.photo.trim() !== "" ? (
                   <>
                     <img
@@ -766,69 +728,91 @@ const Team = () => {
                       alt={selectedMember.name}
                       className="w-full h-full object-cover object-top"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#161816] via-transparent to-transparent opacity-60"></div>
+                    {/* Gradient fade into right panel */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#111411]/80 hidden md:block"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#111411] via-transparent to-transparent md:hidden"></div>
                   </>
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center relative bg-gradient-to-br from-[#1f2421] to-[#3d3b2c]">
-                    <div className="w-36 h-36 rounded-full border border-white/10 flex items-center justify-center">
-                      <span className="text-6xl font-serif text-white/30 tracking-wider">
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#161916] to-[#1a1f1a]">
+                    <div className="w-32 h-32 rounded-full border border-white/[0.06] flex items-center justify-center">
+                      <span className="text-5xl font-serif text-white/15 tracking-wider">
                         {selectedMember.initials}
                       </span>
                     </div>
                   </div>
                 )}
-                {/* Gold vertical shimmer divider on desktop */}
-                <div className="hidden md:block absolute top-0 bottom-0 right-0 w-[2px] bg-gradient-to-b from-transparent via-gold-400/50 to-transparent"></div>
+                {/* Gold shimmer divider */}
+                <div className="hidden md:block absolute top-8 bottom-8 right-0 w-[1px] bg-gradient-to-b from-transparent via-[#B89B5E]/30 to-transparent"></div>
               </div>
 
-              {/* Right Column: Full Profile Info & Bio Content */}
-              <div className="w-full md:w-7/12 p-6 sm:p-8 md:p-10 flex flex-col justify-between relative overflow-y-auto">
-                {/* Close Button */}
+              {/* Right: Content (55%) */}
+              <div className="w-full md:w-[55%] p-7 sm:p-9 md:p-11 flex flex-col justify-between relative overflow-y-auto">
+                {/* Close */}
                 <button
                   onClick={() => setSelectedMember(null)}
-                  className="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/10 hover:bg-gold-400 text-white hover:text-ink flex items-center justify-center transition-all duration-300 shadow-md z-10 group"
+                  className="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/[0.08] text-white/50 hover:text-white flex items-center justify-center transition-all duration-300 z-10"
                   aria-label="Close modal"
                 >
-                  <svg className="w-5 h-5 transform group-hover:rotate-90 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
 
-                {/* Profile Header */}
-                <div className="pr-10 mb-6">
-                  <div className="inline-block mb-3">
-                    <span className="px-3.5 py-1 rounded-full border border-gold-400/40 bg-gold-500/10 text-gold-300 text-[0.65rem] font-bold uppercase tracking-[0.2em] shadow-[0_0_15px_rgba(212,168,83,0.15)]">
+                {/* Header */}
+                <div className="mb-6 pr-12">
+                  <div className="flex items-center gap-2 mb-2 flex-wrap">
+                    <span className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[#B89B5E] font-sans">
                       {selectedMember.role}
                     </span>
+                    {selectedMember.education && (
+                      <>
+                        <span className="w-1 h-1 rounded-full bg-[#B89B5E]/50 hidden sm:block"></span>
+                        <span className="text-[0.7rem] font-semibold tracking-[0.1em] text-white/70 font-sans">
+                          {selectedMember.education}
+                        </span>
+                      </>
+                    )}
                   </div>
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif text-white font-medium leading-tight tracking-wide">
+                  <h3 className="text-3xl md:text-4xl font-serif text-white font-medium leading-tight tracking-wide mb-5">
                     {selectedMember.name}
                   </h3>
+                  
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-3 py-1 rounded-full border border-white/[0.08] text-[0.55rem] uppercase tracking-[0.15em] font-semibold text-white/40 bg-white/[0.03]">
+                      Genomics
+                    </span>
+                    <span className="px-3 py-1 rounded-full border border-white/[0.08] text-[0.55rem] uppercase tracking-[0.15em] font-semibold text-white/40 bg-white/[0.03]">
+                      Ashoka University
+                    </span>
+                  </div>
                 </div>
 
-                {/* Bio Description Area */}
-                <div className="flex-1 my-2 pr-2 overflow-y-auto max-h-[220px] sm:max-h-[260px] md:max-h-[300px]">
-                  <h5 className="text-[0.65rem] uppercase tracking-[0.2em] font-bold text-white/40 mb-2">Research Focus & Biography</h5>
-                  <p className="text-white/80 font-light text-sm sm:text-base leading-relaxed tracking-wide whitespace-pre-line">
+                {/* Divider */}
+                <div className="w-full h-px bg-gradient-to-r from-[#B89B5E]/30 via-white/[0.06] to-transparent mb-6"></div>
+
+                {/* Bio */}
+                <div className="flex-1 my-1 pr-3 overflow-y-auto max-h-[200px] sm:max-h-[240px] md:max-h-[280px]">
+                  <h5 className="text-[0.6rem] uppercase tracking-[0.2em] font-bold text-white/30 mb-3">About</h5>
+                  <p className="text-white/70 font-light text-[0.95rem] md:text-base leading-[1.85] tracking-wide whitespace-pre-line">
                     {selectedMember.desc}
                   </p>
                 </div>
 
-                {/* Bottom Connect Dock: Real-Colored Brand Logos */}
-                <div className="pt-6 mt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 shrink-0">
-                  <span className="text-[0.65rem] tracking-[0.2em] uppercase font-bold text-white/50">
-                    Connect on Socials
+                {/* Social Connect */}
+                <div className="pt-6 mt-6 border-t border-white/[0.06] flex flex-wrap items-center justify-between gap-4 shrink-0">
+                  <span className="text-[0.6rem] tracking-[0.2em] uppercase font-bold text-white/30">
+                    Connect
                   </span>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2.5">
                     {selectedMember.linkedin && (
                       <a
                         href={selectedMember.linkedin}
                         target="_blank"
                         rel="noreferrer"
-                        title="LinkedIn Profile"
-                        className="w-10 h-10 rounded-full bg-[#0A66C2] text-white flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-[0_0_16px_rgba(10,102,194,0.8)] transition-all duration-300"
+                        className="w-9 h-9 rounded-full bg-white/[0.05] border border-white/[0.08] text-white/40 hover:text-white hover:bg-[#0A66C2] hover:border-[#0A66C2]/50 flex items-center justify-center transition-all duration-300"
                       >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                       </a>
                     )}
                     {selectedMember.github && (
@@ -836,10 +820,9 @@ const Team = () => {
                         href={selectedMember.github}
                         target="_blank"
                         rel="noreferrer"
-                        title="GitHub Profile"
-                        className="w-10 h-10 rounded-full bg-[#24292e] border border-white/20 text-white flex items-center justify-center shadow-lg hover:scale-110 hover:bg-[#333] hover:shadow-[0_0_16px_rgba(255,255,255,0.5)] transition-all duration-300"
+                        className="w-9 h-9 rounded-full bg-white/[0.05] border border-white/[0.08] text-white/40 hover:text-white hover:bg-[#24292e] hover:border-white/20 flex items-center justify-center transition-all duration-300"
                       >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                       </a>
                     )}
                     {selectedMember.twitter && (
@@ -847,21 +830,9 @@ const Team = () => {
                         href={selectedMember.twitter}
                         target="_blank"
                         rel="noreferrer"
-                        title="Twitter / X Profile"
-                        className="w-10 h-10 rounded-full bg-[#1DA1F2] text-white flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-[0_0_16px_rgba(29,161,242,0.8)] transition-all duration-300"
+                        className="w-9 h-9 rounded-full bg-white/[0.05] border border-white/[0.08] text-white/40 hover:text-white hover:bg-[#1DA1F2] hover:border-[#1DA1F2]/50 flex items-center justify-center transition-all duration-300"
                       >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.936 9.936 0 0024 4.59z"/></svg>
-                      </a>
-                    )}
-                    {selectedMember.email && (
-                      <a
-                        href={selectedMember.email}
-                        target="_blank"
-                        rel="noreferrer"
-                        title="Send Email"
-                        className="w-10 h-10 rounded-full bg-[#EA4335] text-white flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-[0_0_16px_rgba(234,67,53,0.8)] transition-all duration-300"
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.936 9.936 0 0024 4.59z"/></svg>
                       </a>
                     )}
                   </div>
@@ -1255,15 +1226,14 @@ const Footer = () => (
         </div>
       </div>
 
-      <div className="max-w-[90rem] mx-auto px-6 lg:px-12 pb-16">
-        <div className="w-full h-[400px] md:h-[500px] lg:h-[600px] rounded-[2rem] overflow-hidden border-2 border-orange-500/30 bg-[#111] relative group hover:border-orange-500/60 shadow-[0_0_40px_rgba(249,115,22,0.15)] hover:shadow-[0_0_60px_rgba(249,115,22,0.25)] transition-all duration-700">
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f0d]/80 via-orange-900/10 to-[#0a0f0d]/40 z-10 pointer-events-none mix-blend-overlay"></div>
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 pb-16">
+        <div className="w-full h-[350px] md:h-[420px] rounded-2xl overflow-hidden border border-white/10 relative">
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3493.5938173420847!2d77.10099497551061!3d28.94008747549646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390daddd9b15f9ad%3A0xc6ba2b83c50f83d9!2sAshoka%20University!5e0!3m2!1sen!2sin!4v1714488392000!5m2!1sen!2sin" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3493.0!2d77.1014487!3d28.9469886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390dae77eed4d41f%3A0x78a0bc68e5af467!2sAshoka%20University!5e0!3m2!1sen!2sin!4v1714488392000!5m2!1sen!2sin" 
             width="100%" height="100%" 
-            style={{ border: 0, filter: 'contrast(1.2) sepia(0.3) hue-rotate(-15deg) saturate(1.5) brightness(0.9)' }} 
+            style={{ border: 0 }} 
             allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"
-            className="absolute inset-0 w-full h-full grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 scale-[1.02]"
+            className="absolute inset-0 w-full h-full"
           ></iframe>
         </div>
       </div>
