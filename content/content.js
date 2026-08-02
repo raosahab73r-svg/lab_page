@@ -86,10 +86,10 @@ const SITE_CONTENT = {
     },
     {
       name: "Joydeep",
-      role: "Ph.D. Candidate",
-      education: "Ph.D.",
+      role: "Research Scholar",
+      education: "M.Sc",
       initials: "J",
-      photo: "",   // e.g. "content/photos/team/joydeep.jpg"
+      photo: "content/photos/team/joydeep.jpg",   // e.g. "content/photos/team/joydeep.jpg"
       linkedin: "#",
       github: "#",
       twitter: "#",
@@ -128,7 +128,7 @@ const SITE_CONTENT = {
       role: "Research Assistant",
       education: "M.Sc.",
       initials: "KR",
-      photo: "",   // e.g. "content/photos/team/joydeep.jpg"
+      photo: "content/photos/team/khusi.jpg",   // e.g. "content/photos/team/joydeep.jpg"
       linkedin: "#",
       github: "#",
       twitter: "#",
